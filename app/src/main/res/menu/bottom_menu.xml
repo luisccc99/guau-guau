@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/postsFragment"
+        android:icon="@drawable/ic_baseline_home"
+        android:menuCategory="secondary"
+        android:title="@string/home" />
+    <item
+        android:id="@+id/dogMapsFragment"
+        android:icon="@drawable/ic_baseline_location_on"
+        android:menuCategory="secondary"
+        android:title="@string/dogs" />
+    <item
+        android:id="@+id/profileFragment"
+        android:icon="@drawable/ic_baseline_person"
+        android:menuCategory="secondary"
+        android:title="@string/profile" />
+
+</menu>
