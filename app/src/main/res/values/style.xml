@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    
+    <style name="Widget.GuauGuau.BottomNavigationView.Colored" parent="Widget.MaterialComponents.BottomNavigationView.Colored">
+        <item name="colorPrimary">@color/blue_700</item>
+        <item name="colorOnPrimary">@color/blue_900</item>
+    </style>
+    
+</resources>
