@@ -8,4 +8,7 @@
     <string name="home">Home</string>
     <string name="dogs">Dogs</string>
     <string name="profile">Profile</string>
+    <string name="TODO">TODO</string>
+    <string name="more">more</string>
+    <string name="create_post">create post</string>
 </resources>
