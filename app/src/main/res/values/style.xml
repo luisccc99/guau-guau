@@ -8,9 +8,17 @@
 
     <style name="Widget.GuauGuau.ShapeableImageView" parent="Widget.MaterialComponents.ShapeableImageView">
         <item name="cornerSize">50%</item>
+        <item name="cornerFamily">rounded</item>
     </style>
 
     <style name="Widget.Guauguau.FloatingActionButton" parent="Widget.MaterialComponents.FloatingActionButton">
-        <item name="backgroundTint"> @color/magenta_700</item>
+        <item name="backgroundTint">@color/magenta_700</item>
     </style>
+
+    <style name="Widget.GuauGuau.CardView" parent="Widget.MaterialComponents.CardView">
+        <item name="cornerRadius">9dp</item>
+        <item name="cardCornerRadius">9dp</item>
+        <item name="elevation">9dp</item>
+    </style>
+
 </resources>
