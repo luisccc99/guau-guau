@@ -8,7 +8,15 @@
     <string name="home">Home</string>
     <string name="dogs">Dogs</string>
     <string name="profile">Profile</string>
+
     <string name="TODO">TODO</string>
     <string name="more">more</string>
     <string name="create_post">create post</string>
+
+    <string name="about">About</string>
+    <string name="edit_about">Edit about</string>
+    <string name="edit_name">Edit name</string>
+    <string name="profile_activity">Activity</string>
+    <string name="log_out">Log out</string>
+
 </resources>
