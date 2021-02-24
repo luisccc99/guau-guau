@@ -1,9 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    
+
     <style name="Widget.GuauGuau.BottomNavigationView.Colored" parent="Widget.MaterialComponents.BottomNavigationView.Colored">
         <item name="colorPrimary">@color/blue_700</item>
         <item name="colorOnPrimary">@color/blue_900</item>
     </style>
-    
+
+    <style name="Widget.GuauGuau.ShapeableImageView" parent="Widget.MaterialComponents.ShapeableImageView">
+        <item name="cornerSize">50%</item>
+        <item name="cornerFamily">rounded</item>
+    </style>
+
+    <style name="Widget.Guauguau.FloatingActionButton" parent="Widget.MaterialComponents.FloatingActionButton">
+        <item name="backgroundTint">@color/magenta_700</item>
+    </style>
+
+    <style name="Widget.GuauGuau.CardView" parent="Widget.MaterialComponents.CardView">
+        <item name="cornerRadius">9dp</item>
+        <item name="cardCornerRadius">9dp</item>
+        <item name="elevation">9dp</item>
+    </style>
+
 </resources>
