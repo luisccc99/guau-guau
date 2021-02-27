@@ -4,43 +4,46 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_margin="10dp"
     tools:context=".ProfileFragment">
 
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/image_view_profile_pic"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
         android:layout_marginTop="15dp"
         android:scaleType="centerCrop"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:shapeAppearanceOverlay="@style/Widget.GuauGuau.ShapeableImageView" />
+        app:shapeAppearanceOverlay="@style/Widget.GuauGuau.ShapeableImageView"
+        tools:src="@tools:sample/avatars" />
 
-    <ImageView
-        android:id="@+id/ic_account"
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/floating_change_pic"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:importantForAccessibility="no"
-        android:src="@drawable/ic_baseline_account_circle"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/image_view_profile_pic" />
+        android:contentDescription="@string/change_profile_pic"
+        android:src="@drawable/ic_baseline_camera"
+        app:layout_constraintBottom_toBottomOf="@id/image_view_profile_pic"
+        app:layout_constraintEnd_toEndOf="@id/image_view_profile_pic" />
 
     <TextView
         android:id="@+id/text_view_name"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:maxLines="1"
-        android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
+        android:layout_marginTop="12dp"
+        android:text="@string/alfredo_estupinon"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
         app:layout_constraintEnd_toStartOf="@id/edit_name"
-        app:layout_constraintStart_toEndOf="@id/ic_account"
-        app:layout_constraintTop_toBottomOf="@id/image_view_profile_pic"
-        tools:text="nombre y apellido" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/image_view_profile_pic" />
 
     <ImageView
         android:id="@+id/edit_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="26dp"
+        android:layout_height="26dp"
         android:contentDescription="@string/edit_name"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/text_view_name"
@@ -51,18 +54,23 @@
         android:id="@+id/text_view_email"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
         android:ellipsize="end"
         android:maxLines="1"
+        android:text="@string/freddy_gmail_com"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
         app:layout_constraintStart_toStartOf="@id/text_view_name"
-        app:layout_constraintTop_toBottomOf="@id/guideline3"
-        tools:text="example@email.com" />
+        app:layout_constraintTop_toBottomOf="@id/guideline3" />
 
     <ImageView
         android:id="@+id/ic_about"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginTop="10dp"
         android:importantForAccessibility="no"
         android:src="@drawable/ic_round_info"
+        app:layout_constraintEnd_toStartOf="@id/about"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/guideline4" />
 
@@ -70,15 +78,18 @@
         android:id="@+id/about"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         android:text="@string/about"
+        android:textAppearance="@style/TextAppearance.GuauGuau.Subtitle2"
         app:layout_constraintEnd_toStartOf="@id/edit_about"
         app:layout_constraintStart_toEndOf="@id/ic_about"
         app:layout_constraintTop_toBottomOf="@id/guideline4" />
 
     <ImageView
         android:id="@+id/edit_about"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="26dp"
+        android:layout_height="26dp"
+        android:layout_marginTop="10dp"
         android:contentDescription="@string/edit_about"
         android:src="@drawable/ic_baseline_edit"
         app:layout_constraintEnd_toEndOf="parent"
@@ -88,73 +99,107 @@
     <TextView
         android:id="@+id/text_view_about"
         android:layout_width="0dp"
-        android:layout_height="150dp"
-        android:maxLines="8"
+        android:layout_height="wrap_content"
+        android:maxLines="3"
         android:text="@tools:sample/lorem/random"
         android:textAppearance="@style/TextAppearance.MaterialComponents.Body2"
         app:layout_constraintEnd_toEndOf="@id/about"
         app:layout_constraintStart_toStartOf="@id/about"
-        app:layout_constraintTop_toBottomOf="@id/about"
+        app:layout_constraintTop_toBottomOf="@id/ic_about"
         tools:text="@tools:sample/lorem/random" />
 
     <ImageView
         android:id="@+id/ic_activity"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginHorizontal="10dp"
         android:importantForAccessibility="no"
         android:src="@drawable/ic_round_analytics"
+        app:layout_constraintEnd_toStartOf="@id/activity"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/text_view_about" />
 
     <TextView
         android:id="@+id/activity"
         android:layout_width="0dp"
+        android:layout_marginTop="5dp"
         android:layout_height="wrap_content"
         android:text="@string/profile_activity"
+        android:textAppearance="@style/TextAppearance.GuauGuau.Subtitle2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/ic_activity"
         app:layout_constraintTop_toTopOf="@id/ic_activity" />
 
     <androidx.cardview.widget.CardView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/card_view_posts"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         app:layout_constraintEnd_toEndOf="@id/guideline2"
         app:layout_constraintStart_toStartOf="parent"
+
         app:layout_constraintTop_toBottomOf="@id/activity">
 
-        <TextView
-            android:id="@+id/text_view_num_posts"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="10dp"
-            tools:text="Posts" />
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_gravity="center"
+            android:contentDescription="@string/number_of_posts_made"
+            android:src="@drawable/ic_baseline_article" />
+
 
     </androidx.cardview.widget.CardView>
 
-
-    <androidx.cardview.widget.CardView
+    <TextView
+        android:id="@+id/text_view_num_posts"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="@string/posts"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Overline"
+        app:layout_constraintEnd_toEndOf="@id/card_view_posts"
+        app:layout_constraintStart_toStartOf="@id/card_view_posts"
+        app:layout_constraintTop_toBottomOf="@id/card_view_posts" />
+
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_view_solved_posts"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@id/guideline2"
         app:layout_constraintTop_toBottomOf="@id/activity">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="10dp"
-            tools:text="Solved Posts" />
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_gravity="center"
+            android:contentDescription="@string/solved_posts"
+            android:src="@drawable/ic_baseline_check_circle_24" />
+
     </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:id="@+id/text_view_solved_posts"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="@string/solved_posts"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Overline"
+        app:layout_constraintEnd_toEndOf="@id/card_view_solved_posts"
+        app:layout_constraintStart_toStartOf="@id/card_view_solved_posts"
+        app:layout_constraintTop_toBottomOf="@id/card_view_solved_posts" />
 
 
     <Button
         android:id="@+id/button_log_out"
+        style="@style/Widget.Guauguau.Button.OutlinedButton.SecondaryColor"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="@string/log_out"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/text_view_num_posts" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline2"
@@ -168,7 +213,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintTop_toBottomOf="@id/ic_account" />
+        app:layout_constraintTop_toBottomOf="@id/text_view_name" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline4"
@@ -176,5 +221,6 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintTop_toBottomOf="@id/text_view_email" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

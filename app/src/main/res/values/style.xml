@@ -15,10 +15,29 @@
         <item name="backgroundTint">@color/magenta_700</item>
     </style>
 
+    <style name="Widget.Guauguau.FloatingActionButton.Night" parent="Widget.MaterialComponents.FloatingActionButton">
+        <item name="backgroundTint">@color/magenta_200</item>
+    </style>
+
+    <style name="Widget.Guauguau.Button.OutlinedButton.SecondaryColor" parent="Widget.MaterialComponents.Button">
+        <item name="backgroundTint">@color/magenta_700</item>
+    </style>
+
     <style name="Widget.GuauGuau.CardView" parent="Widget.MaterialComponents.CardView">
         <item name="cornerRadius">9dp</item>
         <item name="cardCornerRadius">9dp</item>
         <item name="elevation">9dp</item>
+    </style>
+
+    <style name="Widget.GuauGuau.TextView" parent="Widget.MaterialComponents.TextView">
+        <item name="minHeight">48dp</item>
+        <item name="textStartPadding">5dp</item>
+    </style>
+
+    <style name="TextAppearance.GuauGuau.Subtitle2" parent="TextAppearance.MaterialComponents.Subtitle2">
+        <item name="android:textColor">@color/blue_900</item>
+        <item name="minHeight">48dp</item>
+
     </style>
 
 </resources>
