@@ -24,5 +24,6 @@
     <string name="solved_posts">## solved posts</string>
     <string name="posts">## posts</string>
     <string name="number_of_posts_made">number of posts made</string>
+    <string name="lorem">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus eget semper nibh. Pellentesque habitant morbi tristique senectus.</string>
 
 </resources>
