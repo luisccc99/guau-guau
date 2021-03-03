@@ -39,5 +39,7 @@
         <item name="minHeight">48dp</item>
     </style>
 
+    <style name="Widget.GuauGuau.TextInputLayout.OutlinedBox" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
+    </style>
 </resources>
