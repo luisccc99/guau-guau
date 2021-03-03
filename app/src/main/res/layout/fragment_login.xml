@@ -2,25 +2,28 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:gravity="center"
     android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
     tools:context=".Ul.Auth.LoginFragment">
 
     <LinearLayout
         android:layout_width="300dp"
-        android:padding="10dp"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:padding="10dp">
 
         <TextView
             android:id="@+id/textView"
             android:layout_width="match_parent"
-            android:layout_height="40pt"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
             android:layout_weight="1"
-            android:text="login"
             android:gravity="center"
+            android:text="@string/login"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4"
             android:textColor="@color/black"
-            android:textStyle="bold"/>
+            android:textStyle="bold" />
 
 
         <TextView
@@ -34,9 +37,9 @@
             android:id="@+id/editTextTextEmailAddress"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:autofillHints=""
             android:ems="10"
-            android:inputType="textEmailAddress"
-            android:autofillHints="" />
+            android:inputType="textEmailAddress" />
 
         <TextView
             android:id="@+id/textView3"
@@ -49,9 +52,9 @@
             android:id="@+id/editTextTextPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:autofillHints=""
             android:ems="10"
-            android:inputType="textPassword"
-            android:autofillHints="" />
+            android:inputType="textPassword" />
 
         <TextView
             android:id="@+id/textView4"
@@ -64,7 +67,7 @@
             android:id="@+id/buttonLogin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="log_in" />
+            android:text="@string/login" />
 
     </LinearLayout>
 

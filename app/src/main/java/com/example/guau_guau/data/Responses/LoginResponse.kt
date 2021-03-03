@@ -1,5 +1,7 @@
 package com.example.guau_guau.data.Responses
 
 data class LoginResponse(
-    val User: User
+    val token: String,
+    val message: String,
+    val exp: String
 )
