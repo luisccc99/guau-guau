@@ -22,13 +22,13 @@
         tools:layout="@layout/fragment_profile" />
     <fragment
         android:id="@+id/RegisterFragment"
-        android:name="com.example.guau_guau.Ul.Auth.LoginFragment"
+        android:name="com.example.guau_guau.ui.auth.LoginFragment"
         android:label="fragment_register"
         tools:layout="@layout/fragment_register" />
 
     <fragment
         android:id="@+id/loginFragment"
-        android:name="com.example.guau_guau.Ul.Auth.LoginFragment"
+        android:name="com.example.guau_guau.ui.auth.LoginFragment"
         android:label="fragment_register"
         tools:layout="@layout/fragment_login" />
 </navigation>

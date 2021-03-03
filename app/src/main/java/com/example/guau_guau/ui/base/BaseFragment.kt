@@ -1,4 +1,4 @@
-package com.example.guau_guau.Ul.base
+package com.example.guau_guau.ui.base
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,8 +8,8 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.viewbinding.ViewBinding
-import com.example.guau_guau.data.Network.RemoteDataSource
-import com.example.guau_guau.data.Repository.BaseRepository
+import com.example.guau_guau.data.network.RemoteDataSource
+import com.example.guau_guau.data.repositories.BaseRepository
 import com.example.guau_guau.data.UserPreferences
 
 abstract class BaseFragment<VM : ViewModel, B: ViewBinding, R: BaseRepository> : Fragment() {

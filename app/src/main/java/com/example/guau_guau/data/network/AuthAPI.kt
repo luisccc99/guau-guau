@@ -1,6 +1,6 @@
-package com.example.guau_guau.data.Network
+package com.example.guau_guau.data.network
 
-import com.example.guau_guau.data.Responses.LoginResponse
+import com.example.guau_guau.data.responses.LoginResponse
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
 import retrofit2.http.POST

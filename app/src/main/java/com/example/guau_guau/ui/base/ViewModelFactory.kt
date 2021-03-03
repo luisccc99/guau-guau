@@ -1,10 +1,10 @@
-package com.example.guau_guau.Ul.base
+package com.example.guau_guau.ui.base
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.example.guau_guau.data.Repository.AuthRepository
-import com.example.guau_guau.data.Repository.BaseRepository
-import com.example.guau_guau.Ul.Auth.AuthViewModel
+import com.example.guau_guau.data.repositories.AuthRepository
+import com.example.guau_guau.data.repositories.BaseRepository
+import com.example.guau_guau.ui.auth.AuthViewModel
 
 class ViewModelFactory (
     private val repository: BaseRepository

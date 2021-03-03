@@ -1,4 +1,4 @@
-package com.example.guau_guau.Ul.Auth
+package com.example.guau_guau.ui.auth
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

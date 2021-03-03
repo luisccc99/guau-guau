@@ -1,12 +1,12 @@
-package com.example.guau_guau.Ul.Auth
+package com.example.guau_guau.ui.auth
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.guau_guau.data.Network.Resource
-import com.example.guau_guau.data.Repository.AuthRepository
-import com.example.guau_guau.data.Responses.LoginResponse
+import com.example.guau_guau.data.network.Resource
+import com.example.guau_guau.data.repositories.AuthRepository
+import com.example.guau_guau.data.responses.LoginResponse
 import kotlinx.coroutines.launch
 
 class AuthViewModel(

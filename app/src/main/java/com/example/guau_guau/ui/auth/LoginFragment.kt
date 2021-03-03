@@ -1,15 +1,16 @@
-package com.example.guau_guau.Ul.Auth
+package com.example.guau_guau.ui.auth
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
-import com.example.guau_guau.data.Network.AuthAPI
-import com.example.guau_guau.data.Network.Resource
-import com.example.guau_guau.data.Repository.AuthRepository
-import com.example.guau_guau.Ul.base.BaseFragment
+import com.example.guau_guau.data.network.AuthAPI
+import com.example.guau_guau.data.network.Resource
+import com.example.guau_guau.data.repositories.AuthRepository
+import com.example.guau_guau.ui.base.BaseFragment
 import com.example.guau_guau.databinding.FragmentLoginBinding
 import kotlinx.coroutines.launch
 
@@ -19,10 +20,11 @@ class LoginFragment : BaseFragment<AuthViewModel, FragmentLoginBinding, AuthRepo
         super.onActivityCreated(savedInstanceState)
 
         viewModel.loginResponse.observe(viewLifecycleOwner, Observer {
-            when(it){
+            when (it) {
                 is Resource.Success -> {
                     lifecycleScope.launch {
-                        userPreferences.saveAuthToken(it.value.User.token)
+                        Log.wtf("TAG", "onActivityCreated: ${it.value.token}")
+                        userPreferences.saveAuthToken(it.value.token)
                     }
                 }
                 is Resource.Failure -> {
