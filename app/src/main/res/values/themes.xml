@@ -14,5 +14,7 @@
         <!-- Customize your theme here. -->
         <item name="floatingActionButtonStyle">@style/Widget.Guauguau.FloatingActionButton</item>
 
+        <item name="textInputStyle">@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox</item>
+
     </style>
 </resources>
