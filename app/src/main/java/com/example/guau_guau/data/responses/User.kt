@@ -1,4 +1,4 @@
-package com.example.guau_guau.data.Responses
+package com.example.guau_guau.data.responses
 
 data class User(
     val created_at: String,

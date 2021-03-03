@@ -1,12 +1,12 @@
-package com.example.guau_guau.data.Repository
+package com.example.guau_guau.data.repositories
 
-import com.example.guau_guau.data.Network.AuthAPI
+import com.example.guau_guau.data.network.AuthAPI
 
 class AuthRepository(
     private val api: AuthAPI
-) : BaseRepository(){
+) : BaseRepository() {
 
-    suspend fun login (
+    suspend fun login(
         email: String,
         password: String
     ) = safeApiCall {

@@ -1,4 +1,4 @@
-package com.example.guau_guau.data.Network
+package com.example.guau_guau.data.network
 
 import okhttp3.ResponseBody
 
@@ -8,5 +8,5 @@ sealed class Resource<out T> {
         val isNetworkError: Boolean,
         val errorCode: Int?,
         val errorBody: ResponseBody?
-    ) :Resource<Nothing>()
+    ) : Resource<Nothing>()
 }

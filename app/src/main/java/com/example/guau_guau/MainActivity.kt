@@ -6,7 +6,7 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.asLiveData
-import com.example.guau_guau.Ul.Auth.AuthActivity
+import com.example.guau_guau.ui.auth.AuthActivity
 import com.example.guau_guau.data.UserPreferences
 
 class MainActivity : AppCompatActivity() {

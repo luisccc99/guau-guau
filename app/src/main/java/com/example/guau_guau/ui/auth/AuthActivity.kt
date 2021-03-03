@@ -1,4 +1,4 @@
-package com.example.guau_guau.Ul.Auth
+package com.example.guau_guau.ui.auth
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

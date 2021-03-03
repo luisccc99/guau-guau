@@ -31,7 +31,7 @@
             android:value="@string/google_maps_key" />
 
         <activity android:name=".ResourceActivity" />
-        <activity android:name="com.example.guau_guau.Ul.Auth.AuthActivity" />
+        <activity android:name="com.example.guau_guau.ui.auth.AuthActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
