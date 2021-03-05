@@ -37,16 +37,5 @@
     <string name="cancel">cancel</string>
     <string name="submit">submit</string>
 
-    <string name="email">Email</string>
-    <string name="password">Password</string>
-    <string name="signup_text">Don\'t have an account yet? create one</string>
-    <string name="forgot_password">Forgot password?</string>
-    <string name="create_new_post">Create new post.</string>
-    <string name="title">Title</string>
-    <string name="description">Description</string>
-    <string name="guauguau">GuauGuau</string>
-    <string name="cancel">cancel</string>
-    <string name="submit">submit</string>
-
 
 </resources>
