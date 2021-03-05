@@ -25,8 +25,8 @@
     <string name="posts">## posts</string>
     <string name="number_of_posts_made">number of posts made</string>
     <string name="lorem">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus eget semper nibh. Pellentesque habitant morbi tristique senectus.</string>
-
     <string name="login">Login</string>
+
     <string name="email">Email</string>
     <string name="password">Password</string>
     <string name="signup_text">Don\'t have an account yet? create one</string>
