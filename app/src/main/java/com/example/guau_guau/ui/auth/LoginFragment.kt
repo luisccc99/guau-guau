@@ -1,15 +1,15 @@
 package com.example.guau_guau.ui.auth
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.widget.addTextChangedListener
 import androidx.lifecycle.Observer
-import com.example.guau_guau.HomeActivity
-import com.example.guau_guau.data.network.AuthAPI
+import androidx.lifecycle.lifecycleScope
+import com.example.guau_guau.ui.HomeActivity
+import com.example.guau_guau.data.network.GuauguauApi
 import com.example.guau_guau.data.network.Resource
 import com.example.guau_guau.data.repositories.AuthRepository
 import com.example.guau_guau.ui.base.BaseFragment
@@ -58,6 +58,8 @@ class LoginFragment : BaseFragment<AuthViewModel, FragmentLoginBinding, AuthRepo
         container: ViewGroup?
     ) = FragmentLoginBinding.inflate(inflater, container, false)
 
+
     override fun getFragmentRepository() =
-        AuthRepository(remoteDataSource.buildApi(AuthAPI::class.java), userPreferences)
+        AuthRepository(remoteDataSource.buildApi(GuauguauApi::class.java), userPreferences)
+
 }

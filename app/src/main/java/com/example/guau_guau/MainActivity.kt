@@ -4,8 +4,9 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.lifecycle.Observer
 import androidx.lifecycle.asLiveData
-import com.example.guau_guau.data.UserPreferences
 import com.example.guau_guau.ui.auth.AuthActivity
+import com.example.guau_guau.data.UserPreferences
+import com.example.guau_guau.ui.HomeActivity
 import com.example.guau_guau.ui.startNewActivity
 
 class MainActivity : AppCompatActivity() {

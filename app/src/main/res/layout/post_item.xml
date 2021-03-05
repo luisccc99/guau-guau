@@ -31,7 +31,7 @@
             android:ellipsize="end"
             android:maxLines="1"
             android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
-            app:layout_constraintEnd_toEndOf="@id/text_view_username"
+            app:layout_constraintEnd_toEndOf="@id/image_view_photo"
             app:layout_constraintStart_toStartOf="@id/text_view_username"
             app:layout_constraintTop_toBottomOf="@id/imageView"
             tools:text="Title" />
@@ -53,8 +53,8 @@
 
         <ImageView
             android:id="@+id/image_view_more"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
             android:importantForAccessibility="no"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/text_view_username"
