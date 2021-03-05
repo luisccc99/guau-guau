@@ -51,5 +51,4 @@
             app:destination="@id/postsFragment" />
     </fragment>
 
-
 </navigation>

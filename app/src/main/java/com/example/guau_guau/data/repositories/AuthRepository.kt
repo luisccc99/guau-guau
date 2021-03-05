@@ -1,10 +1,10 @@
 package com.example.guau_guau.data.repositories
 
 import com.example.guau_guau.data.UserPreferences
-import com.example.guau_guau.data.network.AuthAPI
+import com.example.guau_guau.data.network.GuauguauApi
 
 class AuthRepository(
-    private val api: AuthAPI,
+    private val api: GuauguauApi,
     private val preferences: UserPreferences
 ) : BaseRepository() {
 

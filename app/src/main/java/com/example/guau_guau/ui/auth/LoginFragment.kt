@@ -1,7 +1,6 @@
 package com.example.guau_guau.ui.auth
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,12 +8,12 @@ import android.widget.Toast
 import androidx.core.widget.addTextChangedListener
 import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
+import com.example.guau_guau.ui.HomeActivity
 import com.example.guau_guau.data.network.GuauguauApi
 import com.example.guau_guau.data.network.Resource
 import com.example.guau_guau.data.repositories.AuthRepository
 import com.example.guau_guau.ui.base.BaseFragment
 import com.example.guau_guau.databinding.FragmentLoginBinding
-import com.example.guau_guau.ui.HomeActivity
 import com.example.guau_guau.ui.enable
 import com.example.guau_guau.ui.startNewActivity
 import com.example.guau_guau.ui.visible
