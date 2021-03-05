@@ -5,7 +5,7 @@ import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
 import retrofit2.http.POST
 
-interface AuthAPI {
+interface GuauguauApi {
 
     @FormUrlEncoded
     @POST( value = "api/v1/login")

@@ -7,18 +7,48 @@
 
     <fragment
         android:id="@+id/postsFragment"
-        android:name="com.example.guau_guau.PostsFragment"
+        android:name="com.example.guau_guau.ui.posts.PostsFragment"
         android:label="Home"
-        tools:layout="@layout/fragment_posts" />
+        tools:layout="@layout/fragment_posts" >
+        <action
+            android:id="@+id/action_postsFragment_to_createPostFragment"
+            app:destination="@id/createPostFragment"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/fade_out"
+            app:launchSingleTop="false"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/slide_out_right" />
+        <action
+            android:id="@+id/action_postsFragment_to_postDetailFragment"
+            app:destination="@id/postDetailFragment" />
+    </fragment>
     <fragment
         android:id="@+id/dogMapsFragment"
-        android:name="com.example.guau_guau.DogMapsFragment"
+        android:name="com.example.guau_guau.ui.maps.DogMapsFragment"
         android:label="Dogs Map"
         tools:layout="@layout/fragment_dog_maps" />
     <fragment
         android:id="@+id/profileFragment"
-        android:name="com.example.guau_guau.ProfileFragment"
+        android:name="com.example.guau_guau.ui.profile.ProfileFragment"
         android:label="Profile"
         tools:layout="@layout/fragment_profile" />
+    <fragment
+        android:id="@+id/createPostFragment"
+        android:name="com.example.guau_guau.ui.posts.CreatePostFragment"
+        android:label="Create New Post"
+        tools:layout="@layout/fragment_create_post" >
+        <action
+            android:id="@+id/action_createPostFragment_to_postsFragment"
+            app:destination="@id/postsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/postDetailFragment"
+        android:name="com.example.guau_guau.ui.posts.PostDetailFragment"
+        android:label="Detail Fragment"
+        tools:layout="@layout/fragment_post_detail" >
+        <action
+            android:id="@+id/action_postDetailFragment_to_postsFragment"
+            app:destination="@id/postsFragment" />
+    </fragment>
 
 </navigation>
