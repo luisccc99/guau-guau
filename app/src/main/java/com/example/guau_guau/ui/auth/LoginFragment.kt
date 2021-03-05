@@ -8,6 +8,8 @@ import android.widget.Toast
 import androidx.core.widget.addTextChangedListener
 import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.findNavController
+import com.example.guau_guau.R
 import com.example.guau_guau.ui.HomeActivity
 import com.example.guau_guau.data.network.GuauguauApi
 import com.example.guau_guau.data.network.Resource
@@ -35,6 +37,10 @@ class LoginFragment : BaseFragment<AuthViewModel, FragmentLoginBinding, AuthRepo
                 }
             }
         })
+
+        binding.textViewSignup.setOnClickListener {
+            view.findNavController().navigate(R.id.action_loginFragment_to_registerFragment)
+        }
 
         binding.editTextPassword.addTextChangedListener {
             val email = binding.editTextEmail.text.toString().trim()
