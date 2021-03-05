@@ -24,7 +24,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/text_view_email"
         android:layout_width="match_parent"
@@ -45,7 +44,6 @@
 
     </com.google.android.material.textfield.TextInputLayout>
 
-
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/text_view_password"
         android:layout_width="match_parent"
@@ -61,13 +59,11 @@
             android:id="@+id/edit_text_password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:autofillHints=""
             android:ems="10"
             android:inputType="textPassword" />
 
     </com.google.android.material.textfield.TextInputLayout>
-
-
+    
     <Button
         android:id="@+id/button_login"
         android:layout_width="match_parent"
@@ -124,6 +120,5 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:targetApi="lollipop"
         tools:visibility="visible" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
