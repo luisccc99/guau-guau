@@ -2,7 +2,6 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-<<<<<<< HEAD
     android:id="@+id/bottom_nav"
     app:startDestination="@id/postsFragment">
 
@@ -52,23 +51,5 @@
             app:destination="@id/postsFragment" />
     </fragment>
 
-=======
-    android:id="@+id/nav_home"
-    app:startDestination="@id/postsFragment2">
-    <fragment
-        android:id="@+id/postsFragment2"
-        android:name="com.example.guau_guau.PostsFragment"
-        android:label="fragment_posts"
-        tools:layout="@layout/fragment_posts" />
-    <fragment
-        android:id="@+id/dogMapsFragment3"
-        android:name="com.example.guau_guau.DogMapsFragment"
-        android:label="fragment_dog_maps"
-        tools:layout="@layout/fragment_dog_maps" />
-    <fragment
-        android:id="@+id/profileFragment2"
-        android:name="com.example.guau_guau.ProfileFragment"
-        android:label="fragment_profile"
-        tools:layout="@layout/fragment_profile" />
->>>>>>> d715953 (loginF_New)
+
 </navigation>

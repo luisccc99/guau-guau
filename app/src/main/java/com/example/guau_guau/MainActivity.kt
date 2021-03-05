@@ -18,7 +18,8 @@ class MainActivity : AppCompatActivity() {
         val userPreferences = UserPreferences(this)
 
         userPreferences.authToken.asLiveData().observe(this, Observer {
-            val activity = if (it == null) AuthActivity::class.java else HomeActivity::class.java
+            val activity =
+                if (it == null) AuthActivity::class.java else HomeActivity::class.java
             startNewActivity(activity)
         })
 
