@@ -1,11 +1,9 @@
 package com.example.guau_guau.data.repositories
 
-import com.example.guau_guau.data.UserPreferences
-import com.example.guau_guau.data.network.GuauguauApi
+import com.example.guau_guau.data.network.AuthAPI
 
 class AuthRepository(
-    private val api: GuauguauApi,
-    private val preferences: UserPreferences
+    private val api: AuthAPI
 ) : BaseRepository() {
 
     suspend fun login(
@@ -13,9 +11,5 @@ class AuthRepository(
         password: String
     ) = safeApiCall {
         api.login(email, password)
-    }
-
-    suspend fun saveAuthToken(token: String){
-        preferences.saveAuthToken(token)
     }
 }
