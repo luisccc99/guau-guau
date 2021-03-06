@@ -10,15 +10,12 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.findNavController
 import com.example.guau_guau.R
-import com.example.guau_guau.ui.HomeActivity
 import com.example.guau_guau.data.network.GuauguauApi
 import com.example.guau_guau.data.network.Resource
 import com.example.guau_guau.data.repositories.AuthRepository
 import com.example.guau_guau.ui.base.BaseFragment
 import com.example.guau_guau.databinding.FragmentLoginBinding
-import com.example.guau_guau.ui.enable
-import com.example.guau_guau.ui.startNewActivity
-import com.example.guau_guau.ui.visible
+import com.example.guau_guau.ui.*
 
 class LoginFragment : BaseFragment<AuthViewModel, FragmentLoginBinding, AuthRepository>() {
 
@@ -32,8 +29,9 @@ class LoginFragment : BaseFragment<AuthViewModel, FragmentLoginBinding, AuthRepo
                     viewModel.saveAuthToken(it.value.token)
                     requireActivity().startNewActivity(HomeActivity::class.java)
                 }
-                is Resource.Failure -> {
-                    Toast.makeText(requireContext(), "Login Failure", Toast.LENGTH_SHORT).show()
+                is Resource.Failure -> handleApiError(it) {
+                   // Toast.makeText(requireContext(), "Login Failure", Toast.LENGTH_SHORT).show()
+                    login()
                 }
             }
         })
@@ -48,14 +46,20 @@ class LoginFragment : BaseFragment<AuthViewModel, FragmentLoginBinding, AuthRepo
         }
 
         binding.buttonLogin.setOnClickListener {
-            val email = binding.editTextEmail.text.toString().trim()
-            val password = binding.editTextPassword.text.toString().trim()
-            binding.progressbar.visibility = View.VISIBLE
-            viewModel.login(email, password)
+            //val email = binding.editTextEmail.text.toString().trim()
+            //val password = binding.editTextPassword.text.toString().trim()
+            //binding.progressbar.visibility = View.VISIBLE
+            //viewModel.login(email, password)
+            login()
 
         }
     }
 
+    private fun login(){
+        val email = binding.editTextEmail.text.toString().trim()
+        val password = binding.editTextPassword.text.toString().trim()
+        viewModel.login(email, password)
+    }
 
     override fun getViewModel() = AuthViewModel::class.java
 
