@@ -4,6 +4,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.guau_guau.data.repositories.AuthRepository
 import com.example.guau_guau.data.repositories.BaseRepository
+import com.example.guau_guau.data.repositories.UserRepository
+import com.example.guau_guau.ui.HomeViewModel
 import com.example.guau_guau.ui.auth.AuthViewModel
 
 class ViewModelFactory (
@@ -13,6 +15,7 @@ class ViewModelFactory (
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
         return when{
             modelClass.isAssignableFrom(AuthViewModel::class.java) -> AuthViewModel(repository as AuthRepository) as T
+            modelClass.isAssignableFrom(HomeViewModel::class.java) -> HomeViewModel(repository as UserRepository) as T
             else -> throw IllegalArgumentException("ViewModelClass Not Found")
         }
     }

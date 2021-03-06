@@ -11,5 +11,5 @@ data class User(
     val photo: Any,
     val resolved_posts: Int,
     val updated_at: String,
-    val token: String
+    val token: String?
 )
