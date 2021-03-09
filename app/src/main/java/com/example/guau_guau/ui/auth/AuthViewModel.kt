@@ -14,7 +14,7 @@ class AuthViewModel(
     private val repository: AuthRepository
 ) : BaseViewModel(repository) {
 
-    private val _loginResponse : MutableLiveData<Resource<LoginResponse>> = MutableLiveData()
+    private val _loginResponse: MutableLiveData<Resource<LoginResponse>> = MutableLiveData()
     val loginResponse: LiveData<Resource<LoginResponse>>
         get() = _loginResponse
 
@@ -26,7 +26,11 @@ class AuthViewModel(
         _loginResponse.value = repository.login(email, password)
     }
 
-    fun saveAuthToken(token: String) = viewModelScope.launch{
+    fun saveAuthToken(token: String) = viewModelScope.launch {
         repository.saveAuthToken(token)
+    }
+
+    fun saveUserId(userId: String) = viewModelScope.launch {
+        repository.saveUserId(userId)
     }
 }
