@@ -1,43 +1,63 @@
 package com.example.guau_guau.ui.profile
 
+import android.annotation.SuppressLint
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import com.example.guau_guau.R
-import com.example.guau_guau.data.network.UserApi
+import com.example.guau_guau.data.UserPreferences
+import com.example.guau_guau.data.network.GuauguauApi
+import com.example.guau_guau.data.network.Resource
 import com.example.guau_guau.data.repositories.UserRepository
-import com.example.guau_guau.databinding.FragmentLoginBinding
 import com.example.guau_guau.databinding.FragmentProfileBinding
-import com.example.guau_guau.ui.HomeViewModel
 import com.example.guau_guau.ui.base.BaseFragment
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.runBlocking
 
-class ProfileFragment : BaseFragment<HomeViewModel, FragmentProfileBinding, UserRepository>() {
+class ProfileFragment : BaseFragment<ProfileViewModel, FragmentProfileBinding, UserRepository>() {
 
 
+
+
+    @SuppressLint("SetTextI18n")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewModel.getUser()
+        val userId = runBlocking { userPreferences.userId.first() }
+        // TODO: make userId non nullable
+        if (userId != null) {
+            viewModel.getUser(userId)
+        }
+        viewModel.user.observe(viewLifecycleOwner, {
+            when (it) {
+                is Resource.Success -> {
+                    val user = it.value
+                    with(binding) {
+                        textViewName.text = "${user.name} ${user.lastname}"
+                        textViewEmail.text = user.email
+                        textViewNumPosts.text = user.num_posts.toString()
+                        textViewSolvedPosts.text = user.resolved_posts.toString()
+                        textViewAbout.text = user.aboutme
+                    }
+                }
+                //TODO: change code bellow to show progress bar or error
+                is Resource.Loading -> {
+                    Toast.makeText(requireContext(), "Loading", Toast.LENGTH_SHORT).show()
+                }
+                else -> {
+                    Toast.makeText(requireContext(), "Error", Toast.LENGTH_SHORT).show()
+                }
+            }
+        })
 
         binding.buttonLogOut.setOnClickListener {
             logout()
         }
     }
 
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_profile, container, false)
-    }
-
-    override fun getViewModel() = HomeViewModel::class.java
+    override fun getViewModel() = ProfileViewModel::class.java
 
     override fun getFragmentBinding(
         inflater: LayoutInflater,
@@ -46,7 +66,7 @@ class ProfileFragment : BaseFragment<HomeViewModel, FragmentProfileBinding, User
 
     override fun getFragmentRepository(): UserRepository {
         val token = runBlocking { userPreferences.authToken.first() }
-        val api = remoteDataSource.buildApi(UserApi::class.java, token)
+        val api = remoteDataSource.buildApi(GuauguauApi::class.java, token)
         return UserRepository(api)
     }
 
