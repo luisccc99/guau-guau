@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import com.bumptech.glide.Glide
 import com.example.guau_guau.R
 import com.example.guau_guau.data.UserPreferences
 import com.example.guau_guau.data.network.GuauguauApi
@@ -17,8 +18,6 @@ import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.runBlocking
 
 class ProfileFragment : BaseFragment<ProfileViewModel, FragmentProfileBinding, UserRepository>() {
-
-
 
 
     @SuppressLint("SetTextI18n")
@@ -40,6 +39,15 @@ class ProfileFragment : BaseFragment<ProfileViewModel, FragmentProfileBinding, U
                         textViewNumPosts.text = user.num_posts.toString()
                         textViewSolvedPosts.text = user.resolved_posts.toString()
                         textViewAbout.text = user.aboutme
+
+                        //TODO: save fragment state and change image URL
+                        Glide.with(requireContext())
+                            .load("https://www.arabianbusiness.com/public/images/2019/03/16/pewdiepie-new.jpg")
+                            .dontAnimate()
+                            .error(R.drawable.ic_baseline_person)
+                            .placeholder(R.drawable.ic_baseline_person)
+                            .into(imageViewProfilePic)
+
                     }
                 }
                 //TODO: change code bellow to show progress bar or error

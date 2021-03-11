@@ -24,13 +24,11 @@ class LoginFragment : BaseFragment<AuthViewModel, FragmentLoginBinding, AuthRepo
         viewModel.loginResponse.observe(viewLifecycleOwner, Observer {
             when (it) {
                 is Resource.Success -> {
-                    Log.wtf("TAG", "onViewCreated: ${it.value.user_id}")
                     viewModel.saveAuthToken(it.value.token)
                     viewModel.saveUserId(it.value.user_id)
                     requireActivity().startNewActivity(HomeActivity::class.java)
                 }
                 is Resource.Failure -> handleApiError(it) {
-                    // Toast.makeText(requireContext(), "Login Failure", Toast.LENGTH_SHORT).show()
                     login()
                 }
                 else -> {

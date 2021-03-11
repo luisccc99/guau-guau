@@ -19,8 +19,14 @@
 
     <fragment
         android:id="@+id/registerFragment"
-        android:name="com.example.guau_guau.ui.auth.RegisterFragment"
+        android:name="com.example.guau_guau.ui.auth.SignUpFragment"
         android:label="fragment_register"
-        tools:layout="@layout/fragment_register" />
+        tools:layout="@layout/fragment_signup" >
+        <action
+            android:id="@+id/action_registerFragment_to_loginFragment"
+            app:destination="@id/loginFragment"
+            app:popUpTo="@id/loginFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
 
 </navigation>
