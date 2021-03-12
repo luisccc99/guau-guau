@@ -1,11 +1,11 @@
 package com.example.guau_guau.ui.auth
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.widget.addTextChangedListener
 import androidx.navigation.findNavController
 import com.example.guau_guau.R
 import com.example.guau_guau.data.network.GuauguauApi
@@ -13,6 +13,9 @@ import com.example.guau_guau.data.network.Resource
 import com.example.guau_guau.data.repositories.SignUpRepository
 import com.example.guau_guau.databinding.FragmentSignupBinding
 import com.example.guau_guau.ui.base.BaseFragment
+import com.example.guau_guau.ui.enable
+import com.example.guau_guau.ui.handleApiError
+import com.example.guau_guau.ui.visible
 
 class SignUpFragment : BaseFragment<SignUpViewModel, FragmentSignupBinding, SignUpRepository>() {
 
@@ -23,12 +26,13 @@ class SignUpFragment : BaseFragment<SignUpViewModel, FragmentSignupBinding, Sign
             when (it) {
                 is Resource.Success -> {
                     Toast.makeText(requireContext(), "user created", Toast.LENGTH_SHORT).show()
+                    view.findNavController().navigate(R.id.action_registerFragment_to_loginFragment)
                 }
-                is Resource.Loading -> {
-                    Toast.makeText(requireContext(), "loading", Toast.LENGTH_SHORT).show()
+                is Resource.Failure -> {
+                    handleApiError(it)
                 }
                 else -> {
-                    Toast.makeText(requireContext(), "error", Toast.LENGTH_SHORT).show()
+                    binding.progressbarSignup.visible(true)
                 }
             }
         })
@@ -36,9 +40,30 @@ class SignUpFragment : BaseFragment<SignUpViewModel, FragmentSignupBinding, Sign
         binding.buttonCancelSignup.setOnClickListener {
             view.findNavController().navigate(R.id.action_registerFragment_to_loginFragment)
         }
+        binding.editTextPassword2.addTextChangedListener {
+            if (inputIsNotEmpty()) {
+                binding.buttonSignup.enable(true)
+            }
+
+        }
         binding.buttonSignup.setOnClickListener {
             signup()
         }
+    }
+
+    private fun inputIsNotEmpty(): Boolean {
+        val listOfEditTexts = listOf(
+            binding.editTextName,
+            binding.editTextLast,
+            binding.editTextEmail,
+            binding.editTextPassword1
+        )
+        for (editText in listOfEditTexts) {
+            if (editText.toString().trim().isEmpty()) {
+                return false
+            }
+        }
+        return true
     }
 
     private fun signup() {

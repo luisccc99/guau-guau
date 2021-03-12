@@ -26,11 +26,11 @@ class RemoteDataSource {
                         }.build())
                     }
                     .also { client ->
-                    if (BuildConfig.DEBUG) {
+
                         val logging = HttpLoggingInterceptor();
                         logging.setLevel(HttpLoggingInterceptor.Level.BODY)
                         client.addInterceptor(logging)
-                    }
+
                 }.build()
             )
             .addConverterFactory(GsonConverterFactory.create())

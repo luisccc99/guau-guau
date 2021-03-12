@@ -9,7 +9,6 @@
     <string name="dogs">Dogs</string>
     <string name="profile">Profile</string>
 
-    <string name="TODO">TODO</string>
     <string name="more">more</string>
     <string name="create_post">create post</string>
 
@@ -34,11 +33,10 @@
     <string name="title">Title</string>
     <string name="description">Description</string>
     <string name="guauguau">GuauGuau</string>
-    <string name="cancel">cancel</string>
-    <string name="submit">submit</string>
-    <string name="signup">Sign up</string>
+    <string name="cancel">Cancel</string>
+    <string name="submit">Submit</string>
+    <string name="signup">Sign Up</string>
     <string name="create_an_account">Create an account!</string>
-    <string name="full_name">Full name</string>
     <string name="last_name">Last name</string>
     <string name="first_name">First name</string>
     <string name="confirm_password">Confirm password</string>

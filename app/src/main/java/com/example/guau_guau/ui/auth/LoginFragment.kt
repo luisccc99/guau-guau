@@ -18,10 +18,13 @@ import com.example.guau_guau.ui.*
 
 class LoginFragment : BaseFragment<AuthViewModel, FragmentLoginBinding, AuthRepository>() {
 
+    private val TAG = LoginFragment::class.java.simpleName
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         viewModel.loginResponse.observe(viewLifecycleOwner, Observer {
+            binding.progressbar.visible(false)
             when (it) {
                 is Resource.Success -> {
                     viewModel.saveAuthToken(it.value.token)
@@ -29,6 +32,10 @@ class LoginFragment : BaseFragment<AuthViewModel, FragmentLoginBinding, AuthRepo
                     requireActivity().startNewActivity(HomeActivity::class.java)
                 }
                 is Resource.Failure -> handleApiError(it) {
+                    Log.wtf(
+                        TAG,
+                        "onViewCreated: errorCode=${it.errorCode}, errorBody=${it.errorBody}"
+                    )
                     login()
                 }
                 else -> {

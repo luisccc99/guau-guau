@@ -2,6 +2,7 @@ package com.example.guau_guau.ui.profile
 
 import android.annotation.SuppressLint
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -19,6 +20,7 @@ import kotlinx.coroutines.runBlocking
 
 class ProfileFragment : BaseFragment<ProfileViewModel, FragmentProfileBinding, UserRepository>() {
 
+    private val TAG = ProfileFragment::class.java.simpleName
 
     @SuppressLint("SetTextI18n")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
