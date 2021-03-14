@@ -23,14 +23,16 @@ class DogMapsFragment : Fragment() {
             locations!!.add(LatLng(28.6728239, -106.0908109))
             locations!!.add(LatLng(28.6113238, -106.1068161))
 
+        val size = locations.size
+
         var name_locations: ArrayList<String>? = ArrayList()
             name_locations!!.add("Mundo Patitas")
             name_locations!!.add("Amigos de los animales")
             name_locations!!.add("Centro Antirrábico")
-            name_locations!!.add("Compañía CAnina")
+            name_locations!!.add("Comapañía Canina")
 
-        for (location in locations)
-            googleMap.addMarker(MarkerOptions().position(location)).setIcon(BitmapDescriptorFactory.fromResource(R.drawable.paws))
+        for (i in 0..size - 1)
+            googleMap.addMarker(MarkerOptions().position(locations[i]).title(name_locations[i])).setIcon(BitmapDescriptorFactory.fromResource(R.drawable.paws))
 
 
         var sydney = LatLng(28.666534900000002, -106.0802643)
