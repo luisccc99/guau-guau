@@ -20,8 +20,6 @@ import kotlinx.coroutines.runBlocking
 class ProfileFragment : BaseFragment<ProfileViewModel, FragmentProfileBinding, UserRepository>() {
 
 
-
-
     @SuppressLint("SetTextI18n")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -54,7 +52,18 @@ class ProfileFragment : BaseFragment<ProfileViewModel, FragmentProfileBinding, U
         })
 
         binding.floatingChangePic.setOnClickListener {
-            view.findNavController().navigate(R.id.action_profileFragment_to_photoBottomSheetFragment)
+            view.findNavController()
+                .navigate(R.id.action_profileFragment_to_photoBottomSheetFragment)
+        }
+
+        binding.editName.setOnClickListener {
+            view.findNavController()
+                .navigate(R.id.action_profileFragment_to_nameBottomSheetFragment)
+        }
+
+        binding.editAbout.setOnClickListener {
+            view.findNavController()
+                .navigate(R.id.action_profileFragment_to_aboutBottomSheetFragment)
         }
 
         binding.buttonLogOut.setOnClickListener {

@@ -35,6 +35,12 @@
         <action
             android:id="@+id/action_profileFragment_to_photoBottomSheetFragment"
             app:destination="@id/photoBottomSheetFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_nameBottomSheetFragment"
+            app:destination="@id/nameBottomSheetFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_aboutBottomSheetFragment"
+            app:destination="@id/aboutBottomSheetFragment" />
     </fragment>
     <fragment
         android:id="@+id/createPostFragment"
@@ -61,6 +67,24 @@
         tools:layout="@layout/fragment_photo_bottom_sheet">
         <action
             android:id="@+id/action_photoBottomSheetFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
+    </dialog>
+    <dialog
+        android:id="@+id/nameBottomSheetFragment"
+        android:name="com.example.guau_guau.ui.profile.NameBottomSheetFragment"
+        android:label="fragment_name_bottom_sheet"
+        tools:layout="@layout/fragment_name_bottom_sheet" >
+        <action
+            android:id="@+id/action_nameBottomSheetFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
+    </dialog>
+    <dialog
+        android:id="@+id/aboutBottomSheetFragment"
+        android:name="com.example.guau_guau.ui.profile.AboutBottomSheetFragment"
+        android:label="fragment_about_bottom_sheet"
+        tools:layout="@layout/fragment_about_bottom_sheet" >
+        <action
+            android:id="@+id/action_aboutBottomSheetFragment_to_profileFragment"
             app:destination="@id/profileFragment" />
     </dialog>
 
