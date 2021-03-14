@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.navigation.findNavController
 import com.example.guau_guau.R
 import com.example.guau_guau.data.UserPreferences
 import com.example.guau_guau.data.network.GuauguauApi
@@ -17,8 +18,6 @@ import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.runBlocking
 
 class ProfileFragment : BaseFragment<ProfileViewModel, FragmentProfileBinding, UserRepository>() {
-
-
 
 
     @SuppressLint("SetTextI18n")
@@ -51,6 +50,21 @@ class ProfileFragment : BaseFragment<ProfileViewModel, FragmentProfileBinding, U
                 }
             }
         })
+
+        binding.floatingChangePic.setOnClickListener {
+            view.findNavController()
+                .navigate(R.id.action_profileFragment_to_photoBottomSheetFragment)
+        }
+
+        binding.editName.setOnClickListener {
+            view.findNavController()
+                .navigate(R.id.action_profileFragment_to_nameBottomSheetFragment)
+        }
+
+        binding.editAbout.setOnClickListener {
+            view.findNavController()
+                .navigate(R.id.action_profileFragment_to_aboutBottomSheetFragment)
+        }
 
         binding.buttonLogOut.setOnClickListener {
             logout()
