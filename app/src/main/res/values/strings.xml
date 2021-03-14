@@ -42,6 +42,8 @@
     <string name="last_name">Last name</string>
     <string name="first_name">First name</string>
     <string name="confirm_password">Confirm password</string>
-
+    <string name="take_photo">Take photo</string>
+    <string name="select_from_gallery">Select from gallery</string>
+    <string name="option">Option</string>
 
 </resources>

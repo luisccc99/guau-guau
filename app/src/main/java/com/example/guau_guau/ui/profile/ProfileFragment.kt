@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.navigation.findNavController
 import com.example.guau_guau.R
 import com.example.guau_guau.data.UserPreferences
 import com.example.guau_guau.data.network.GuauguauApi
@@ -51,6 +52,10 @@ class ProfileFragment : BaseFragment<ProfileViewModel, FragmentProfileBinding, U
                 }
             }
         })
+
+        binding.floatingChangePic.setOnClickListener {
+            view.findNavController().navigate(R.id.action_profileFragment_to_photoBottomSheetFragment)
+        }
 
         binding.buttonLogOut.setOnClickListener {
             logout()
