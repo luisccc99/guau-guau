@@ -17,7 +17,6 @@ import kotlinx.coroutines.runBlocking
 
 class ProfileFragment : BaseFragment<HomeViewModel, FragmentProfileBinding, UserRepository>() {
 
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
