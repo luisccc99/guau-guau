@@ -9,7 +9,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 class RemoteDataSource {
     companion object {
-        private const val BASE_URL = "https://pupperinossearch.herokuapp.com"
+        private const val BASE_URL = "https://pupperinossearch.herokuapp.com/api/v1/"
     }
 
     fun <Api> buildApi(
@@ -26,11 +26,11 @@ class RemoteDataSource {
                         }.build())
                     }
                     .also { client ->
-                    if (BuildConfig.DEBUG) {
+
                         val logging = HttpLoggingInterceptor();
                         logging.setLevel(HttpLoggingInterceptor.Level.BODY)
                         client.addInterceptor(logging)
-                    }
+
                 }.build()
             )
             .addConverterFactory(GsonConverterFactory.create())

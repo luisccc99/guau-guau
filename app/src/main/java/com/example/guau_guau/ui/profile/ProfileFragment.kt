@@ -2,10 +2,12 @@ package com.example.guau_guau.ui.profile
 
 import android.annotation.SuppressLint
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import com.bumptech.glide.Glide
 import androidx.navigation.findNavController
 import com.example.guau_guau.R
 import com.example.guau_guau.data.UserPreferences
@@ -19,6 +21,7 @@ import kotlinx.coroutines.runBlocking
 
 class ProfileFragment : BaseFragment<ProfileViewModel, FragmentProfileBinding, UserRepository>() {
 
+    private val TAG = ProfileFragment::class.java.simpleName
 
     @SuppressLint("SetTextI18n")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -39,6 +42,15 @@ class ProfileFragment : BaseFragment<ProfileViewModel, FragmentProfileBinding, U
                         textViewNumPosts.text = user.num_posts.toString()
                         textViewSolvedPosts.text = user.resolved_posts.toString()
                         textViewAbout.text = user.aboutme
+
+                        //TODO: save fragment state and change image URL
+                        Glide.with(requireContext())
+                            .load("https://www.arabianbusiness.com/public/images/2019/03/16/pewdiepie-new.jpg")
+                            .dontAnimate()
+                            .error(R.drawable.ic_baseline_person)
+                            .placeholder(R.drawable.ic_baseline_person)
+                            .into(imageViewProfilePic)
+
                     }
                 }
                 //TODO: change code bellow to show progress bar or error

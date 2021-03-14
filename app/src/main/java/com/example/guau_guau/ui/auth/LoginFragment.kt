@@ -18,19 +18,24 @@ import com.example.guau_guau.ui.*
 
 class LoginFragment : BaseFragment<AuthViewModel, FragmentLoginBinding, AuthRepository>() {
 
+    private val TAG = LoginFragment::class.java.simpleName
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         viewModel.loginResponse.observe(viewLifecycleOwner, Observer {
+            binding.progressbar.visible(false)
             when (it) {
                 is Resource.Success -> {
-                    Log.wtf("TAG", "onViewCreated: ${it.value.user_id}")
                     viewModel.saveAuthToken(it.value.token)
                     viewModel.saveUserId(it.value.user_id)
                     requireActivity().startNewActivity(HomeActivity::class.java)
                 }
                 is Resource.Failure -> handleApiError(it) {
-                    // Toast.makeText(requireContext(), "Login Failure", Toast.LENGTH_SHORT).show()
+                    Log.wtf(
+                        TAG,
+                        "onViewCreated: errorCode=${it.errorCode}, errorBody=${it.errorBody}"
+                    )
                     login()
                 }
                 else -> {

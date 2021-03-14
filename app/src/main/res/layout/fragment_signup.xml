@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.auth.LoginFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="15dp">
+
+        <ProgressBar
+            android:id="@+id/progressbar_signup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:visibility="visible" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="@string/signup"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/ic_name"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:importantForAccessibility="no"
+            android:src="@drawable/ic_baseline_person"
+            app:layout_constraintBottom_toBottomOf="@id/text_view_name"
+            app:layout_constraintEnd_toStartOf="@id/text_view_name"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/text_view_name" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/text_view_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="30dp"
+            android:hint="@string/first_name"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/ic_name"
+            app:layout_constraintTop_toBottomOf="@id/textView">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edit_text_name"
+                android:layout_width="match_parent"
+                android:inputType="textPersonName"
+                android:layout_height="wrap_content" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/text_view_last"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:hint="@string/last_name"
+            app:layout_constraintEnd_toEndOf="@id/text_view_name"
+            app:layout_constraintStart_toStartOf="@id/text_view_name"
+            app:layout_constraintTop_toBottomOf="@id/text_view_name">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edit_text_last"
+                android:layout_width="match_parent"
+                android:inputType="textPersonName"
+                android:layout_height="wrap_content" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <ImageView
+            android:id="@+id/ic_email"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:importantForAccessibility="no"
+            android:src="@drawable/ic_email"
+            app:layout_constraintBottom_toBottomOf="@id/text_view_email"
+            app:layout_constraintEnd_toStartOf="@id/text_view_email"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/text_view_email" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/text_view_email"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="20dp"
+            android:hint="@string/email"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/ic_email"
+            app:layout_constraintTop_toBottomOf="@id/text_view_last">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edit_text_email"
+                android:layout_width="match_parent"
+                android:inputType="textEmailAddress"
+                android:layout_height="wrap_content" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <ImageView
+            android:id="@+id/ic_password"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:importantForAccessibility="no"
+            android:src="@drawable/ic_lock"
+            app:layout_constraintBottom_toBottomOf="@id/text_view_password_1"
+            app:layout_constraintEnd_toStartOf="@id/text_view_password_1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/text_view_password_1" />
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/text_view_password_1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="20dp"
+            android:hint="@string/password"
+            app:endIconMode="password_toggle"
+            app:layout_constraintEnd_toEndOf="@id/text_view_email"
+            app:layout_constraintStart_toEndOf="@id/ic_password"
+            app:layout_constraintTop_toBottomOf="@id/text_view_email">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edit_text_password_1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/text_view_password_2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:hint="@string/confirm_password"
+            app:endIconMode="password_toggle"
+            app:layout_constraintEnd_toEndOf="@id/text_view_password_1"
+            app:layout_constraintStart_toStartOf="@id/text_view_password_1"
+            app:layout_constraintTop_toBottomOf="@id/text_view_password_1">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edit_text_password_2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Button
+            android:id="@+id/button_cancel_signup"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="10dp"
+            android:text="@string/cancel"
+            app:layout_constraintEnd_toStartOf="@id/guideline9"
+            app:layout_constraintTop_toBottomOf="@id/text_view_password_2" />
+
+        <Button
+            android:id="@+id/button_signup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:enabled="false"
+            android:text="@string/signup"
+            app:layout_constraintBottom_toBottomOf="@id/button_cancel_signup"
+            app:layout_constraintStart_toEndOf="@id/guideline9"
+            app:layout_constraintTop_toTopOf="@id/button_cancel_signup" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline9"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.5" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>
