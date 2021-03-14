@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import com.bumptech.glide.Glide
+import androidx.navigation.findNavController
 import com.example.guau_guau.R
 import com.example.guau_guau.data.UserPreferences
 import com.example.guau_guau.data.network.GuauguauApi
@@ -61,6 +62,21 @@ class ProfileFragment : BaseFragment<ProfileViewModel, FragmentProfileBinding, U
                 }
             }
         })
+
+        binding.floatingChangePic.setOnClickListener {
+            view.findNavController()
+                .navigate(R.id.action_profileFragment_to_photoBottomSheetFragment)
+        }
+
+        binding.editName.setOnClickListener {
+            view.findNavController()
+                .navigate(R.id.action_profileFragment_to_nameBottomSheetFragment)
+        }
+
+        binding.editAbout.setOnClickListener {
+            view.findNavController()
+                .navigate(R.id.action_profileFragment_to_aboutBottomSheetFragment)
+        }
 
         binding.buttonLogOut.setOnClickListener {
             logout()
