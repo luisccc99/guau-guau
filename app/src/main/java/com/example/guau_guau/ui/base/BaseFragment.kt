@@ -1,6 +1,7 @@
 package com.example.guau_guau.ui.base
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -24,6 +25,7 @@ abstract class BaseFragment<VM : BaseViewModel, B: ViewBinding, R: BaseRepositor
     protected lateinit var binding: B
     protected lateinit var viewModel: VM
     protected val remoteDataSource = RemoteDataSource()
+    private val TAG = BaseFragment::class.java.simpleName
 
 
     override fun onCreateView(
@@ -31,10 +33,12 @@ abstract class BaseFragment<VM : BaseViewModel, B: ViewBinding, R: BaseRepositor
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        Log.wtf(TAG, "onCreateView: initializing", )
         userPreferences = UserPreferences(requireContext())
         binding = getFragmentBinding(inflater, container)
         val factory = ViewModelFactory(getFragmentRepository())
         viewModel = ViewModelProvider(this, factory).get(getViewModel())
+        Log.wtf(TAG, "onCreateView: ${viewModel.toString()}", )
         return binding.root
     }
 

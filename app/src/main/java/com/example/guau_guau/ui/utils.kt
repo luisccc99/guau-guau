@@ -2,12 +2,14 @@ package com.example.guau_guau.ui
 
 import android.app.Activity
 import android.content.Intent
+import android.util.Log
 import android.view.View
 import androidx.fragment.app.Fragment
 import com.example.guau_guau.data.network.Resource
 import com.example.guau_guau.ui.auth.LoginFragment
 import com.example.guau_guau.ui.base.BaseFragment
 import com.google.android.material.snackbar.Snackbar
+import com.google.android.material.textfield.TextInputEditText
 
 fun <A : Activity> Activity.startNewActivity(activity: Class<A>) {
     Intent(this, activity).also {
@@ -40,16 +42,25 @@ fun Fragment.handleApiError(
     retry: (() -> Unit)? = null
 ) {
     when {
-        failure.isNetworkError -> requireView().snackbar(
-            "Please check your internet connection",
-            retry
-        )
+        failure.errorCode == 409 -> {
+            if (this is LoginFragment) {
+                requireView().snackbar("Wrong credentials")
+            } else {
+                (this as BaseFragment<*, *, *>).logout()
+            }
+        }
         failure.errorCode == 401 -> {
             if (this is LoginFragment) {
-                requireView().snackbar("You've entered incorrect email or password")
+                requireView().snackbar("Incorrect password")
             } else {
-               (this as BaseFragment<*, *, *>).logout()
+                (this as BaseFragment<*, *, *>).logout()
             }
+        }
+        failure.isNetworkError -> {
+            requireView().snackbar(
+                "Please check your internet connection",
+                retry
+            )
         }
         else -> {
             val error = failure.errorBody?.string().toString()

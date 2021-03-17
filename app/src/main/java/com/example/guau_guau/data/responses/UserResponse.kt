@@ -1,6 +1,6 @@
 package com.example.guau_guau.data.responses
 
-data class User(
+data class UserResponse(
     val created_at: String,
     val email: String,
     val id: String,
@@ -8,8 +8,10 @@ data class User(
     val name: String,
     val num_posts: Int,
     val password_digest: String,
-    val photo: Any,
+    val photo: Photo,
+    val aboutme: String,
     val resolved_posts: Int,
     val updated_at: String,
-    val token: String?
-)
+) {
+    data class Photo(val url: String?)
+}

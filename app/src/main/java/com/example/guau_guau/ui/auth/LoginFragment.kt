@@ -1,13 +1,12 @@
 package com.example.guau_guau.ui.auth
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.core.widget.addTextChangedListener
 import androidx.lifecycle.Observer
-import androidx.lifecycle.lifecycleScope
 import androidx.navigation.findNavController
 import com.example.guau_guau.R
 import com.example.guau_guau.data.network.GuauguauApi
@@ -19,6 +18,8 @@ import com.example.guau_guau.ui.*
 
 class LoginFragment : BaseFragment<AuthViewModel, FragmentLoginBinding, AuthRepository>() {
 
+    private val TAG = LoginFragment::class.java.simpleName
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -27,11 +28,18 @@ class LoginFragment : BaseFragment<AuthViewModel, FragmentLoginBinding, AuthRepo
             when (it) {
                 is Resource.Success -> {
                     viewModel.saveAuthToken(it.value.token)
+                    viewModel.saveUserId(it.value.user_id)
                     requireActivity().startNewActivity(HomeActivity::class.java)
                 }
                 is Resource.Failure -> handleApiError(it) {
-                   // Toast.makeText(requireContext(), "Login Failure", Toast.LENGTH_SHORT).show()
+                    Log.wtf(
+                        TAG,
+                        "onViewCreated: errorCode=${it.errorCode}, errorBody=${it.errorBody}"
+                    )
                     login()
+                }
+                else -> {
+                    binding.progressbar.visible(true)
                 }
             }
         })
@@ -46,16 +54,11 @@ class LoginFragment : BaseFragment<AuthViewModel, FragmentLoginBinding, AuthRepo
         }
 
         binding.buttonLogin.setOnClickListener {
-            //val email = binding.editTextEmail.text.toString().trim()
-            //val password = binding.editTextPassword.text.toString().trim()
-            //binding.progressbar.visibility = View.VISIBLE
-            //viewModel.login(email, password)
             login()
-
         }
     }
 
-    private fun login(){
+    private fun login() {
         val email = binding.editTextEmail.text.toString().trim()
         val password = binding.editTextPassword.text.toString().trim()
         viewModel.login(email, password)
