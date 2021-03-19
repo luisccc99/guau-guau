@@ -1,34 +1,48 @@
 package com.example.guau_guau.ui.maps
 
-import androidx.fragment.app.Fragment
-
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import com.example.guau_guau.R
-
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
+import com.google.android.gms.maps.model.BitmapDescriptorFactory
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 
 class DogMapsFragment : Fragment() {
 
     private val callback = OnMapReadyCallback { googleMap ->
-        /**
-         * Manipulates the map once available.
-         * This callback is triggered when the map is ready to be used.
-         * This is where we can add markers or lines, add listeners or move the camera.
-         * In this case, we just add a marker near Sydney, Australia.
-         * If Google Play services is not installed on the device, the user will be prompted to
-         * install it inside the SupportMapFragment. This method will only be triggered once the
-         * user has installed Google Play services and returned to the app.
-         */
-        val sydney = LatLng(-34.0, 151.0)
-        googleMap.addMarker(MarkerOptions().position(sydney).title("Marker in Sydney"))
-        googleMap.moveCamera(CameraUpdateFactory.newLatLng(sydney))
+        var zoom_level = 10.0f;
+        var locations: ArrayList<LatLng>? = ArrayList()
+            locations!!.add(LatLng(28.6605208, -106.0665705))
+            locations!!.add(LatLng(28.6387397, -106.0871471))
+            locations!!.add(LatLng(28.6728239, -106.0908109))
+            locations!!.add(LatLng(28.6113238, -106.1068161))
+
+        val size = locations.size
+
+        var name_locations: ArrayList<String>? = ArrayList()
+            name_locations!!.add("Mundo Patitas")
+            name_locations!!.add("Amigos de los animales")
+            name_locations!!.add("Centro Antirrábico")
+            name_locations!!.add("Comapañía Canina")
+
+        for (i in 0..size - 1)
+            googleMap.addMarker(MarkerOptions().position(locations[i]).title(name_locations[i])).setIcon(BitmapDescriptorFactory.fromResource(R.drawable.paws))
+
+
+        var sydney = LatLng(28.666534900000002, -106.0802643)
+        var chichi = LatLng(48.666534900000002, -126.0802643)
+
+        //googleMap.addMarker(MarkerOptions().position(sydney).title("Marker in Sydney"))
+        googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(sydney, zoom_level));
+        //googleMap.moveCamera(CameraUpdateFactory.newLatLng(sydney, zoom_level))
+        /*googleMap.addMarker(MarkerOptions().position(chichi).title("Marker in chichi"))
+        googleMap.moveCamera(CameraUpdateFactory.newLatLng(chichi))*/
     }
 
     override fun onCreateView(
