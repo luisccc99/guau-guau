@@ -1,6 +1,11 @@
 package com.example.guau_guau.ui.auth
 
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextUtils
+import android.text.TextWatcher
+import android.util.Log
+import android.util.Patterns
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,7 +18,6 @@ import com.example.guau_guau.data.network.Resource
 import com.example.guau_guau.data.repositories.SignUpRepository
 import com.example.guau_guau.databinding.FragmentSignupBinding
 import com.example.guau_guau.ui.base.BaseFragment
-import com.example.guau_guau.ui.enable
 import com.example.guau_guau.ui.handleApiError
 import com.example.guau_guau.ui.visible
 
@@ -40,50 +44,74 @@ class SignUpFragment : BaseFragment<SignUpViewModel, FragmentSignupBinding, Sign
         binding.buttonCancelSignup.setOnClickListener {
             view.findNavController().navigate(R.id.action_registerFragment_to_loginFragment)
         }
-        binding.editTextPassword2.addTextChangedListener {
-            if (inputIsNotEmpty()) {
-                binding.buttonSignup.enable(true)
-            }
-
-        }
         binding.buttonSignup.setOnClickListener {
-            signup()
-        }
-    }
-
-    private fun inputIsNotEmpty(): Boolean {
-        val listOfEditTexts = listOf(
-            binding.editTextName,
-            binding.editTextLast,
-            binding.editTextEmail,
-            binding.editTextPassword1
-        )
-        for (editText in listOfEditTexts) {
-            if (editText.toString().trim().isEmpty()) {
-                return false
+            if (isInputValid()) {
+                signup()
             }
         }
-        return true
     }
 
-    private fun signup() {
-        val name = binding.editTextName.text.toString()
-        val lastName = binding.editTextLast.text.toString()
-        val email = binding.editTextEmail.text.toString()
-        val password = binding.editTextPassword1.text.toString()
+    private fun isInputValid(): Boolean {
+        // text watcher to confirm password
+        var valid = true
 
-        viewModel.signup(name, lastName, email, password)
+        binding.editTextConfirmPassword.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+            }
+
+            override fun afterTextChanged(s: Editable?) {
+                val password = binding.editTextPassword1.text.toString()
+                if (s != null) {
+                    if (s.isNotEmpty() && password.isNotEmpty()) {
+                        if (s.toString() != password) {
+                            Log.wtf("TAG", "afterTextChanged: ${binding.editTextConfirmPassword.text.toString()}" +
+                                    " ${password}", )
+                            binding.textViewConfirmPassword.error = "Passwords must match"
+                        }
+                    }
+                }
+            }
+        })
+
+        if (!isEmailValid()) {
+            binding.textViewEmail.error = "Incorrect format"
+            valid = false
+        }
+
+
+        return valid
     }
 
-    override fun getViewModel() = SignUpViewModel::class.java
 
-    override fun getFragmentBinding(
-        inflater: LayoutInflater,
-        container: ViewGroup?
-    ) = FragmentSignupBinding.inflate(inflater, container, false)
+// return: if editTextEmail has a email pattern and it's not empty
+private fun isEmailValid(): Boolean {
+    val email = binding.editTextEmail.text.toString()
+    return Patterns.EMAIL_ADDRESS.matcher(email).matches()
+            && !TextUtils.isEmpty(email)
+}
 
-    override fun getFragmentRepository() =
-        SignUpRepository(remoteDataSource.buildApi(GuauguauApi::class.java))
+// gets data from necessary fields and performs the sign up
+private fun signup() {
+    val name = binding.editTextName.text.toString()
+    val lastName = binding.editTextLast.text.toString()
+    val email = binding.editTextEmail.text.toString()
+    val password = binding.editTextPassword1.text.toString()
+
+    viewModel.signup(name, lastName, email, password)
+}
+
+override fun getViewModel() = SignUpViewModel::class.java
+
+override fun getFragmentBinding(
+    inflater: LayoutInflater,
+    container: ViewGroup?
+) = FragmentSignupBinding.inflate(inflater, container, false)
+
+override fun getFragmentRepository() =
+    SignUpRepository(remoteDataSource.buildApi(GuauguauApi::class.java))
 
 
 }
