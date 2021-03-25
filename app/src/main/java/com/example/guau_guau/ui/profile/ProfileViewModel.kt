@@ -13,7 +13,7 @@ import com.example.guau_guau.ui.base.BaseViewModel
 import kotlinx.coroutines.launch
 
 
-class ProfileViewModel (
+class ProfileViewModel(
     private val repository: UserRepository
 ) : BaseViewModel(repository) {
 
@@ -25,4 +25,13 @@ class ProfileViewModel (
         _user.value = Resource.Loading
         _user.value = repository.getUser(userId)
     }
+
+    fun editUser(id: String, name: String, lastName: String, aboutMy: String) =
+        viewModelScope.launch {
+            _user.value = Resource.Loading
+            _user.value = repository.editUser(
+                id, name, lastName, aboutMy)
+
+
+        }
 }

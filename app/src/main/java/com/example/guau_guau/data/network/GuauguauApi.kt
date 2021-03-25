@@ -26,4 +26,13 @@ interface GuauguauApi {
     suspend fun getUser(
         @Query("id") userId: String
     ): UserResponse
+
+    @PATCH("user")
+    suspend fun patchUser(
+        @Field("id") id: String,
+        @Field("name") name: String,
+        @Field("lastname") lastName: String,
+        @Field("aboutmy") aboutMy: String
+    ): UserResponse
+
 }
