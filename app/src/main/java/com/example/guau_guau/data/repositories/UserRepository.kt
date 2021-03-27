@@ -14,5 +14,8 @@ class UserRepository(
     api.patchUser(id, name, lastName, aboutMy)
 
     }
+    suspend fun editname(name: String,lastName: String) = safeApiCall {
+        api.patchName(name,lastName)
+    }
 
 }

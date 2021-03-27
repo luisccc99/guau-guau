@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import com.bumptech.glide.Glide
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.navArgs
 import com.example.guau_guau.R
 import com.example.guau_guau.data.UserPreferences
 import com.example.guau_guau.data.network.GuauguauApi
@@ -23,13 +24,21 @@ class ProfileFragment : BaseFragment<ProfileViewModel, FragmentProfileBinding, U
 
     private val TAG = ProfileFragment::class.java.simpleName
 
+    private val args: ProfileFragmentArgs by navArgs()
+
     @SuppressLint("SetTextI18n")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+
+
         val userId = runBlocking { userPreferences.userId.first() }
         // TODO: make userId non nullable
         if (userId != null) {
+            val name = args.name
+            val lastname = args.lastname
+
+            viewModel.editname(name,lastname)
             viewModel.getUser(userId)
         }
         viewModel.user.observe(viewLifecycleOwner, {
@@ -81,6 +90,7 @@ class ProfileFragment : BaseFragment<ProfileViewModel, FragmentProfileBinding, U
         binding.buttonLogOut.setOnClickListener {
             logout()
         }
+
     }
 
     override fun getViewModel() = ProfileViewModel::class.java
