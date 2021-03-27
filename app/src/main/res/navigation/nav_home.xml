@@ -41,6 +41,12 @@
         <action
             android:id="@+id/action_profileFragment_to_aboutBottomSheetFragment"
             app:destination="@id/aboutBottomSheetFragment" />
+        <argument
+            android:name="name"
+            app:argType="string" />
+        <argument
+            android:name="lastname"
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/createPostFragment"

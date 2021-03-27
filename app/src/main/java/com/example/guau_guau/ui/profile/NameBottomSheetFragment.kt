@@ -1,12 +1,12 @@
 package com.example.guau_guau.ui.profile
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
-import android.widget.Toast
+import android.widget.EditText
+import androidx.navigation.fragment.findNavController
 import com.example.guau_guau.R
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
@@ -25,8 +25,14 @@ class NameBottomSheetFragment : BottomSheetDialogFragment() {
         val cancelButton = view.findViewById<Button>(R.id.button_cancel_edit_name)
         val acceptButton = view.findViewById<Button>(R.id.button_edit_name)
         cancelButton.setOnClickListener { dismiss() }
+
         acceptButton.setOnClickListener {
-            Toast.makeText(requireContext(), "Editing name", Toast.LENGTH_SHORT).show()
+            //Toast.makeText(requireContext(), "Editing name", Toast.LENGTH_SHORT).show()
+            val uname = view.findViewById<EditText>(R.id.edit_text_name).text.toString()
+            val ulastname = view.findViewById<EditText>(R.id.edit_text_last_name).text.toString()
+
+            val action = NameBottomSheetFragmentDirections.actionNameBottomSheetFragmentToProfileFragment(uname, ulastname)
+            findNavController().navigate(action)
         }
 
     }

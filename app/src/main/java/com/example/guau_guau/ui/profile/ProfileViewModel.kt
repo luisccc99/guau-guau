@@ -34,4 +34,13 @@ class ProfileViewModel(
 
 
         }
+
+    fun editname(name: String, lastName: String) =
+        viewModelScope.launch {
+            _user.value = Resource.Loading
+            _user.value = repository.editname(
+                name, lastName)
+
+
+        }
 }

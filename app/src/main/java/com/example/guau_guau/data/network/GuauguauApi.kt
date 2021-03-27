@@ -35,4 +35,10 @@ interface GuauguauApi {
         @Field("aboutmy") aboutMy: String
     ): UserResponse
 
+    @PATCH("user")
+    suspend fun patchName(
+        @Field("name") name: String,
+        @Field("lastname") lastName: String,
+    ): UserResponse
+
 }
