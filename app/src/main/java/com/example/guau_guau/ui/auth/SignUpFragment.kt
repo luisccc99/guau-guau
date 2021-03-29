@@ -45,16 +45,14 @@ class SignUpFragment : BaseFragment<SignUpViewModel, FragmentSignupBinding, Sign
             view.findNavController().navigate(R.id.action_registerFragment_to_loginFragment)
         }
         binding.buttonSignup.setOnClickListener {
-            if (isInputValid()) {
+            if (confirmPassword()) {
                 signup()
             }
         }
     }
 
-    private fun isInputValid(): Boolean {
-        // text watcher to confirm password
-        var valid = true
-
+    private fun confirmPassword(): Boolean {
+        var valid = true;
         binding.editTextConfirmPassword.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
             }
@@ -62,27 +60,20 @@ class SignUpFragment : BaseFragment<SignUpViewModel, FragmentSignupBinding, Sign
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
             }
 
-            override fun afterTextChanged(s: Editable?) {
+            override fun afterTextChanged(s: Editable?){
                 val password = binding.editTextPassword1.text.toString()
+                val confirm = s.toString();
                 if (s != null) {
-                    if (s.isNotEmpty() && password.isNotEmpty()) {
-                        if (s.toString() != password) {
-                            Log.wtf("TAG", "afterTextChanged: ${binding.editTextConfirmPassword.text.toString()}" +
-                                    " ${password}", )
-                            binding.textViewConfirmPassword.error = "Passwords must match"
+                    if (confirm.isNotEmpty() && password.isNotEmpty()) {
+                        if (confirm != password) {
+                            binding.textInputLayoutConfirm.error = "Passwords must match"
+                            valid = false;
                         }
                     }
                 }
             }
         })
-
-        if (!isEmailValid()) {
-            binding.textViewEmail.error = "Incorrect format"
-            valid = false
-        }
-
-
-        return valid
+        return valid;
     }
 
 

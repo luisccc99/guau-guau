@@ -155,7 +155,7 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/text_view_confirm_password"
+            android:id="@+id/text_input_layout_confirm"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             app:errorEnabled="true"
@@ -185,7 +185,7 @@
             android:text="@string/cancel"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@id/guideline9"
-            app:layout_constraintTop_toBottomOf="@id/text_view_confirm_password" />
+            app:layout_constraintTop_toBottomOf="@id/text_input_layout_confirm" />
 
         <Button
             android:id="@+id/button_signup"
