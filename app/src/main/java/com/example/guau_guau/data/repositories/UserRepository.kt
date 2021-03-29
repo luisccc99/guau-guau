@@ -10,12 +10,12 @@ class UserRepository(
     suspend fun getUser(userId: String) = safeApiCall {
         api.getUser(userId)
     }
-    suspend fun editUser(id: String, name: String,lastName: String, aboutMy: String) = safeApiCall{
-    api.patchUser(id, name, lastName, aboutMy)
 
-    }
-    suspend fun editname(name: String,lastName: String) = safeApiCall {
-        api.patchName(name,lastName)
+    suspend fun editUserAbout(id: String, aboutMe: String) = safeApiCall {
+        api.patchUserAbout(id, aboutMe)
     }
 
+    suspend fun editUserNameAndLastName(id: String, name: String, lastname: String) = safeApiCall {
+        api.patchUserNameAndLastName(id, name, lastname)
+    }
 }

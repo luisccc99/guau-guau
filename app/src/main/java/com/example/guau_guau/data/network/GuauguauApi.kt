@@ -27,16 +27,17 @@ interface GuauguauApi {
         @Query("id") userId: String
     ): UserResponse
 
+    @FormUrlEncoded
     @PATCH("user")
-    suspend fun patchUser(
+    suspend fun patchUserAbout(
         @Field("id") id: String,
-        @Field("name") name: String,
-        @Field("lastname") lastName: String,
-        @Field("aboutmy") aboutMy: String
+        @Field("aboutme") aboutMe: String
     ): UserResponse
 
+    @FormUrlEncoded
     @PATCH("user")
-    suspend fun patchName(
+    suspend fun patchUserNameAndLastName(
+        @Field("id") id: String,
         @Field("name") name: String,
         @Field("lastname") lastName: String,
     ): UserResponse
