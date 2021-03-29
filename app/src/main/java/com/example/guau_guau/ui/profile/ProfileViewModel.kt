@@ -2,12 +2,9 @@ package com.example.guau_guau.ui.profile
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.guau_guau.data.network.Resource
-import com.example.guau_guau.data.repositories.BaseRepository
 import com.example.guau_guau.data.repositories.UserRepository
-import com.example.guau_guau.data.responses.LoginResponse
 import com.example.guau_guau.data.responses.UserResponse
 import com.example.guau_guau.ui.base.BaseViewModel
 import kotlinx.coroutines.launch
@@ -26,21 +23,16 @@ class ProfileViewModel(
         _user.value = repository.getUser(userId)
     }
 
-    fun editUser(id: String, name: String, lastName: String, aboutMy: String) =
+    fun editUserAbout(id: String, about: String) =
         viewModelScope.launch {
             _user.value = Resource.Loading
-            _user.value = repository.editUser(
-                id, name, lastName, aboutMy)
-
-
+            _user.value = repository.editUserAbout(id, about)
         }
 
-    fun editname(name: String, lastName: String) =
+    fun editUserNameAndLastName(id: String, name: String, lastName: String) =
         viewModelScope.launch {
             _user.value = Resource.Loading
-            _user.value = repository.editname(
-                name, lastName)
-
-
+            _user.value = repository.editUserNameAndLastName(id, name, lastName)
         }
+
 }

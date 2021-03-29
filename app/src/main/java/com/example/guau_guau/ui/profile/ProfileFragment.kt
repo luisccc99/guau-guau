@@ -11,7 +11,6 @@ import com.bumptech.glide.Glide
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.guau_guau.R
-import com.example.guau_guau.data.UserPreferences
 import com.example.guau_guau.data.network.GuauguauApi
 import com.example.guau_guau.data.network.Resource
 import com.example.guau_guau.data.repositories.UserRepository
@@ -29,18 +28,45 @@ class ProfileFragment : BaseFragment<ProfileViewModel, FragmentProfileBinding, U
     @SuppressLint("SetTextI18n")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-
-
         val userId = runBlocking { userPreferences.userId.first() }
+
         // TODO: make userId non nullable
         if (userId != null) {
             val name = args.name
             val lastname = args.lastname
-
-            viewModel.editname(name,lastname)
-            viewModel.getUser(userId)
+            val about = args.about
+            Log.wtf(TAG, "onViewCreated: $name $lastname $about", )
+            if (name.isEmpty() && about.isNotEmpty()) {
+                viewModel.editUserAbout(userId, about)
+            } else if (about.isEmpty() && name.isNotEmpty()) {
+                viewModel.editUserNameAndLastName(userId, name, lastname)
+            }
+            getUserInfo(userId)
         }
+
+        binding.floatingChangePic.setOnClickListener {
+            view.findNavController()
+                .navigate(R.id.action_profileFragment_to_photoBottomSheetFragment)
+        }
+
+        binding.editName.setOnClickListener {
+            view.findNavController()
+                .navigate(R.id.action_profileFragment_to_nameBottomSheetFragment)
+        }
+
+        binding.editAbout.setOnClickListener {
+            view.findNavController()
+                .navigate(R.id.action_profileFragment_to_aboutBottomSheetFragment)
+        }
+
+        binding.buttonLogOut.setOnClickListener {
+            logout()
+        }
+
+    }
+
+    private fun getUserInfo(userId: String) {
+        viewModel.getUser(userId)
         viewModel.user.observe(viewLifecycleOwner, {
             when (it) {
                 is Resource.Success -> {
@@ -71,26 +97,6 @@ class ProfileFragment : BaseFragment<ProfileViewModel, FragmentProfileBinding, U
                 }
             }
         })
-
-        binding.floatingChangePic.setOnClickListener {
-            view.findNavController()
-                .navigate(R.id.action_profileFragment_to_photoBottomSheetFragment)
-        }
-
-        binding.editName.setOnClickListener {
-            view.findNavController()
-                .navigate(R.id.action_profileFragment_to_nameBottomSheetFragment)
-        }
-
-        binding.editAbout.setOnClickListener {
-            view.findNavController()
-                .navigate(R.id.action_profileFragment_to_aboutBottomSheetFragment)
-        }
-
-        binding.buttonLogOut.setOnClickListener {
-            logout()
-        }
-
     }
 
     override fun getViewModel() = ProfileViewModel::class.java

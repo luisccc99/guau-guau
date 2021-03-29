@@ -27,11 +27,10 @@ class NameBottomSheetFragment : BottomSheetDialogFragment() {
         cancelButton.setOnClickListener { dismiss() }
 
         acceptButton.setOnClickListener {
-            //Toast.makeText(requireContext(), "Editing name", Toast.LENGTH_SHORT).show()
-            val uname = view.findViewById<EditText>(R.id.edit_text_name).text.toString()
-            val ulastname = view.findViewById<EditText>(R.id.edit_text_last_name).text.toString()
-
-            val action = NameBottomSheetFragmentDirections.actionNameBottomSheetFragmentToProfileFragment(uname, ulastname)
+            val name = view.findViewById<EditText>(R.id.edit_text_name).text.toString()
+            val lastName = view.findViewById<EditText>(R.id.edit_text_last_name).text.toString()
+            val action = NameBottomSheetFragmentDirections
+                .actionNameBottomSheetFragmentToProfileFragment(name, lastName)
             findNavController().navigate(action)
         }
 

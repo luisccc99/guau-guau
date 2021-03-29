@@ -43,9 +43,16 @@
             app:destination="@id/aboutBottomSheetFragment" />
         <argument
             android:name="name"
+            android:defaultValue=""
             app:argType="string" />
         <argument
             android:name="lastname"
+            android:defaultValue=""
+            app:argType="string" />
+
+        <argument
+            android:name="about"
+            android:defaultValue=""
             app:argType="string" />
     </fragment>
     <fragment

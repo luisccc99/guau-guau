@@ -6,7 +6,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.EditText
 import android.widget.Toast
+import androidx.navigation.fragment.findNavController
 import com.example.guau_guau.R
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
@@ -28,7 +30,10 @@ class AboutBottomSheetFragment : BottomSheetDialogFragment() {
             dismiss()
         }
         buttonAccept.setOnClickListener {
-            Toast.makeText(requireContext(), "Editing about", Toast.LENGTH_SHORT).show()
+            val about = view.findViewById<EditText>(R.id.edit_text_about).text.toString()
+            val action = AboutBottomSheetFragmentDirections
+                .actionAboutBottomSheetFragmentToProfileFragment(about)
+            findNavController().navigate(action)
         }
     }
 
