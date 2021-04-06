@@ -69,6 +69,7 @@ class DogMapsFragment : Fragment() {
         binding.buttonLogin.setOnClickListener {
             login()
         }
+        
         return inflater.inflate(R.layout.fragment_dog_maps, container, false)
     }
 
