@@ -9,7 +9,7 @@ import androidx.navigation.findNavController
 import com.example.guau_guau.R
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
-class PostsFragment : Fragment() {
+class PostsFragment : Fragment(R.layout.fragment_posts) {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

@@ -16,6 +16,48 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:listitem="@layout/post_item" />
 
+    <ProgressBar
+        android:id="@+id/progress_bar"
+        android:visibility="gone"
+        tools:visibility="visible"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        tools:ignore="MissingConstraints" />
+
+    <Button
+        android:id="@+id/button_retry"
+        android:visibility="gone"
+        tools:visibility="visible"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Reintentar"
+        android:layout_centerInParent="true"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/text_view_error"
+        android:visibility="gone"
+        tools:visibility="visible"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="No se pudieron cargar los resultados"
+        android:layout_above="@id/button_retry"
+        android:layout_centerHorizontal="true"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/text_view_empty"
+        android:visibility="gone"
+        tools:visibility="visible"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="No hay resultados"
+        android:layout_centerInParent="true"
+        tools:ignore="MissingConstraints" />
+
+
+
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/floating_create_post"
         android:layout_width="wrap_content"
