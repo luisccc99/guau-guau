@@ -13,10 +13,9 @@ data class GuauguauPost(
     val resolved_reason: String,
     val user_id: String,
 
-    ): Parcelable {
-
+    ) : Parcelable {
     @Parcelize
     data class GuauguauPhotoUrl(
         val url: String
-    ): Parcelable
+    ) : Parcelable
 }
