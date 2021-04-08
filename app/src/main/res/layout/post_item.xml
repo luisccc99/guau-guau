@@ -31,10 +31,11 @@
             android:ellipsize="end"
             android:maxLines="1"
             android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
+            android:text="@string/title"
             app:layout_constraintEnd_toEndOf="@id/image_view_photo"
             app:layout_constraintStart_toStartOf="@id/text_view_username"
             app:layout_constraintTop_toBottomOf="@id/imageView"
-            tools:text="Title" />
+         />
 
         <TextView
             android:id="@+id/text_view_username"
