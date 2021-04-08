@@ -2,7 +2,6 @@ package com.example.guau_guau.ui.auth
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.guau_guau.data.network.Resource
 import com.example.guau_guau.data.repositories.AuthRepository

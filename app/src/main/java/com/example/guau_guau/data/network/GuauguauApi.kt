@@ -1,6 +1,7 @@
 package com.example.guau_guau.data.network
 
 import com.example.guau_guau.data.responses.LoginResponse
+import com.example.guau_guau.data.responses.PostReponse
 import com.example.guau_guau.data.responses.UserResponse
 import retrofit2.http.*
 
@@ -42,4 +43,11 @@ interface GuauguauApi {
         @Field("lastname") lastName: String,
     ): UserResponse
 
+    @FormUrlEncoded
+    @POST(value = "users")
+    suspend fun PostSubmit(
+        @Field("id") id: String,
+        @Field("title") title: String,
+        @Field("body") body: String
+    ): PostReponse
 }
