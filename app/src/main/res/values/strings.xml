@@ -46,5 +46,7 @@
     <string name="select_an_option">Select an option...</string>
     <string name="profile_pic">Profile pic</string>
     <string name="accept">accept</string>
+    <string name="user_name">user name</string>
+    <string name="new_post">New Post</string>
 
 </resources>

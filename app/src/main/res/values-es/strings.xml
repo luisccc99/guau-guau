@@ -1,0 +1,52 @@
+<resources>
+    <string name="app_name">guau-guau</string>
+
+    <string name="hello_blank_fragment">Hola fragmento en blanco</string>
+    <string name="posts_fragment">Fragmento de mensajes</string>
+    <string name="profile_fragment">Fragmento de perfil</string>
+    <string name="resources">Recursos</string>
+    <string name="home">Inicio</string>
+    <string name="dogs">Perros</string>
+    <string name="profile">Perfil</string>
+
+    <string name="more">Más</string>
+    <string name="create_post">Crear mensaje</string>
+
+    <string name="about">Acerca de</string>
+    <string name="edit_about">Editar mensaje</string>
+    <string name="edit_name">Editar nombre</string>
+    <string name="profile_activity">Actividad</string>
+    <string name="log_out">Cerrar sesión</string>
+    <string name="change_profile_pic">Cambiar foto de perfil</string>
+    <string name="solved_posts">## Publicaciones resueltas</string>
+    <string name="posts">## Publicaciones</string>
+    <string name="number_of_posts_made">Número de publicaciones realizadas
+</string>
+    <string name="lorem">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus eget semper nibh. Pellentesque habitant morbi tristique senectus.</string>
+    <string name="login">Iniciar sesion</string>
+    <string name="email">Correo</string>
+    <string name="password">Contraseña</string>
+    <string name="signup_text">¿Aún no tienes una cuenta?</string>
+    <string name="forgot_password">¿Se te olvidó tu contraseña?</string>
+    <string name="create_new_post">Crear nueva publicación.</string>
+    <string name="title">Titulo</string>
+    <string name="description">Descripción</string>
+    <string name="guauguau">GuauGuau</string>
+    <string name="cancel">Cancelar</string>
+    <string name="submit">Entregar</string>
+    <string name="signup">Registrar</string>
+    <string name="create_an_account">¡Crea una cuenta!</string>
+    <string name="last_name">Apellidos</string>
+    <string name="first_name">Nombres</string>
+    <string name="confirm_password">Confirmar contraseña</string>
+    <string name="take_photo">Tomar foto</string>
+    <string name="select_from_gallery">Seleccionar de galería</string>
+    <string name="option">Opciones</string>
+    <string name="select_an_option">Seleccione una opción...</string>
+    <string name="profile_pic">Foto de perfil</string>
+    <string name="accept">Aceptar</string>
+    <string name="user_name">Nombre de usurario</string>
+    <string name="new_post">Nueva publicación</string>
+
+
+</resources>
