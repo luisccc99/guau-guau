@@ -1,6 +1,5 @@
 package com.example.guau_guau
 
-import android.text.Layout
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
@@ -35,11 +34,14 @@ class GuauguauPostAdapter : PagingDataAdapter<GuauguauPost, GuauguauPostAdapter.
                 Glide.with(itemView)
                     .load(post.photo.url)
                     .centerCrop()
+                    .error(R.drawable.ic_baseline_person)
                     .transition(DrawableTransitionOptions.withCrossFade())
                     .into(imageViewPhoto)
+
                 Glide.with(itemView)
-                    .load(post.user_photo.url)
+                    .load(post.photo.url)
                     .centerCrop()
+                    .error(R.drawable.ic_baseline_article)
                     .transition(DrawableTransitionOptions.withCrossFade())
                     .into(imageView)
 

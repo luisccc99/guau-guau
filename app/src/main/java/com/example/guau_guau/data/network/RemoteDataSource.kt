@@ -20,10 +20,12 @@ class RemoteDataSource {
             .baseUrl(BASE_URL)
             .client(
                 OkHttpClient.Builder()
-                    .addInterceptor {  chain ->
-                        chain.proceed(chain.request().newBuilder().also {
-                            it.addHeader( "Authorization", "Bearer $authToken")
-                        }.build())
+                    .addInterceptor { chain ->
+                        chain.proceed(
+                            chain.request().newBuilder().also {
+                                it.addHeader("Authorization", "Bearer $authToken")
+                            }.build()
+                        )
                     }
                     .also { client ->
 
@@ -31,7 +33,7 @@ class RemoteDataSource {
                         logging.setLevel(HttpLoggingInterceptor.Level.BODY)
                         client.addInterceptor(logging)
 
-                }.build()
+                    }.build()
             )
             .addConverterFactory(GsonConverterFactory.create())
             .build()

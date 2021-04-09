@@ -14,7 +14,7 @@ class PostGETRepository @Inject constructor(private val guauguauApi: GuauguauApi
     fun getSearchResults(page: Int) =
         Pager(
             config = PagingConfig(
-                pageSize = 20,
+                pageSize = 10,
                 maxSize = 100,
                 enablePlaceholders = false
             ),
