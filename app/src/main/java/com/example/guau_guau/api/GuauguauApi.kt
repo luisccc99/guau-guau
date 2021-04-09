@@ -1,7 +1,8 @@
 package com.example.guau_guau.api
 
+import com.example.guau_guau.data.GuauguauPost
 import retrofit2.http.GET
-import retrofit2.http.Headers
+import retrofit2.http.Header
 import retrofit2.http.Query
 
 
@@ -12,7 +13,8 @@ interface GuauguauApi {
     //@Headers("Accept-Version: v1")
     @GET("api/v1/posts")
     suspend fun searchPosts(
-        @Query("page") page: Int,
-        @Query("per_page") per_page: Int
-    ):GuauguauResponse
+        @Query("resolved") page: Boolean,
+        @Query("page") per_page: Int?,
+        @Header("Authorization") token: String
+    ):List<GuauguauPost>
 }
