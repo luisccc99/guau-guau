@@ -8,7 +8,9 @@ import com.example.guau_guau.ui.auth.AuthActivity
 import com.example.guau_guau.data.UserPreferences
 import com.example.guau_guau.ui.HomeActivity
 import com.example.guau_guau.ui.startNewActivity
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
