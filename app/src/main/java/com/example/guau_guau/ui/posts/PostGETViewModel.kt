@@ -17,11 +17,11 @@ class PostGETViewModel @Inject constructor(private val repository: PostGETReposi
         queryString -> repository.getSearchResults(queryString).cachedIn(viewModelScope)
     }
 
-    fun searchPosts(page: Int){
-        currentQuery.value = page
+    fun searchPosts(resolved: Boolean){
+        currentQuery.value = resolved
     }
 
     companion object {
-        private const val DEFAULT_QUERY = 1
+        private const val DEFAULT_QUERY = false
     }
 }

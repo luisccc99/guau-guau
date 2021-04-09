@@ -11,13 +11,13 @@ import javax.inject.Singleton
 @Singleton
 class PostGETRepository @Inject constructor(private val guauguauApi: GuauguauApi){
 
-    fun getSearchResults(page: Int) =
+    fun getSearchResults(resolved: Boolean) =
         Pager(
             config = PagingConfig(
                 pageSize = 10,
                 maxSize = 100,
                 enablePlaceholders = false
             ),
-            pagingSourceFactory = {PostPagingSource(guauguauApi, page)}
+            pagingSourceFactory = {PostPagingSource(guauguauApi, resolved)}
         ).liveData
 }

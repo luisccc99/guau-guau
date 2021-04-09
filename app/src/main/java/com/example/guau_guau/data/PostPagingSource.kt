@@ -10,13 +10,15 @@ private const val STARTING_PAGE_INDEX = 1
 
 class PostPagingSource(
     private val guauguauApi: GuauguauApi,
-    private val page: Int
+//    private val page: Int,
+    private val resolved: Boolean
 ) : PagingSource<Int, GuauguauPost>(){
 
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, GuauguauPost> {
         val position = params.key ?: STARTING_PAGE_INDEX
         return try {
-            val posts = guauguauApi.searchPosts(page,null, "eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2VtYWlsIjoibHVpc2NjYzk5QGdtYWlsLmNvbSIsImV4cCI6MTYxNzk0ODUwNH0.G-EFnRUJn2aH6IIlyaSiaeUw4hHQy2KuHlNJ8uNYldU")
+            //TODO Checar la shit del token (cómo mandar token)
+            val posts = guauguauApi.searchPosts(resolved, position, "eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2VtYWlsIjoibHVpc2NjYzk5QGdtYWlsLmNvbSIsImV4cCI6MTYxNzk0ODUwNH0.G-EFnRUJn2aH6IIlyaSiaeUw4hHQy2KuHlNJ8uNYldU")
 
             LoadResult.Page(
                 data = posts,

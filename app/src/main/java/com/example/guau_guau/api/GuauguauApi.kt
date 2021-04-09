@@ -13,8 +13,8 @@ interface GuauguauApi {
     //@Headers("Accept-Version: v1")
     @GET("api/v1/posts")
     suspend fun searchPosts(
-        @Query("page") page: Int,
-        @Query("per_page") per_page: Int?,
+        @Query("resolved") page: Boolean,
+        @Query("page") per_page: Int?,
         @Header("Authorization") token: String
     ):List<GuauguauPost>
 }
