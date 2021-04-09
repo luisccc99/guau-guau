@@ -8,6 +8,7 @@ import android.widget.Button
 import android.widget.EditText
 import androidx.navigation.fragment.findNavController
 import com.example.guau_guau.R
+import com.example.guau_guau.databinding.FragmentNameBottomSheetBinding
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
 class NameBottomSheetFragment : BottomSheetDialogFragment() {
@@ -22,15 +23,14 @@ class NameBottomSheetFragment : BottomSheetDialogFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val cancelButton = view.findViewById<Button>(R.id.button_cancel_edit_name)
-        val acceptButton = view.findViewById<Button>(R.id.button_edit_name)
-        cancelButton.setOnClickListener { dismiss() }
+        val binding = FragmentNameBottomSheetBinding.bind(view)
+        binding.buttonCancelEditName.setOnClickListener { dismiss() }
 
-        acceptButton.setOnClickListener {
-            val name = view.findViewById<EditText>(R.id.edit_text_name).text.toString()
-            val lastName = view.findViewById<EditText>(R.id.edit_text_last_name).text.toString()
+        binding.buttonEditName.setOnClickListener {
+            val name = binding.editTextName.text.toString()
+            val lastName = binding.editTextLastName.text.toString()
             val action = NameBottomSheetFragmentDirections
-                .actionNameBottomSheetFragmentToProfileFragment(name, lastName)
+                .actionNameBottomSheetFragmentToProfileFragment(name = name, lastname = lastName)
             findNavController().navigate(action)
         }
 
