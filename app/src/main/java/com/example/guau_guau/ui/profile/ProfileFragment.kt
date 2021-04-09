@@ -2,7 +2,6 @@ package com.example.guau_guau.ui.profile
 
 import android.annotation.SuppressLint
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -21,8 +20,6 @@ import kotlinx.coroutines.runBlocking
 
 class ProfileFragment : BaseFragment<ProfileViewModel, FragmentProfileBinding, UserRepository>() {
 
-    private val TAG = ProfileFragment::class.java.simpleName
-
     private val args: ProfileFragmentArgs by navArgs()
 
     @SuppressLint("SetTextI18n")
@@ -30,18 +27,16 @@ class ProfileFragment : BaseFragment<ProfileViewModel, FragmentProfileBinding, U
         super.onViewCreated(view, savedInstanceState)
         val userId = runBlocking { userPreferences.userId.first() }
 
-        // TODO: make userId non nullable
         if (userId != null) {
             val name = args.name
             val lastname = args.lastname
             val about = args.about
-            Log.wtf(TAG, "onViewCreated: $name $lastname $about", )
-            if (name.isEmpty() && about.isNotEmpty()) {
-                viewModel.editUserAbout(userId, about)
-            } else if (about.isEmpty() && name.isNotEmpty()) {
-                viewModel.editUserNameAndLastName(userId, name, lastname)
+            if (about.isNotEmpty()) {
+                viewModel.editUserData(userId, null, null, about)
+            } else if (name.isNotEmpty() || lastname.isNotEmpty()) {
+                viewModel.editUserData(userId, name, lastname, null)
             }
-            getUserInfo(userId)
+            showUserInfo(userId)
         }
 
         binding.floatingChangePic.setOnClickListener {
@@ -65,7 +60,8 @@ class ProfileFragment : BaseFragment<ProfileViewModel, FragmentProfileBinding, U
 
     }
 
-    private fun getUserInfo(userId: String) {
+    @SuppressLint("SetTextI18n")
+    private fun showUserInfo(userId: String) {
         viewModel.getUser(userId)
         viewModel.user.observe(viewLifecycleOwner, {
             when (it) {
@@ -79,7 +75,7 @@ class ProfileFragment : BaseFragment<ProfileViewModel, FragmentProfileBinding, U
                         textViewAbout.text = user.aboutme
 
                         //TODO: save fragment state and change image URL
-                        Glide.with(requireContext())
+                        Glide.with(this@ProfileFragment)
                             .load("https://www.arabianbusiness.com/public/images/2019/03/16/pewdiepie-new.jpg")
                             .dontAnimate()
                             .error(R.drawable.ic_baseline_person)

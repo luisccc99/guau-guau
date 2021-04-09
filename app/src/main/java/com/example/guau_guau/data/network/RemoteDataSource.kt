@@ -1,7 +1,5 @@
 package com.example.guau_guau.data.network
 
-import androidx.multidex.BuildConfig
-//import com.example.guau_guau.BuildConfig
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
