@@ -26,16 +26,12 @@ class CreatePostFragment : BaseFragment<PostViewModel, FragmentCreatePostBinding
         val userId = runBlocking { userPreferences.userId.first() }
 
         // TODO: make userId non nullable
+        binding.buttonSubmit.setOnClickListener {
         if (userId != null) {
             val title = binding.editTextTitle.text.toString()
             val body = binding.editTextDescription.text.toString()
-
-            //if (title.isNotEmpty() && body.isNotEmpty()) {
-                binding.buttonSubmit.setOnClickListener {
-                    viewModel.postSubmit(userId, title, body)
+            viewModel.postSubmit(userId, title, body)
                 }
-                //}
-
             }
         }
 

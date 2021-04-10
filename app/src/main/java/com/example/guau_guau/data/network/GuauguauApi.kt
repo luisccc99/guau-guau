@@ -44,9 +44,9 @@ interface GuauguauApi {
     ): UserResponse
 
     @FormUrlEncoded
-    @POST(value = "users")
+    @POST(value = "posts")
     suspend fun PostSubmit(
-        @Field("id") id: String,
+        @Field("user_id") id: String,
         @Field("title") title: String,
         @Field("body") body: String
     ): PostReponse
