@@ -7,6 +7,7 @@
     tools:context=".ui.auth.LoginFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/contraint_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingHorizontal="15dp">
@@ -52,7 +53,9 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
-            android:layout_marginTop="30dp"
+            app:counterEnabled="true"
+            app:counterMaxLength="13"
+            android:layout_marginTop="20dp"
             android:hint="@string/first_name"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/ic_name"
@@ -62,6 +65,7 @@
                 android:id="@+id/edit_text_name"
                 android:layout_width="match_parent"
                 android:inputType="textPersonName"
+                android:maxLength="13"
                 android:layout_height="wrap_content" />
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -70,6 +74,8 @@
             android:id="@+id/text_view_last"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            app:counterEnabled="true"
+            app:counterMaxLength="13"
             android:layout_marginTop="20dp"
             android:hint="@string/last_name"
             app:layout_constraintEnd_toEndOf="@id/text_view_name"
@@ -79,8 +85,9 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/edit_text_last"
                 android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:inputType="textPersonName"
-                android:layout_height="wrap_content" />
+                android:maxLength="13" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -101,6 +108,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:layout_marginTop="20dp"
+            app:errorEnabled="true"
             android:hint="@string/email"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/ic_email"
@@ -131,7 +139,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="10dp"
             android:hint="@string/password"
             app:endIconMode="password_toggle"
             app:layout_constraintEnd_toEndOf="@id/text_view_email"
@@ -147,9 +155,10 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/text_view_password_2"
+            android:id="@+id/text_input_layout_confirm"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            app:errorEnabled="true"
             android:layout_marginTop="20dp"
             android:hint="@string/confirm_password"
             app:endIconMode="password_toggle"
@@ -158,7 +167,7 @@
             app:layout_constraintTop_toBottomOf="@id/text_view_password_1">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/edit_text_password_2"
+                android:id="@+id/edit_text_confirm_password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textPassword" />
@@ -170,18 +179,19 @@
             style="@style/Widget.MaterialComponents.Button.OutlinedButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="20dp"
             android:layout_marginEnd="10dp"
             android:text="@string/cancel"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@id/guideline9"
-            app:layout_constraintTop_toBottomOf="@id/text_view_password_2" />
+            app:layout_constraintTop_toBottomOf="@id/text_input_layout_confirm" />
 
         <Button
             android:id="@+id/button_signup"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
-            android:enabled="false"
             android:text="@string/signup"
             app:layout_constraintBottom_toBottomOf="@id/button_cancel_signup"
             app:layout_constraintStart_toEndOf="@id/guideline9"

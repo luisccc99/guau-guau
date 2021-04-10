@@ -33,19 +33,14 @@ abstract class BaseFragment<VM : BaseViewModel, B: ViewBinding, R: BaseRepositor
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        Log.wtf(TAG, "onCreateView: initializing", )
         userPreferences = UserPreferences(requireContext())
         binding = getFragmentBinding(inflater, container)
         val factory = ViewModelFactory(getFragmentRepository())
         viewModel = ViewModelProvider(this, factory).get(getViewModel())
-        Log.wtf(TAG, "onCreateView: ${viewModel.toString()}", )
         return binding.root
     }
 
     fun logout() = lifecycleScope.launch {
-        val authToken = userPreferences.authToken.first()
-        val api = remoteDataSource.buildApi(UserApi::class.java, authToken)
-        viewModel.logout(api)
         userPreferences.clear()
         requireActivity().startNewActivity(AuthActivity::class.java)
     }

@@ -23,16 +23,10 @@ class ProfileViewModel(
         _user.value = repository.getUser(userId)
     }
 
-    fun editUserAbout(id: String, about: String) =
+    fun editUserData(id: String, name: String?, lastName: String?, about: String?) =
         viewModelScope.launch {
             _user.value = Resource.Loading
-            _user.value = repository.editUserAbout(id, about)
-        }
-
-    fun editUserNameAndLastName(id: String, name: String, lastName: String) =
-        viewModelScope.launch {
-            _user.value = Resource.Loading
-            _user.value = repository.editUserNameAndLastName(id, name, lastName)
+            _user.value = repository.patchUser(id, name, lastName, about)
         }
 
 }

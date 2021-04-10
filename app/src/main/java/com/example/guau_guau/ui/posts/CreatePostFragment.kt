@@ -19,11 +19,13 @@ import com.example.guau_guau.ui.enable
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.runBlocking
 
-class CreatePostFragment : BaseFragment<PostViewModel, FragmentCreatePostBinding, PostRepository>() {
+class CreatePostFragment :
+    BaseFragment<PostViewModel, FragmentCreatePostBinding, PostRepository>() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val userId = runBlocking { userPreferences.userId.first() }
+
 
         // TODO: make userId non nullable
         binding.buttonSubmit.setOnClickListener {
@@ -31,9 +33,9 @@ class CreatePostFragment : BaseFragment<PostViewModel, FragmentCreatePostBinding
             val title = binding.editTextTitle.text.toString()
             val body = binding.editTextDescription.text.toString()
             viewModel.postSubmit(userId, title, body)
-                }
-            }
+                }        
         }
+    }
 
     override fun getViewModel() = PostViewModel::class.java
 
@@ -43,5 +45,5 @@ class CreatePostFragment : BaseFragment<PostViewModel, FragmentCreatePostBinding
     ) = FragmentCreatePostBinding.inflate(inflater, container, false)
 
     override fun getFragmentRepository() =
-    PostRepository(remoteDataSource.buildApi(GuauguauApi::class.java))
+        PostRepository(remoteDataSource.buildApi(GuauguauApi::class.java))
 }

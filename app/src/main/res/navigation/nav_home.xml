@@ -21,6 +21,8 @@
         <action
             android:id="@+id/action_postsFragment_to_postDetailFragment"
             app:destination="@id/postDetailFragment" />
+
+
     </fragment>
     <fragment
         android:id="@+id/dogMapsFragment"

@@ -1,6 +1,11 @@
 package com.example.guau_guau.ui.auth
 
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextUtils
+import android.text.TextWatcher
+import android.util.Log
+import android.util.Patterns
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,7 +18,6 @@ import com.example.guau_guau.data.network.Resource
 import com.example.guau_guau.data.repositories.SignUpRepository
 import com.example.guau_guau.databinding.FragmentSignupBinding
 import com.example.guau_guau.ui.base.BaseFragment
-import com.example.guau_guau.ui.enable
 import com.example.guau_guau.ui.handleApiError
 import com.example.guau_guau.ui.visible
 
@@ -40,32 +44,37 @@ class SignUpFragment : BaseFragment<SignUpViewModel, FragmentSignupBinding, Sign
         binding.buttonCancelSignup.setOnClickListener {
             view.findNavController().navigate(R.id.action_registerFragment_to_loginFragment)
         }
-        binding.editTextPassword2.addTextChangedListener {
-            if (inputIsNotEmpty()) {
-                binding.buttonSignup.enable(true)
-            }
-
-        }
         binding.buttonSignup.setOnClickListener {
-            signup()
+            if (confirmPassword() && isEmailValid()) {
+                signup()
+            }
         }
     }
 
-    private fun inputIsNotEmpty(): Boolean {
-        val listOfEditTexts = listOf(
-            binding.editTextName,
-            binding.editTextLast,
-            binding.editTextEmail,
-            binding.editTextPassword1
-        )
-        for (editText in listOfEditTexts) {
-            if (editText.toString().trim().isEmpty()) {
-                return false
-            }
+    private fun confirmPassword(): Boolean {
+        var valid =
+            binding.editTextPassword1.text.toString() == binding.editTextConfirmPassword.text.toString()
+        if (!valid) {
+            binding.textInputLayoutConfirm.error = "Passwords must match"
+            return false
         }
         return true
     }
 
+
+    // return: if editTextEmail has a email pattern and it's not empty
+    private fun isEmailValid(): Boolean {
+        val email = binding.editTextEmail.text.toString()
+        val valid = Patterns.EMAIL_ADDRESS.matcher(email).matches()
+                && !TextUtils.isEmpty(email)
+        if (!valid) {
+            binding.textViewEmail.error = "Enter a correct email address"
+            return false
+        }
+        return true
+    }
+
+    // gets data from necessary fields and performs the sign up
     private fun signup() {
         val name = binding.editTextName.text.toString()
         val lastName = binding.editTextLast.text.toString()
