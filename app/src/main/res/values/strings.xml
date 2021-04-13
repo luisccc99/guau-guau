@@ -18,12 +18,9 @@
     <string name="profile_activity">Activity</string>
     <string name="log_out">Log out</string>
     <string name="change_profile_pic">change profile pic</string>
-    <string name="alfredo_estupinon">Alfredo Estupinon</string>
-    <string name="freddy_gmail_com">freddy@gmail.com</string>
     <string name="solved_posts">## solved posts</string>
     <string name="posts">## posts</string>
     <string name="number_of_posts_made">number of posts made</string>
-    <string name="lorem">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus eget semper nibh. Pellentesque habitant morbi tristique senectus.</string>
     <string name="login">Login</string>
     <string name="email">Email</string>
     <string name="password">Password</string>
@@ -48,5 +45,8 @@
     <string name="accept">accept</string>
     <string name="user_name">user name</string>
     <string name="new_post">New Post</string>
+    <string name="post_options">Post options</string>
+    <string name="image_post">Image post</string>
+    <string name="comments">Comments</string>
 
 </resources>

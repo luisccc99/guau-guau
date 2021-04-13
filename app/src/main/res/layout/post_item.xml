@@ -2,10 +2,9 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    style="@style/Widget.GuauGuau.CardView"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="10dp"
+    android:layout_marginBottom="2dp"
     app:cardPreventCornerOverlap="false">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -16,72 +15,67 @@
         android:paddingBottom="10dp">
 
         <com.google.android.material.imageview.ShapeableImageView
-            android:id="@+id/imageView"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:id="@+id/image_view_user_pic"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:shapeAppearanceOverlay="@style/Widget.GuauGuau.ShapeableImageView"
+            app:shapeAppearanceOverlay="@style/Widget.GuauGuau.ShapeableImageViewCircular"
             tools:srcCompat="@tools:sample/avatars" />
 
         <TextView
             android:id="@+id/text_view_post_title"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
             android:ellipsize="end"
             android:maxLines="1"
             android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
-            android:text="@string/title"
-            app:layout_constraintEnd_toEndOf="@id/image_view_photo"
+            app:layout_constraintEnd_toEndOf="@id/text_view_username"
             app:layout_constraintStart_toStartOf="@id/text_view_username"
-            app:layout_constraintTop_toBottomOf="@id/imageView"
-         />
+            app:layout_constraintTop_toBottomOf="@id/text_view_username"
+            tools:text="@string/title" />
 
         <TextView
             android:id="@+id/text_view_username"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
-            android:layout_marginTop="5dp"
             android:ellipsize="end"
             android:maxLines="1"
-            android:textAppearance="@style/TextAppearance.MaterialComponents.Overline"
-            app:layout_constraintEnd_toStartOf="@id/image_view_more"
-            app:layout_constraintStart_toEndOf="@id/imageView"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:text="User name" />
-
-
-        <ImageView
-            android:id="@+id/image_view_more"
-            android:layout_width="25dp"
-            android:layout_height="25dp"
-            android:importantForAccessibility="no"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Caption"
+            android:textSize="14sp"
+            android:inputType="textPersonName"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/text_view_username"
-            app:layout_constraintTop_toTopOf="@id/imageView"
-            tools:src="@drawable/ic_baseline_more_vert" />
+            app:layout_constraintStart_toEndOf="@id/image_view_user_pic"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="User Name"
+            tools:ignore="TextViewEdits" />
 
-        <ImageView
-            android:id="@+id/image_view_photo"
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/image_view_post_pic"
             android:layout_width="0dp"
             android:layout_height="200dp"
             android:layout_marginTop="10dp"
+            android:scaleType="centerCrop"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@id/text_view_post_description"
             app:layout_constraintTop_toBottomOf="@id/text_view_post_description"
-            tools:srcCompat="@drawable/dog_image_post" />
+            app:shapeAppearanceOverlay="@style/Widget.GuauGuau.ShapeableImageViewCircularCorners"
+            tools:srcCompat="@tools:sample/avatars" />
 
         <TextView
             android:id="@+id/text_view_post_description"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="5dp"
             android:ellipsize="end"
             android:maxLines="4"
-            android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
             app:layout_constraintEnd_toEndOf="@id/text_view_post_title"
-            app:layout_constraintStart_toStartOf="@id/text_view_username"
+            app:layout_constraintStart_toStartOf="@id/text_view_post_title"
             app:layout_constraintTop_toBottomOf="@id/text_view_post_title"
             tools:text="@tools:sample/lorem/random" />
 
