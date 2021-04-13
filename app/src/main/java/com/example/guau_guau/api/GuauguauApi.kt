@@ -10,7 +10,7 @@ interface GuauguauApi {
     companion object {
         const val BASE_URL = "https://pupperinossearch.herokuapp.com/"
     }
-    //@Headers("Accept-Version: v1")
+
     @GET("api/v1/posts")
     suspend fun searchPosts(
         @Query("resolved") page: Boolean,

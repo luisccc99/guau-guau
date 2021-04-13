@@ -1,7 +1,6 @@
 package com.example.guau_guau.data.repositories
 
 import com.example.guau_guau.data.network.Resource
-import com.example.guau_guau.data.network.UserApi
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import retrofit2.HttpException
@@ -31,9 +30,4 @@ abstract class BaseRepository {
             }
         }
     }
-
-    suspend fun logout(api: UserApi) = safeApiCall {
-        api.logout()
-    }
-
 }

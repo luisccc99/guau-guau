@@ -1,9 +1,8 @@
 package com.example.guau_guau.data.network
 
 import com.example.guau_guau.data.responses.LoginResponse
-import com.example.guau_guau.data.responses.PostReponse
+import com.example.guau_guau.data.responses.PostResponse
 import com.example.guau_guau.data.responses.UserResponse
-import okhttp3.RequestBody
 import retrofit2.http.*
 
 interface GuauguauApi {
@@ -16,8 +15,8 @@ interface GuauguauApi {
     ): LoginResponse
 
     @FormUrlEncoded
-    @POST(value = "users")
-    suspend fun signup(
+    @POST("users")
+    suspend fun signUp(
         @Field("name") name: String,
         @Field("lastname") lastName: String,
         @Field("email") email: String,
@@ -39,10 +38,18 @@ interface GuauguauApi {
     ): UserResponse
 
     @FormUrlEncoded
-    @POST(value = "posts")
-    suspend fun PostSubmit(
+    @POST("posts")
+    suspend fun createPost(
         @Field("user_id") id: String,
         @Field("title") title: String,
         @Field("body") body: String
-    ): PostReponse
+    ): PostResponse
+
+
+    @FormUrlEncoded
+    @PATCH("post")
+    suspend fun patchPost(
+        @Field("resolved") resolved: Boolean,
+        @Field("resolved_reason") resolvedReason: String
+    ): PostResponse
 }

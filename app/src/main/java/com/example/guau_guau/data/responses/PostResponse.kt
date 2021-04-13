@@ -1,6 +1,6 @@
 package com.example.guau_guau.data.responses
 
-data class PostReponse(
+data class PostResponse(
     val body: String,
     val created_at: String,
     val id: String,
