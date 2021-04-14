@@ -6,8 +6,13 @@
         <item name="colorOnPrimary">@color/blue_900</item>
     </style>
 
-    <style name="Widget.GuauGuau.ShapeableImageView" parent="Widget.MaterialComponents.ShapeableImageView">
+    <style name="Widget.GuauGuau.ShapeableImageViewCircular" parent="Widget.MaterialComponents.ShapeableImageView">
         <item name="cornerSize">50%</item>
+        <item name="cornerFamily">rounded</item>
+    </style>
+
+    <style name="Widget.GuauGuau.ShapeableImageViewCircularCorners" parent="Widget.MaterialComponents.ShapeableImageView">
+        <item name="cornerSize">5%</item>
         <item name="cornerFamily">rounded</item>
     </style>
 

@@ -26,8 +26,6 @@ class CreatePostFragment :
         super.onViewCreated(view, savedInstanceState)
         val userId = runBlocking { userPreferences.userId.first() }
 
-
-        // TODO: make userId non nullable
         binding.buttonSubmit.setOnClickListener {
         if (userId != null) {
             val title = binding.editTextTitle.text.toString()
