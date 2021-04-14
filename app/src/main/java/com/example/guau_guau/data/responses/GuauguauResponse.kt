@@ -1,6 +1,5 @@
-package com.example.guau_guau.api
+package com.example.guau_guau.data.responses
 
-import android.os.Parcelable
 import com.example.guau_guau.data.GuauguauPost
 
 data class GuauguauResponse(
