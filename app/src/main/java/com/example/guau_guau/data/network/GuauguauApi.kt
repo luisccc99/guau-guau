@@ -1,5 +1,7 @@
 package com.example.guau_guau.data.network
 
+
+import com.example.guau_guau.data.responses.ComentaryResponse
 import com.example.guau_guau.data.GuauguauPost
 import com.example.guau_guau.data.responses.LoginResponse
 import com.example.guau_guau.data.responses.PostResponse
@@ -48,8 +50,14 @@ interface GuauguauApi {
         @Field("user_id") id: String,
         @Field("title") title: String,
         @Field("body") body: String
-    ): PostResponse
+    ): PostReponse
 
+    @FormUrlEncoded
+    @POST(value = "posts_Comentary")
+    suspend fun ComentarySubmit(
+        @Field("user_id") id: String,
+        @Field("body") body: String
+    ): ComentaryResponse
 
     @FormUrlEncoded
     @PATCH("post")

@@ -102,5 +102,14 @@
             android:id="@+id/action_aboutBottomSheetFragment_to_profileFragment"
             app:destination="@id/profileFragment" />
     </dialog>
+    <fragment
+        android:id="@+id/comentPost"
+        android:name="com.example.guau_guau.ui.posts.ComentPost"
+        android:label="fragment_coment_post"
+        tools:layout="@layout/fragment_coment_post" >
+        <argument
+            android:name="post_id"
+            app:argType="string" />
+    </fragment>
 
 </navigation>
