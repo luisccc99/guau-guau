@@ -37,7 +37,6 @@ class PostsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         _binding = FragmentPostsBinding.bind(view)
         val adapter = GuauguauPostAdapter()
-        Log.wtf("PostsFragment", "onViewCreated: ${adapter.itemCount}", )
         binding.apply {
             recyclerViewPosts.setHasFixedSize(true)
             recyclerViewPosts.adapter = adapter

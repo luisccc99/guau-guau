@@ -22,7 +22,6 @@
     <string name="posts">## Publicaciones</string>
     <string name="number_of_posts_made">Número de publicaciones realizadas
 </string>
-    <string name="lorem">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus eget semper nibh. Pellentesque habitant morbi tristique senectus.</string>
     <string name="login">Iniciar sesion</string>
     <string name="email">Correo</string>
     <string name="password">Contraseña</string>
@@ -47,6 +46,7 @@
     <string name="accept">Aceptar</string>
     <string name="user_name">Nombre de usurario</string>
     <string name="new_post">Nueva publicación</string>
+    <string name="post_options">Post options</string>
 
 
 </resources>
