@@ -1,5 +1,6 @@
 package com.example.guau_guau.di
 
+import com.example.guau_guau.data.network.GuauguauApi
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
