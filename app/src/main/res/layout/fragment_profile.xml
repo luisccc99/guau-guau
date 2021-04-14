@@ -64,7 +64,6 @@
             android:layout_marginTop="10dp"
             android:ellipsize="end"
             android:maxLines="1"
-            android:text="@string/freddy_gmail_com"
             android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
             app:layout_constraintStart_toStartOf="@id/text_view_name"
             app:layout_constraintTop_toBottomOf="@id/text_view_name" />
@@ -110,7 +109,6 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:maxLines="3"
-            android:text="@string/lorem"
             android:textAppearance="@style/TextAppearance.MaterialComponents.Body2"
             app:layout_constraintEnd_toEndOf="@id/about"
             app:layout_constraintStart_toStartOf="@id/about"

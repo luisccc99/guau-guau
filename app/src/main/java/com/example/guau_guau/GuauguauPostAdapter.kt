@@ -36,14 +36,14 @@ class GuauguauPostAdapter : PagingDataAdapter<GuauguauPost, GuauguauPostAdapter.
                     .centerCrop()
                     .error(R.drawable.ic_baseline_person)
                     .transition(DrawableTransitionOptions.withCrossFade())
-                    .into(imageViewPhoto)
+                    .into(imageViewPostPic)
 
                 Glide.with(itemView)
                     .load(post.photo.url)
                     .centerCrop()
                     .error(R.drawable.ic_baseline_article)
                     .transition(DrawableTransitionOptions.withCrossFade())
-                    .into(imageView)
+                    .into(imageViewUserPic)
 
                     textViewPostTitle.text = post.title
                     textViewPostDescription.text = post.body

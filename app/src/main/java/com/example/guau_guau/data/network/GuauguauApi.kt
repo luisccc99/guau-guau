@@ -11,7 +11,7 @@ import retrofit2.http.*
 interface GuauguauApi {
 
     companion object {
-        const val BASE_URL = "https://pupperinossearch.herokuapp.com/api/v1"
+        const val BASE_URL = "https://pupperinossearch.herokuapp.com/api/v1/"
     }
 
     @FormUrlEncoded
@@ -50,7 +50,7 @@ interface GuauguauApi {
         @Field("user_id") id: String,
         @Field("title") title: String,
         @Field("body") body: String
-    ): PostReponse
+    ): PostResponse
 
     @FormUrlEncoded
     @POST(value = "posts_Comentary")
