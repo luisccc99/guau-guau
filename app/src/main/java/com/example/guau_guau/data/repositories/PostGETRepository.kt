@@ -3,8 +3,8 @@ package com.example.guau_guau.data.repositories
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.liveData
-import com.example.guau_guau.api.GuauguauApi
 import com.example.guau_guau.data.PostPagingSource
+import com.example.guau_guau.data.network.GuauguauApi
 import javax.inject.Inject
 import javax.inject.Singleton
 

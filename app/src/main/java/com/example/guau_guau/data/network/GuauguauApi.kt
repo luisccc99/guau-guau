@@ -1,11 +1,16 @@
 package com.example.guau_guau.data.network
 
+import com.example.guau_guau.data.GuauguauPost
 import com.example.guau_guau.data.responses.LoginResponse
 import com.example.guau_guau.data.responses.PostResponse
 import com.example.guau_guau.data.responses.UserResponse
 import retrofit2.http.*
 
 interface GuauguauApi {
+
+    companion object {
+        const val BASE_URL = "https://pupperinossearch.herokuapp.com/api/v1"
+    }
 
     @FormUrlEncoded
     @POST("login")
@@ -52,4 +57,11 @@ interface GuauguauApi {
         @Field("resolved") resolved: Boolean,
         @Field("resolved_reason") resolvedReason: String
     ): PostResponse
+
+    @GET("posts")
+    suspend fun searchPosts(
+        @Query("resolved") page: Boolean,
+        @Query("page") per_page: Int?,
+        @Header("Authorization") token: String
+    ):List<GuauguauPost>
 }
