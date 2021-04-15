@@ -7,9 +7,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.observe
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import com.example.guau_guau.GuauguauPostAdapter
 import com.example.guau_guau.R
+import com.example.guau_guau.data.GuauguauPost
 import com.example.guau_guau.data.UserPreferences
 import com.example.guau_guau.databinding.FragmentPostsBinding
 import com.example.guau_guau.databinding.PostItemBinding
@@ -18,7 +21,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.runBlocking
 
 @AndroidEntryPoint
-class PostsFragment : Fragment() {
+class PostsFragment : Fragment(), GuauguauPostAdapter.OnItemClickListener{
 
     private val viewModel by viewModels<PostGETViewModel>()
 
@@ -36,7 +39,7 @@ class PostsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         _binding = FragmentPostsBinding.bind(view)
-        val adapter = GuauguauPostAdapter()
+        val adapter = GuauguauPostAdapter(this)
         binding.apply {
             recyclerViewPosts.setHasFixedSize(true)
             recyclerViewPosts.adapter = adapter
@@ -54,6 +57,11 @@ class PostsFragment : Fragment() {
     override fun onDestroy() {
         super.onDestroy()
         _binding = null
+    }
+
+    override fun onItemClick(post: GuauguauPost) {
+        val action = PostsFragmentDirections.actionPostsFragmentToPostDetailFragment(post)
+        findNavController().navigate(action)
     }
 
 }
