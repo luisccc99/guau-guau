@@ -10,7 +10,7 @@ import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.example.guau_guau.data.GuauguauPost
 import com.example.guau_guau.databinding.PostItemBinding
 
-class GuauguauPostAdapter : PagingDataAdapter<GuauguauPost, GuauguauPostAdapter.PostViewHolder>(
+class GuauguauPostAdapter(private val listener: OnItemClickListener) : PagingDataAdapter<GuauguauPost, GuauguauPostAdapter.PostViewHolder>(
     POST_COMPARATOR)  {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PostViewHolder {
@@ -28,7 +28,20 @@ class GuauguauPostAdapter : PagingDataAdapter<GuauguauPost, GuauguauPostAdapter.
 
     }
 
-    class  PostViewHolder (private val binding: PostItemBinding) : RecyclerView.ViewHolder(binding.root) {
+    inner class PostViewHolder (private val binding: PostItemBinding) : RecyclerView.ViewHolder(binding.root) {
+
+        init {
+            binding.root.setOnClickListener {
+                val position = bindingAdapterPosition
+                if (position != RecyclerView.NO_POSITION) {
+                    val item = getItem(position)
+                    if (item != null) {
+                        listener.onItemClick(item)
+                    }
+                }
+            }
+        }
+
         fun bind(post: GuauguauPost) {
             binding.apply {
                 Glide.with(itemView)
@@ -51,6 +64,10 @@ class GuauguauPostAdapter : PagingDataAdapter<GuauguauPost, GuauguauPostAdapter.
 
             }
         }
+    }
+
+    interface OnItemClickListener {
+        fun onItemClick(post: GuauguauPost);
     }
 
     companion object {

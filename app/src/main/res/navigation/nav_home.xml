@@ -74,6 +74,9 @@
         <action
             android:id="@+id/action_postDetailFragment_to_postsFragment"
             app:destination="@id/postsFragment" />
+        <argument
+            android:name="post"
+            app:argType="com.example.guau_guau.data.GuauguauPost" />
     </fragment>
     <dialog
         android:id="@+id/photoBottomSheetFragment"
