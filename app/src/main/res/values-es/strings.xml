@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">guau-guau</string>
+    <string name="app_name">GuauGuau</string>
 
     <string name="hello_blank_fragment">Hola fragmento en blanco</string>
     <string name="posts_fragment">Fragmento de mensajes</string>

@@ -41,9 +41,6 @@ class SignUpFragment : BaseFragment<SignUpViewModel, FragmentSignupBinding, Sign
             }
         })
 
-        binding.buttonCancelSignup.setOnClickListener {
-            view.findNavController().navigate(R.id.action_registerFragment_to_loginFragment)
-        }
         binding.buttonSignup.setOnClickListener {
             if (confirmPassword() && isEmailValid()) {
                 signup()
