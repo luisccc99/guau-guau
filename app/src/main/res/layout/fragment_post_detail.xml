@@ -8,13 +8,13 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="5dp">
+        android:layout_height="wrap_content">
 
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/image_view_profile_pic"
             android:layout_width="50dp"
             android:layout_height="50dp"
+            android:layout_marginTop="5dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:shapeAppearanceOverlay="@style/Widget.GuauGuau.ShapeableImageViewCircular"
@@ -30,22 +30,10 @@
             android:textAppearance="@style/TextAppearance.MaterialComponents.Caption"
             android:textSize="18sp"
             app:layout_constraintBottom_toBottomOf="@id/image_view_profile_pic"
-            app:layout_constraintEnd_toStartOf="@id/image_view_options"
             app:layout_constraintStart_toEndOf="@id/image_view_profile_pic"
             app:layout_constraintTop_toTopOf="@id/image_view_profile_pic"
             tools:ignore="RtlSymmetry,TextViewEdits"
             tools:text="@string/user_name" />
-
-        <ImageView
-            android:id="@+id/image_view_options"
-            android:layout_width="30dp"
-            android:layout_height="0dp"
-            android:contentDescription="@string/post_options"
-            android:src="@drawable/ic_baseline_more_vert"
-            app:layout_constraintBottom_toBottomOf="@id/text_view_username"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/text_view_username"
-            app:layout_constraintTop_toTopOf="@id/text_view_username" />
 
         <TextView
             android:id="@+id/text_view_post_title"

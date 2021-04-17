@@ -1,27 +1,74 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <!-- bottom nav light style -->
     <style name="Widget.GuauGuau.BottomNavigationView.Colored" parent="Widget.MaterialComponents.BottomNavigationView.Colored">
+        <item name="bottomNavigationStyle">@style/ThemeOverlay.GuauGuau.BottomNavigationView.Colored</item>
+    </style>
+
+    <style name="ThemeOverlay.GuauGuau.BottomNavigationView.Colored" parent="">
         <item name="colorPrimary">@color/blue_700</item>
         <item name="colorOnPrimary">@color/blue_900</item>
     </style>
 
+    <!-- bottom nav night mode -->
+    <style name="Widget.GuauGuau.BottomNavigationView.PrimarySurface"
+        parent="Widget.MaterialComponents.BottomNavigationView.PrimarySurface">
+        <item name="bottomNavigationStyle">@style/ThemeOverlay.GuauGuau.BottomNavigationView.PrimarySurface</item>
+    </style>
+
+    <style name="ThemeOverlay.GuauGuau.BottomNavigationView.PrimarySurface" parent="">
+        <item name="colorPrimary">@color/blue_200</item>
+        <item name="colorOnPrimary">@color/black</item>
+
+    </style>
+
+    <!-- Toolbar light style -->
+    <style name="Widget.GuauGuau.Toolbar.Primary" parent="Widget.MaterialComponents.Toolbar.Primary">
+        <item name="materialThemeOverlay">@style/ThemeOverlay.GuauGuau.Toolbar.Primary</item>
+    </style>
+    
+    <style name="ThemeOverlay.GuauGuau.Toolbar.Primary" parent="">
+        <item name="colorPrimary">@color/blue_700</item>
+        <item name="colorPrimaryVariant">@color/blue_200</item>
+        <item name="colorOnPrimary">@color/white</item>
+    </style>
+
+    <!-- Toolbar night style -->
+    <style name="Widget.GuauGuau.Toolbar.PrimarySurface" parent="Widget.MaterialComponents.Toolbar.PrimarySurface">
+        <item name="materialThemeOverlay">@style/ThemeOverlay.GuauGuau.Toolbar.PrimarySurface</item>
+    </style>
+
+    <style name="ThemeOverlay.GuauGuau.Toolbar.PrimarySurface" parent="">
+        <item name="colorPrimary">@color/blue_200</item>
+        <item name="colorPrimaryVariant">@color/blue_200</item>
+        <item name="colorOnPrimary">@color/white</item>
+    </style>
+
+    <!-- for circular images -->
     <style name="Widget.GuauGuau.ShapeableImageViewCircular" parent="Widget.MaterialComponents.ShapeableImageView">
         <item name="cornerSize">50%</item>
         <item name="cornerFamily">rounded</item>
     </style>
 
+    <!-- rounded corners -->
     <style name="Widget.GuauGuau.ShapeableImageViewCircularCorners" parent="Widget.MaterialComponents.ShapeableImageView">
         <item name="cornerSize">5%</item>
         <item name="cornerFamily">rounded</item>
     </style>
 
+    <!-- floating action button style -->
     <style name="Widget.Guauguau.FloatingActionButton" parent="Widget.MaterialComponents.FloatingActionButton">
         <item name="backgroundTint">?colorSecondary</item>
     </style>
 
+    <!-- floating action button for pic profile button -->
+    <style name="Widget.Guauguau.FloatingActionButton.Pic" parent="Widget.MaterialComponents.FloatingActionButton">
+        <item name="backgroundTint">?colorPrimary</item>
+    </style>
+
     <style name="Widget.Guauguau.Button.OutlinedButton.SecondaryColor" parent="Widget.MaterialComponents.Button">
-        <item name="backgroundTint">@color/magenta_700</item>
+        <item name="backgroundTint">?colorSecondary</item>
     </style>
 
     <style name="Widget.GuauGuau.CardView" parent="Widget.MaterialComponents.CardView">
@@ -35,7 +82,25 @@
         <item name="textStartPadding">5dp</item>
     </style>
 
+    <style name="TextAppearance.GuauGuau.Headline6" parent="TextAppearance.MaterialComponents.Headline6">
 
+    </style>
+    
+    <style name="TextAppearance.GuauGuau.Subtitle1" parent="TextAppearance.MaterialComponents.Subtitle1">
+        <item name="android:textAppearance">@style/TextAppearance.MaterialComponents.Subtitle1</item>
+    </style>
 
+    <!-- BottomSheetDialog night mode -->
+    <style name="Widget.GuauGuau.BottomSheet" parent="Widget.MaterialComponents.BottomSheet">
+        <item name="shapeAppearanceOverlay">@style/CustomShapeAppearanceBottomSheetDialog</item>
+    </style>
+    
+    <style name="CustomShapeAppearanceBottomSheetDialog" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSizeTopRight">16dp</item>
+        <item name="cornerSizeTopLeft">16dp</item>
+        <item name="cornerSizeBottomRight">0dp</item>
+        <item name="cornerSizeBottomLeft">0dp</item>
+    </style>
 
 </resources>

@@ -3,8 +3,9 @@
     <style name="Theme.Guauguau" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/blue_200</item>
-        <item name="colorPrimaryVariant">@color/blue_900</item>
-        <item name="colorOnPrimary">@color/white</item>
+        <item name="colorPrimaryVariant">@color/black</item>
+        <item name="colorOnPrimary">@color/black</item>
+
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/magenta_200</item>
         <item name="colorSecondaryVariant">@color/magenta_700</item>
@@ -15,5 +16,8 @@
         <item name="floatingActionButtonStyle">
             @style/Widget.Guauguau.FloatingActionButton
         </item>
+        <item name="bottomNavigationStyle">@style/Widget.GuauGuau.BottomNavigationView.PrimarySurface</item>
+        <item name="toolbarStyle">@style/Widget.GuauGuau.Toolbar.PrimarySurface</item>
+        <item name="bottomSheetStyle">@style/Widget.GuauGuau.BottomSheet</item>
     </style>
 </resources>

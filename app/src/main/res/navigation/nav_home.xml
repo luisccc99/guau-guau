@@ -69,7 +69,7 @@
     <fragment
         android:id="@+id/postDetailFragment"
         android:name="com.example.guau_guau.ui.posts.PostDetailFragment"
-        android:label="Detail Fragment"
+        android:label="Post"
         tools:layout="@layout/fragment_post_detail">
         <action
             android:id="@+id/action_postDetailFragment_to_postsFragment"

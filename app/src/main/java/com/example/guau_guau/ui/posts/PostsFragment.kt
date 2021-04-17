@@ -48,7 +48,6 @@ class PostsFragment : Fragment(), GuauguauPostAdapter.OnItemClickListener{
             adapter.submitData(viewLifecycleOwner.lifecycle, it)
         }
 
-
         view.findViewById<FloatingActionButton>(R.id.floating_create_post).setOnClickListener {
             view.findNavController().navigate(R.id.action_postsFragment_to_createPostFragment)
         }
