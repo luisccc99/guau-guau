@@ -1,10 +1,18 @@
 package com.example.guau_guau.data.network
 
+
+import com.example.guau_guau.data.responses.ComentaryResponse
+import com.example.guau_guau.data.GuauguauPost
 import com.example.guau_guau.data.responses.LoginResponse
+import com.example.guau_guau.data.responses.PostResponse
 import com.example.guau_guau.data.responses.UserResponse
 import retrofit2.http.*
 
 interface GuauguauApi {
+
+    companion object {
+        const val BASE_URL = "https://pupperinossearch.herokuapp.com/api/v1/"
+    }
 
     @FormUrlEncoded
     @POST("login")
@@ -14,8 +22,8 @@ interface GuauguauApi {
     ): LoginResponse
 
     @FormUrlEncoded
-    @POST(value = "users")
-    suspend fun signup(
+    @POST("users")
+    suspend fun signUp(
         @Field("name") name: String,
         @Field("lastname") lastName: String,
         @Field("email") email: String,
@@ -26,4 +34,42 @@ interface GuauguauApi {
     suspend fun getUser(
         @Query("id") userId: String
     ): UserResponse
+
+    @FormUrlEncoded
+    @PATCH("user")
+    suspend fun patchUser(
+        @Field("id") id: String,
+        @Field("name") name: String?,
+        @Field("lastname") lastName: String?,
+        @Field("aboutme") about: String?
+    ): UserResponse
+
+    @FormUrlEncoded
+    @POST("posts")
+    suspend fun createPost(
+        @Field("user_id") id: String,
+        @Field("title") title: String,
+        @Field("body") body: String
+    ): PostResponse
+
+    @FormUrlEncoded
+    @POST(value = "posts_Comentary")
+    suspend fun ComentarySubmit(
+        @Field("user_id") id: String,
+        @Field("body") body: String
+    ): ComentaryResponse
+
+    @FormUrlEncoded
+    @PATCH("post")
+    suspend fun patchPost(
+        @Field("resolved") resolved: Boolean,
+        @Field("resolved_reason") resolvedReason: String
+    ): PostResponse
+
+    @GET("posts")
+    suspend fun searchPosts(
+        @Query("resolved") page: Boolean,
+        @Query("page") per_page: Int?,
+        @Header("Authorization") token: String
+    ):List<GuauguauPost>
 }

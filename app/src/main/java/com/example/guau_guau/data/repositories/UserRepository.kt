@@ -2,7 +2,6 @@ package com.example.guau_guau.data.repositories
 
 import com.example.guau_guau.data.network.GuauguauApi
 
-
 class UserRepository(
     private val api: GuauguauApi
 ) : BaseRepository() {
@@ -11,4 +10,7 @@ class UserRepository(
         api.getUser(userId)
     }
 
+    suspend fun patchUser(id: String, name: String?, lastname: String?, about: String?) = safeApiCall {
+        api.patchUser(id, name, lastname, about)
+    }
 }

@@ -12,6 +12,6 @@ class SignUpRepository(
         email: String,
         password: String
     ) = safeApiCall {
-        api.signup(name, lastname, email, password)
+        api.signUp(name, lastname, email, password)
     }
 }

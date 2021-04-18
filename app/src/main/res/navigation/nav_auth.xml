@@ -22,7 +22,7 @@
     <fragment
         android:id="@+id/registerFragment"
         android:name="com.example.guau_guau.ui.auth.SignUpFragment"
-        android:label="fragment_register"
+        android:label="@string/signup"
         tools:layout="@layout/fragment_signup" >
         <action
             android:id="@+id/action_registerFragment_to_loginFragment"

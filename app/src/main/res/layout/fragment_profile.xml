@@ -22,7 +22,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:shapeAppearanceOverlay="@style/Widget.GuauGuau.ShapeableImageView"
+            app:shapeAppearanceOverlay="@style/Widget.GuauGuau.ShapeableImageViewCircular"
             tools:src="@tools:sample/avatars" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -31,6 +31,7 @@
             android:layout_height="wrap_content"
             android:contentDescription="@string/change_profile_pic"
             android:src="@drawable/ic_baseline_camera"
+            style="@style/Widget.Guauguau.FloatingActionButton.Pic"
             app:layout_constraintBottom_toBottomOf="@id/image_view_profile_pic"
             app:layout_constraintEnd_toEndOf="@id/image_view_profile_pic" />
 
@@ -40,7 +41,6 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
             android:maxLines="1"
-            android:text="@string/alfredo_estupinon"
             android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
             app:layout_constraintEnd_toStartOf="@id/edit_name"
             app:layout_constraintStart_toStartOf="@id/ic_about"
@@ -48,14 +48,15 @@
 
         <ImageView
             android:id="@+id/edit_name"
-            android:layout_width="26dp"
-            android:layout_height="26dp"
+            android:layout_width="29dp"
+            android:layout_height="29dp"
             android:contentDescription="@string/edit_name"
             android:src="@drawable/ic_baseline_edit"
+            app:layout_constraintTop_toTopOf="@id/text_view_name"
             app:layout_constraintBottom_toBottomOf="@id/text_view_name"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/text_view_name"
-            app:tint="@color/blue_700" />
+            app:tint="?colorPrimary" />
 
         <TextView
             android:id="@+id/text_view_email"
@@ -64,7 +65,6 @@
             android:layout_marginTop="10dp"
             android:ellipsize="end"
             android:maxLines="1"
-            android:text="@string/freddy_gmail_com"
             android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
             app:layout_constraintStart_toStartOf="@id/text_view_name"
             app:layout_constraintTop_toBottomOf="@id/text_view_name" />
@@ -94,15 +94,15 @@
 
         <ImageView
             android:id="@+id/edit_about"
-            android:layout_width="26dp"
-            android:layout_height="26dp"
-            android:layout_marginTop="10dp"
+            android:layout_width="29dp"
+            android:layout_height="29dp"
             android:contentDescription="@string/edit_about"
             android:src="@drawable/ic_baseline_edit"
+            app:layout_constraintTop_toTopOf="@id/about"
             app:layout_constraintBottom_toBottomOf="@id/about"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/about"
-            app:tint="@color/blue_700" />
+            app:tint="?colorPrimary" />
 
         <TextView
             android:id="@+id/text_view_about"
@@ -110,7 +110,6 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:maxLines="3"
-            android:text="@string/lorem"
             android:textAppearance="@style/TextAppearance.MaterialComponents.Body2"
             app:layout_constraintEnd_toEndOf="@id/about"
             app:layout_constraintStart_toStartOf="@id/about"
@@ -154,8 +153,6 @@
                 android:layout_gravity="center"
                 android:contentDescription="@string/number_of_posts_made"
                 android:src="@drawable/ic_baseline_article" />
-
-
         </androidx.cardview.widget.CardView>
 
         <TextView
