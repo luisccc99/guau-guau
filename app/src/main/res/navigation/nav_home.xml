@@ -65,6 +65,9 @@
         <action
             android:id="@+id/action_createPostFragment_to_postsFragment"
             app:destination="@id/postsFragment" />
+        <action
+            android:id="@+id/action_createPostFragment_to_photoSelecTaker"
+            app:destination="@id/photoSelecTaker" />
     </fragment>
     <fragment
         android:id="@+id/postDetailFragment"
@@ -114,5 +117,10 @@
             android:name="post_id"
             app:argType="string" />
     </fragment>
+    <activity
+        android:id="@+id/photoSelecTaker"
+        android:name="com.example.guau_guau.ui.posts.photo.PhotoSelecTaker"
+        android:label="fragment_take_photo"
+        tools:layout="@layout/fragment_take_photo" />
 
 </navigation>
