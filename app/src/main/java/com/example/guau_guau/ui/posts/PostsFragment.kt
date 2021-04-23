@@ -6,9 +6,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.doOnPreDraw
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.observe
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.navigation.fragment.findNavController
 import com.example.guau_guau.GuauguauPostAdapter
 import com.example.guau_guau.R
@@ -43,6 +45,9 @@ class PostsFragment : Fragment(), GuauguauPostAdapter.OnItemClickListener{
         binding.apply {
             recyclerViewPosts.setHasFixedSize(true)
             recyclerViewPosts.adapter = adapter
+            (view.parent as? ViewGroup)?.doOnPreDraw {
+                startPostponedEnterTransition()
+            }
         }
         viewModel.posts.observe(viewLifecycleOwner) {
             adapter.submitData(viewLifecycleOwner.lifecycle, it)
@@ -60,6 +65,7 @@ class PostsFragment : Fragment(), GuauguauPostAdapter.OnItemClickListener{
 
     override fun onItemClick(post: GuauguauPost) {
         val action = PostsFragmentDirections.actionPostsFragmentToPostDetailFragment(post)
+        val extras = FragmentNavigatorExtras()
         findNavController().navigate(action)
     }
 

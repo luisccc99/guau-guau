@@ -48,5 +48,9 @@
     <string name="post_options">Post options</string>
     <string name="image_post">Image post</string>
     <string name="comments">Comments</string>
+    <string name="location">Location</string>
+    <string name="Photo">photo</string>
+    <string name="my_location">Latitude: 123.123123
+        Longitude: 123.123123</string>
 
 </resources>

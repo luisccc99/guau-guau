@@ -1,12 +1,15 @@
 package com.example.guau_guau
 
+import android.graphics.drawable.Drawable
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.view.ViewCompat
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
+import com.bumptech.glide.request.RequestListener
 import com.example.guau_guau.data.GuauguauPost
 import com.example.guau_guau.databinding.PostItemBinding
 
@@ -43,20 +46,21 @@ class GuauguauPostAdapter(private val listener: OnItemClickListener) : PagingDat
         }
 
         fun bind(post: GuauguauPost) {
+            ViewCompat.setTransitionName(binding.imageViewPostPic, post.id)
             binding.apply {
                 Glide.with(itemView)
                     .load(post.photo.url)
                     .centerCrop()
                     .error(R.drawable.ic_baseline_person)
                     .transition(DrawableTransitionOptions.withCrossFade())
-                    .into(imageViewPostPic)
+                    .into(imageViewUserPic)
 
                 Glide.with(itemView)
                     .load(post.photo.url)
                     .centerCrop()
                     .error(R.drawable.ic_baseline_article)
                     .transition(DrawableTransitionOptions.withCrossFade())
-                    .into(imageViewUserPic)
+                    .into(imageViewPostPic)
 
                     textViewPostTitle.text = post.title
                     textViewPostDescription.text = post.body
