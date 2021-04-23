@@ -43,7 +43,7 @@ class PostsFragment : Fragment(), GuauguauPostAdapter.OnItemClickListener{
         _binding = FragmentPostsBinding.bind(view)
         val adapter = GuauguauPostAdapter(this)
         binding.apply {
-            recyclerViewPosts.setHasFixedSize(true)
+            recyclerViewPosts.setHasFixedSize(false)
             recyclerViewPosts.adapter = adapter
             (view.parent as? ViewGroup)?.doOnPreDraw {
                 startPostponedEnterTransition()
