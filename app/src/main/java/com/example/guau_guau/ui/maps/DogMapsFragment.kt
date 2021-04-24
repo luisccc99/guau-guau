@@ -15,7 +15,6 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.example.guau_guau.databinding.FragmentDogMapsBinding
 import com.example.guau_guau.R
-import com.google.android.gms.location.*
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.model.BitmapDescriptorFactory
@@ -152,6 +151,7 @@ class DogMapsFragment : Fragment(),
     }
 
     override fun onMyLocationButtonClick(): Boolean {
+        Toast.makeText(requireContext(), "click bitch", Toast.LENGTH_SHORT).show()
         return false
     }
 

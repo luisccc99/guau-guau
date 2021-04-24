@@ -80,6 +80,7 @@
             android:id="@+id/image_view_post_pic"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:transitionName="@string/image_post"
             android:contentDescription="@string/image_post"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

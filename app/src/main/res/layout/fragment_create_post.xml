@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:paddingTop="10dp"
     tools:context=".ui.auth.LoginFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -11,44 +12,27 @@
         android:layout_height="wrap_content"
         android:paddingHorizontal="15dp">
 
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:text="@string/new_post"
-            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4"
-            android:textColor="@color/black"
-            android:textStyle="bold"
+        <ImageView
+            android:id="@+id/ic_post"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="5dp"
+            android:importantForAccessibility="no"
+            android:src="@drawable/ic_baseline_article"
+            app:layout_constraintEnd_toStartOf="@id/txtTitle"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/title"
-            android:layout_width="90dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="120dp"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:text="@string/title"
-            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4"
-            android:textColor="@color/black"
-            android:textStyle="normal"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/textView"/>
+            app:layout_constraintTop_toTopOf="@id/txtTitle" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/txtTitle"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
             android:hint="@string/title"
+            app:layout_constraintBottom_toTopOf="@id/txtDescription"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/title">
+            app:layout_constraintStart_toEndOf="@id/ic_post"
+            app:layout_constraintTop_toTopOf="parent">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/edit_text_title"
@@ -60,87 +44,120 @@
 
         </com.google.android.material.textfield.TextInputLayout>
 
-        <TextView
-            android:id="@+id/Description"
-            android:layout_width="190dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="100dp"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:text="@string/description"
-            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4"
-            android:textColor="@color/black"
-            android:textStyle="normal"
-            app:layout_constraintStart_toStartOf="@id/txtTitle"
-            app:layout_constraintTop_toTopOf="@id/txtTitle" />
-
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/txtDescription"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:hint="@string/description"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/Description">
+            app:layout_constraintStart_toStartOf="@id/txtTitle"
+            app:layout_constraintTop_toBottomOf="@id/txtTitle">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/edit_text_description"
                 android:layout_width="match_parent"
-                android:layout_height="200dp"
+                android:layout_height="wrap_content"
                 android:autofillHints=""
                 android:ems="10"
-                android:inputType="text" />
-
+                android:gravity="top"
+                android:hint="@string/description"
+                android:inputType="textMultiLine"
+                android:lines="5"
+                android:maxLines="10"
+                android:scrollbars="vertical" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
+        <ImageView
+            android:id="@+id/ic_location"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="5dp"
+            android:importantForAccessibility="no"
+            android:src="@drawable/ic_my_location"
+            app:layout_constraintEnd_toEndOf="@id/ic_post"
+            app:layout_constraintEnd_toStartOf="@id/button_location"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/button_location" />
+
+
         <Button
             android:id="@+id/button_location"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/txtDescription"
-            android:text="location"/>
+            android:layout_marginTop="10dp"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:text="@string/location"
+            app:layout_constraintEnd_toEndOf="@id/txtDescription"
+            app:layout_constraintStart_toStartOf="@id/txtDescription"
+            app:layout_constraintTop_toBottomOf="@id/txtDescription" />
+
+        <TextView
+            android:id="@+id/text_view_location"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="5dp"
+            android:ellipsize="end"
+            android:gravity="center_vertical"
+            android:lines="2"
+            android:maxLines="3"
+            android:text="@string/my_location"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Overline"
+            android:textSize="13sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/button_location"
+            app:layout_constraintTop_toBottomOf="@id/button_location" />
+
 
         <Button
             android:id="@+id/button_cancel_post"
             style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
             android:layout_marginEnd="10dp"
             android:text="@string/cancel"
-            app:layout_constraintEnd_toStartOf="@id/guideline9"
-            app:layout_constraintTop_toBottomOf="@id/txtDescription" />
+            app:layout_constraintEnd_toStartOf="@id/button_submit"
+            app:layout_constraintStart_toStartOf="@id/button_location"
+            app:layout_constraintTop_toBottomOf="@id/go_to_photo" />
 
         <Button
             android:id="@+id/button_submit"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:enabled="true"
             android:text="@string/submit"
             app:layout_constraintBottom_toBottomOf="@id/button_cancel_post"
-            app:layout_constraintStart_toEndOf="@id/guideline9"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/button_cancel_post"
             app:layout_constraintTop_toTopOf="@id/button_cancel_post" />
 
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guideline9"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintGuide_percent="0.5" />
+        <ImageView
+            android:id="@+id/ic_image"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="5dp"
+            android:importantForAccessibility="no"
+            android:src="@drawable/ic_image"
+            app:layout_constraintEnd_toEndOf="@id/ic_location"
+            app:layout_constraintEnd_toStartOf="@+id/go_to_photo"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/go_to_photo" />
 
         <Button
             android:id="@+id/go_to_photo"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="photo"
-            app:layout_constraintBottom_toTopOf="@+id/txtDescription"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/Description"
-            app:layout_constraintTop_toBottomOf="@+id/txtTitle" />
+            android:layout_marginTop="10dp"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:text="@string/Photo"
+            app:layout_constraintEnd_toEndOf="@id/button_location"
+            app:layout_constraintStart_toStartOf="@id/txtDescription"
+            app:layout_constraintTop_toBottomOf="@id/text_view_location" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

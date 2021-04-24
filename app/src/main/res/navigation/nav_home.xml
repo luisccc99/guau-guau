@@ -13,11 +13,7 @@
         <action
             android:id="@+id/action_postsFragment_to_createPostFragment"
             app:destination="@id/createPostFragment"
-            app:enterAnim="@android:anim/slide_in_left"
-            app:exitAnim="@android:anim/fade_out"
-            app:launchSingleTop="false"
-            app:popEnterAnim="@android:anim/fade_in"
-            app:popExitAnim="@android:anim/slide_out_right" />
+            app:launchSingleTop="false" />
         <action
             android:id="@+id/action_postsFragment_to_postDetailFragment"
             app:destination="@id/postDetailFragment" />
@@ -64,7 +60,9 @@
         tools:layout="@layout/fragment_create_post">
         <action
             android:id="@+id/action_createPostFragment_to_postsFragment"
-            app:destination="@id/postsFragment" />
+            app:destination="@id/postsFragment"
+            app:popUpTo="@id/postsFragment"
+            app:popUpToInclusive="true" />
         <action
             android:id="@+id/action_createPostFragment_to_photoSelecTaker"
             app:destination="@id/photoSelecTaker" />
