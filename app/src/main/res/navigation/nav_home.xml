@@ -78,6 +78,9 @@
         <argument
             android:name="post"
             app:argType="com.example.guau_guau.data.GuauguauPost" />
+        <action
+            android:id="@+id/action_postDetailFragment_to_commentFragment"
+            app:destination="@id/commentFragment" />
     </fragment>
     <dialog
         android:id="@+id/photoBottomSheetFragment"
@@ -120,5 +123,10 @@
         android:name="com.example.guau_guau.ui.posts.photo.PhotoSelecTaker"
         android:label="fragment_take_photo"
         tools:layout="@layout/fragment_take_photo" />
+    <fragment
+        android:id="@+id/commentFragment"
+        android:name="com.example.guau_guau.ui.posts.CommentFragment"
+        android:label="fragment_comments_list"
+        tools:layout="@layout/fragment_comments_list" />
 
 </navigation>

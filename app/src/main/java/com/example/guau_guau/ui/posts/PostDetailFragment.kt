@@ -43,38 +43,20 @@ class PostDetailFragment : Fragment() {
     @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val binding = FragmentPostDetailBinding.bind(view)
+        val  binding = FragmentPostDetailBinding.bind(view)
+        binding.buttonComments.setOnClickListener {
+            view.findNavController().navigate(R.id.action_postDetailFragment_to_commentFragment)
+        }
         binding.apply {
             val post = args.post
-            if (!Strings.isEmptyOrWhitespace(post.photo.url)) {
-                Glide.with(this@PostDetailFragment)
-                    .load(post.photo.url)
-                    .error(R.drawable.ic_baseline_article)
-                    .into(imageViewPostPic)
-            } else {
-                imageViewPostPic.visibility = View.GONE
-            }
-
+            Glide.with(this@PostDetailFragment)
+                 .load(post.photo.url)
+                 .error(R.drawable.ic_baseline_article)
+                 .into(imageViewPostPic)
             textViewUsername.text = post.user_id
             textViewPostTitle.text = post.title
             textViewPostDescription.text = post.body
 
         }
-    }
-
-    override fun onResume() {
-        super.onResume()
-        activity?.invalidateOptionsMenu()
-    }
-
-    override fun onPrepareOptionsMenu(menu: Menu) {
-        super.onPrepareOptionsMenu(menu)
-        menu.clear()
-        activity?.menuInflater?.inflate(R.menu.solve_post, menu)
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        Toast.makeText(requireContext(), "click at ${item.title}", Toast.LENGTH_SHORT).show()
-        return super.onOptionsItemSelected(item)
     }
 }
