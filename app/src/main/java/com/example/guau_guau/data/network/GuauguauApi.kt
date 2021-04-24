@@ -58,7 +58,7 @@ interface GuauguauApi {
     ): ComentaryResponse
 
 
-    @GET("comments")
+    @GET("comment")
     suspend fun searchComments(
         @Query("post_id") post_id: String, //This is gonna be the query
         @Query("page") page: Int?,
