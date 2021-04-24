@@ -30,6 +30,9 @@ class PostDetailFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val  binding = FragmentPostDetailBinding.bind(view)
+        binding.buttonComments.setOnClickListener {
+            view.findNavController().navigate(R.id.action_postDetailFragment_to_commentFragment)
+        }
         binding.apply {
            val post = args.post
             Glide.with(this@PostDetailFragment)
@@ -42,4 +45,6 @@ class PostDetailFragment : Fragment() {
 
         }
     }
+
+
 }

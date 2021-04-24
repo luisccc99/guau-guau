@@ -1,11 +1,9 @@
 package com.example.guau_guau.data.network
 
 
-import com.example.guau_guau.data.responses.ComentaryResponse
+import com.example.guau_guau.data.GuauguauComment
 import com.example.guau_guau.data.GuauguauPost
-import com.example.guau_guau.data.responses.LoginResponse
-import com.example.guau_guau.data.responses.PostResponse
-import com.example.guau_guau.data.responses.UserResponse
+import com.example.guau_guau.data.responses.*
 import retrofit2.http.*
 
 interface GuauguauApi {
@@ -58,6 +56,14 @@ interface GuauguauApi {
         @Field("user_id") id: String,
         @Field("body") body: String
     ): ComentaryResponse
+
+
+    @GET("comments")
+    suspend fun searchComments(
+        @Query("post_id") post_id: String, //This is gonna be the query
+        @Query("page") page: Int?,
+        @Header("Authorization") token: String
+    ): List<GuauguauComment>
 
     @FormUrlEncoded
     @PATCH("post")
