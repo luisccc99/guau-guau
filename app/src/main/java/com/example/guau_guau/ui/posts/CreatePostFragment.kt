@@ -89,29 +89,30 @@ class CreatePostFragment :
                 }
                 .setNegativeButton("Cancel", null)
                 .show()
-        }
-        if (ActivityCompat.checkSelfPermission(
-                requireContext(),
-                Manifest.permission.ACCESS_FINE_LOCATION
-            ) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(
-                requireContext(),
-                Manifest.permission.ACCESS_COARSE_LOCATION
-            ) != PackageManager.PERMISSION_GRANTED
-        ) {
-            if (shouldShowRequestPermissionRationale(Manifest.permission.ACCESS_FINE_LOCATION)) {
-                // TODO: create AlertDialog
-            } else {
-                requestPermissions(
-                    arrayOf(Manifest.permission.ACCESS_FINE_LOCATION),
-                    REQUEST_LOCATION_CODE
-                )
-            }
         } else {
-            fusedLocationClient.lastLocation.addOnSuccessListener {
-                binding.textViewLocation.text =
-                    "Longitude: ${it.longitude}\nLatitude: ${it.latitude}"
-            }
+            if (ActivityCompat.checkSelfPermission(
+                    requireContext(),
+                    Manifest.permission.ACCESS_FINE_LOCATION
+                ) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(
+                    requireContext(),
+                    Manifest.permission.ACCESS_COARSE_LOCATION
+                ) != PackageManager.PERMISSION_GRANTED
+            ) {
+                if (shouldShowRequestPermissionRationale(Manifest.permission.ACCESS_FINE_LOCATION)) {
+                    // TODO: create AlertDialog
+                } else {
+                    requestPermissions(
+                        arrayOf(Manifest.permission.ACCESS_FINE_LOCATION),
+                        REQUEST_LOCATION_CODE
+                    )
+                }
+            } else {
+                fusedLocationClient.lastLocation.addOnSuccessListener {
+                    binding.textViewLocation.text =
+                        "Longitude: ${it.longitude}\nLatitude: ${it.latitude}"
+                }
 
+            }
         }
     }
 
