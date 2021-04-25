@@ -1,8 +1,7 @@
 package com.example.guau_guau
 
-import android.graphics.drawable.Drawable
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.ViewCompat
 import androidx.paging.PagingDataAdapter
@@ -10,10 +9,11 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
-import com.bumptech.glide.request.RequestListener
 import com.example.guau_guau.data.GuauguauPost
 import com.example.guau_guau.databinding.PostItemBinding
+import com.example.guau_guau.ui.Funs
 import com.google.android.gms.common.util.Strings
+import java.util.*
 
 class GuauguauPostAdapter(private val listener: OnItemClickListener) :
     PagingDataAdapter<GuauguauPost, GuauguauPostAdapter.PostViewHolder>(
@@ -50,6 +50,7 @@ class GuauguauPostAdapter(private val listener: OnItemClickListener) :
             }
         }
 
+        @SuppressLint("SetTextI18n")
         fun bind(post: GuauguauPost) {
             ViewCompat.setTransitionName(binding.imageViewPostPic, post.id)
             binding.apply {
@@ -73,7 +74,9 @@ class GuauguauPostAdapter(private val listener: OnItemClickListener) :
 
                 textViewPostTitle.text = post.title
                 textViewPostDescription.text = post.body
-                textViewUsername.text = post.user_id
+                textViewUsername.text = "${post.name.capitalize(Locale.ROOT)} ${post.lastname.capitalize(
+                    Locale.ROOT
+                )}  • ${Funs.getStringDateFormatFrom(post.created_at)}"
 
             }
         }

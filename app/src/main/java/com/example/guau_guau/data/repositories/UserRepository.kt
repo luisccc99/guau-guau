@@ -1,8 +1,11 @@
 package com.example.guau_guau.data.repositories
 
 import com.example.guau_guau.data.network.GuauguauApi
+import javax.inject.Inject
+import javax.inject.Singleton
 
-class UserRepository(
+@Singleton
+class UserRepository @Inject constructor(
     private val api: GuauguauApi
 ) : BaseRepository() {
 

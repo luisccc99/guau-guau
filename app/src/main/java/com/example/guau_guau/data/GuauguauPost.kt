@@ -2,6 +2,7 @@ package com.example.guau_guau.data
 
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
+import java.util.*
 
 @Parcelize
 data class GuauguauPost(
@@ -12,6 +13,11 @@ data class GuauguauPost(
     val resolved: Boolean,
     val resolved_reason: String,
     val user_id: String,
+    val updated_at: Date,
+    val created_at: Date,
+    val email: String,
+    val name: String,
+    val lastname: String
     ) : Parcelable {
     @Parcelize
     data class GuauguauPhotoUrl(
