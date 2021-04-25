@@ -79,9 +79,9 @@ class CreatePostFragment :
     private fun getCurrentLocation() {
         val gpsEnabled = locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)
         val networkEnabled = locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER)
-        if (!gpsEnabled || !networkEnabled) {
+        if (!gpsEnabled && !networkEnabled) {
             AlertDialog.Builder(requireContext())
-                .setMessage("Pleas, enable your location")
+                .setMessage("Please, enable your location.")
                 .setPositiveButton(
                     "Open location settings"
                 ) { _, _ ->
