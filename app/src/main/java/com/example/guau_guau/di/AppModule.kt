@@ -1,6 +1,7 @@
 package com.example.guau_guau.di
 
 import com.example.guau_guau.data.network.GuauguauApi
+import com.google.gson.GsonBuilder
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -28,7 +29,7 @@ object AppModule {
                         client.addInterceptor(logging)
                     }.build()
             )
-            .addConverterFactory(GsonConverterFactory.create())
+            .addConverterFactory(GsonConverterFactory.create(GsonBuilder().setDateFormat("yyyy-MM-dd'T'HH:mm:ss").create()))
             .build()
 
     @Provides

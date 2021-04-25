@@ -151,7 +151,6 @@ class DogMapsFragment : Fragment(),
     }
 
     override fun onMyLocationButtonClick(): Boolean {
-        Toast.makeText(requireContext(), "click bitch", Toast.LENGTH_SHORT).show()
         return false
     }
 
@@ -176,7 +175,7 @@ class DogMapsFragment : Fragment(),
         locationNames.add("Mundo Patitas")
         locationNames.add("Amigos de los animales")
         locationNames.add("Centro Antirrábico")
-        locationNames.add("Comapñía Canina")
+        locationNames.add("Compañía Canina")
 
         for (i in 0 until size)
             googleMap.addMarker(MarkerOptions().position(locations[i]).title(locationNames[i]))

@@ -10,6 +10,7 @@ import com.example.guau_guau.ui.auth.LoginFragment
 import com.example.guau_guau.ui.base.BaseFragment
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textfield.TextInputEditText
+import java.util.*
 
 fun <A : Activity> Activity.startNewActivity(activity: Class<A>) {
     Intent(this, activity).also {
@@ -66,5 +67,16 @@ fun Fragment.handleApiError(
             val error = failure.errorBody?.string().toString()
             requireView().snackbar(error)
         }
+    }
+}
+
+object Funs {
+    fun getStringDateFormatFrom(date : Date): String {
+        val cal = Calendar.getInstance(TimeZone.getDefault())
+        cal.time = date
+        val month = cal.getDisplayName(Calendar.MONTH, Calendar.LONG, Locale.getDefault())
+        val day = cal.get(Calendar.DAY_OF_MONTH)
+        val year = cal.get(Calendar.YEAR)
+        return "$day $month $year"
     }
 }

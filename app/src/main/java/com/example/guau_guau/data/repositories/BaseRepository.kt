@@ -20,7 +20,6 @@ abstract class BaseRepository {
                             isNetworkError = true,
                             errorCode = throwable.code(),
                             errorBody = throwable.response()?.errorBody()
-
                         )
                     }
                     else -> {
