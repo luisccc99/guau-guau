@@ -77,6 +77,6 @@ object Funs {
         val month = cal.getDisplayName(Calendar.MONTH, Calendar.LONG, Locale.getDefault())
         val day = cal.get(Calendar.DAY_OF_MONTH)
         val year = cal.get(Calendar.YEAR)
-        return "$day $month $year"
+        return "$day/${month.capitalize(Locale.ROOT)}/$year"
     }
 }
