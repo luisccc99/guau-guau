@@ -35,13 +35,13 @@
     </style>
 
     <!-- Toolbar night style -->
-    <style name="Widget.GuauGuau.Toolbar.PrimarySurface" parent="Widget.MaterialComponents.Toolbar.PrimarySurface">
+    <style name="Widget.GuauGuau.Toolbar" parent="Widget.MaterialComponents.Toolbar.Primary">
         <item name="materialThemeOverlay">@style/ThemeOverlay.GuauGuau.Toolbar.PrimarySurface</item>
     </style>
 
     <style name="ThemeOverlay.GuauGuau.Toolbar.PrimarySurface" parent="">
-        <item name="colorPrimary">@color/blue_200</item>
-        <item name="colorPrimaryVariant">@color/blue_200</item>
+        <item name="colorPrimary">@color/surface</item>
+        <item name="colorPrimaryVariant">@color/black</item>
         <item name="colorOnPrimary">@color/white</item>
     </style>
 
