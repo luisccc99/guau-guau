@@ -10,4 +10,8 @@ class PostRepository (
         api.createPost(id, title, body)
     }
 
+    suspend fun deletePost() = safeApiCall {
+
+    }
+
 }

@@ -1,10 +1,15 @@
 package com.example.guau_guau.ui.maps
 
 import android.Manifest
+import android.app.AlertDialog
+import android.content.Context
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.content.res.Resources
 import android.location.Location
+import android.location.LocationManager
 import android.os.Bundle
+import android.provider.Settings
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -32,6 +37,7 @@ class DogMapsFragment : Fragment(),
     private lateinit var googleMap: GoogleMap
     private var _binding: FragmentDogMapsBinding? = null
     private val binding get() = _binding!!
+    private lateinit var locationManager: LocationManager
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -39,6 +45,8 @@ class DogMapsFragment : Fragment(),
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentDogMapsBinding.inflate(inflater, container, false)
+        locationManager =
+            requireContext().getSystemService(Context.LOCATION_SERVICE) as LocationManager
         return binding.root
     }
 
@@ -151,6 +159,19 @@ class DogMapsFragment : Fragment(),
     }
 
     override fun onMyLocationButtonClick(): Boolean {
+        val gpsEnabled = locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)
+        val networkEnabled = locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER)
+        if (!gpsEnabled && !networkEnabled) {
+            AlertDialog.Builder(requireContext())
+                .setMessage(getString(R.string.enable_location_message))
+                .setPositiveButton(
+                    getString(R.string.open_location_settings)
+                ) { _, _ ->
+                    requireContext().startActivity(Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS))
+                }
+                .setNegativeButton(getString(R.string.cancel), null)
+                .show()
+        }
         return false
     }
 

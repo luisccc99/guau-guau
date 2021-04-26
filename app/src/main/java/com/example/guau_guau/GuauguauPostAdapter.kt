@@ -54,9 +54,9 @@ class GuauguauPostAdapter(private val listener: OnItemClickListener) :
         fun bind(post: GuauguauPost) {
             ViewCompat.setTransitionName(binding.imageViewPostPic, post.id)
             binding.apply {
-                if (!Strings.isEmptyOrWhitespace(post.photo.url)) {
+                if (!Strings.isEmptyOrWhitespace(post.user_photo)) {
                     Glide.with(itemView)
-                        .load(post.photo.url)
+                        .load(post.user_photo)
                         .centerCrop()
                         .error(R.drawable.ic_baseline_person)
                         .transition(DrawableTransitionOptions.withCrossFade())
@@ -66,7 +66,7 @@ class GuauguauPostAdapter(private val listener: OnItemClickListener) :
                 }
 
                 Glide.with(itemView)
-                    .load(post.photo.url)
+                    .load(post.publi_photo.url)
                     .centerCrop()
                     .error(R.drawable.ic_baseline_article)
                     .transition(DrawableTransitionOptions.withCrossFade())

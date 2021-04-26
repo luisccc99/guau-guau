@@ -51,7 +51,7 @@ interface GuauguauApi {
     ): PostResponse
 
     @FormUrlEncoded
-    @POST(value = "posts_Comentary")
+    @POST("comment")
     suspend fun ComentarySubmit(
         @Field("user_id") id: String,
         @Field("body") body: String
@@ -70,6 +70,11 @@ interface GuauguauApi {
     suspend fun patchPost(
         @Field("resolved") resolved: Boolean,
         @Field("resolved_reason") resolvedReason: String
+    ): PostResponse
+
+    @DELETE("post")
+    suspend fun deletePost(
+        @Query("post_id") post_id: String
     ): PostResponse
 
     @GET("posts")

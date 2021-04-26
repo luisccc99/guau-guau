@@ -81,13 +81,13 @@ class CreatePostFragment :
         val networkEnabled = locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER)
         if (!gpsEnabled && !networkEnabled) {
             AlertDialog.Builder(requireContext())
-                .setMessage("Please, enable your location.")
+                .setMessage(getString(R.string.enable_location_message))
                 .setPositiveButton(
-                    "Open location settings"
+                    getString(R.string.open_location_settings)
                 ) { _, _ ->
                     requireContext().startActivity(Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS))
                 }
-                .setNegativeButton("Cancel", null)
+                .setNegativeButton(getString(R.string.cancel), null)
                 .show()
         } else {
             if (ActivityCompat.checkSelfPermission(

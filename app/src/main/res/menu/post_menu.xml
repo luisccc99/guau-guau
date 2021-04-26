@@ -3,6 +3,8 @@
 
     <item
         android:id="@+id/solve_post"
-        android:title="Solve Post" />
-
+        android:title="@string/solve_post" />
+    <item
+        android:id="@+id/delete_post"
+        android:title="@string/delete_post" />
 </menu>

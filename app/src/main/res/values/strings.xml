@@ -52,5 +52,9 @@
     <string name="Photo">photo</string>
     <string name="my_location">Latitude: 123.123123
         Longitude: 123.123123</string>
+    <string name="enable_location_message">Please, enable your location.</string>
+    <string name="open_location_settings">Open location settings</string>
+    <string name="solve_post">Solve post</string>
+    <string name="delete_post">Delete Post</string>
 
 </resources>
