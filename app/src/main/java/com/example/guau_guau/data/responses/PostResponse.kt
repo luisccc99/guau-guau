@@ -9,5 +9,6 @@ data class PostResponse(
     val resolved_reason: String,
     val title: String,
     val updated_at: String,
-    val user_id: String
+    val user_id: String,
+    val message: String?
 )

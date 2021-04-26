@@ -16,6 +16,7 @@ import com.example.guau_guau.R
 import com.example.guau_guau.data.UserPreferences
 import com.example.guau_guau.databinding.FragmentPostDetailBinding
 import com.example.guau_guau.ui.Funs
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.runBlocking
 
@@ -24,6 +25,8 @@ class PostDetailFragment : Fragment() {
     private val args by navArgs<PostDetailFragmentArgs>()
     private var _binding: FragmentPostDetailBinding? = null
     private val binding get() = _binding!!
+    private val solveReasons = arrayOf("I haven't seen the dog in days", "I adopted the dog", "Other")
+    private var checkedItem = 0
 
     @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -60,15 +63,34 @@ class PostDetailFragment : Fragment() {
             popupMenu.setOnMenuItemClickListener { menuItem ->
                 when (menuItem.itemId) {
                     R.id.solve_post -> {
-                        Toast.makeText(
-                            requireContext(),
-                            "Solve Post",
-                            Toast.LENGTH_SHORT
-                        ).show()
+                        MaterialAlertDialogBuilder(requireContext())
+                            .setTitle(getString(R.string.solve_post))
+                            .setNeutralButton(getString(R.string.cancel), null)
+                            .setPositiveButton(getString(R.string.ok)) { _, _ ->
+                                //TODO: make call to solve post (patch)
+                                Toast.makeText(requireContext(), "Solving post because ${solveReasons[checkedItem]}", Toast.LENGTH_SHORT)
+                                    .show()
+                            }
+                            .setSingleChoiceItems(solveReasons, checkedItem){ _, which ->
+                                checkedItem = which
+                            }
+                            .show()
                         true
                     }
                     R.id.delete_post -> {
-                        Toast.makeText(requireContext(), "Delete Post", Toast.LENGTH_SHORT).show()
+                        MaterialAlertDialogBuilder(requireContext())
+                            .setTitle(getString(R.string.delete_post))
+                            .setMessage(getString(R.string.delete_confirmation))
+                            .setNegativeButton(getString(R.string.cancel), null)
+                            .setPositiveButton(getString(R.string.accept)) { _, _ ->
+                                //TODO: make call to delete post
+                                Toast.makeText(
+                                    requireContext(),
+                                    "deleting post...",
+                                    Toast.LENGTH_SHORT
+                                ).show()
+                            }
+                            .show()
                         true
                     }
                     else -> {
@@ -81,14 +103,14 @@ class PostDetailFragment : Fragment() {
         binding.apply {
             val post = args.post
             Glide.with(this@PostDetailFragment)
-                .load(post.user_photo)
-                .error(R.drawable.ic_baseline_article)
-                .into(imageViewPostPic)
+                .load("https://res-4.cloudinary.com/wofwof/${post.user_photo}")
+                .error(R.drawable.ic_baseline_person)
+                .into(imageViewProfilePic)
 
             Glide.with(this@PostDetailFragment)
                 .load(post.publi_photo.url)
-                .error(R.drawable.ic_baseline_person)
-                .into(imageViewProfilePic)
+                .error(R.drawable.ic_baseline_article)
+                .into(imageViewPostPic)
 
             textViewUsername.text = "${post.name} ${post.lastname} • ${
                 Funs.getStringDateFormatFrom(

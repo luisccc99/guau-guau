@@ -68,13 +68,16 @@ interface GuauguauApi {
     @FormUrlEncoded
     @PATCH("post")
     suspend fun patchPost(
+        @Field("post_id") postId: String,
+        @Field("user_id") userId: String,
         @Field("resolved") resolved: Boolean,
         @Field("resolved_reason") resolvedReason: String
     ): PostResponse
 
     @DELETE("post")
     suspend fun deletePost(
-        @Query("post_id") post_id: String
+        @Query("post_id") postId: String,
+        @Query("user_id") userId: String
     ): PostResponse
 
     @GET("posts")
