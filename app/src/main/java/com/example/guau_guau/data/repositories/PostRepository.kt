@@ -23,4 +23,16 @@ class PostRepository(
         api.patchPost(postId, userId, resolved, resolvedReason)
     }
 
+    suspend fun getPost(
+        postId: String
+    ) = safeApiCall {
+        api.getPost(postId)
+    }
+
+    suspend fun getUserById(
+        userId: String
+    ) = safeApiCall {
+        api.getUser(userId)
+    }
+
 }

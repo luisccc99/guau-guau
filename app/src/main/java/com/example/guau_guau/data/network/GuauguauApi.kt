@@ -86,4 +86,9 @@ interface GuauguauApi {
         @Query("page") per_page: Int?,
         @Header("Authorization") token: String
     ):List<GuauguauPost>
+
+    @GET("post")
+    suspend fun getPost (
+        @Query("id") postId: String
+    ): PostResponse
 }
