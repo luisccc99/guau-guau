@@ -10,6 +10,7 @@ import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.example.guau_guau.data.GuauguauComment
 import com.example.guau_guau.data.GuauguauPost
 import com.example.guau_guau.databinding.CommentItemBinding
+import com.example.guau_guau.ui.Funs
 import org.w3c.dom.Comment
 
 class GuauguauCommentAdapter : PagingDataAdapter<GuauguauComment, GuauguauCommentAdapter.CommentViewHolder>(
@@ -38,9 +39,17 @@ class GuauguauCommentAdapter : PagingDataAdapter<GuauguauComment, GuauguauCommen
 
                 binding.apply {
                     txtBody.text = comment.body
-                    txtDate.text = comment.created_at
-                   // txtUserName.text = comment.id
-                  //  txtUserLastname.text = comment.id
+                    txtDate.text = "${Funs.getStringDateFormatFrom(comment.created_at)}"
+                    txtUserName.text = comment.name
+                    txtUserLastname.text = comment.lastname
+
+                    Glide.with(itemView)
+                        .load(comment.user_photo)
+                        .centerCrop()
+                        .error(R.drawable.ic_baseline_person)
+                        .transition(DrawableTransitionOptions.withCrossFade())
+                        .into(imageViewProfilePic)
+
                 }
             }
         }
