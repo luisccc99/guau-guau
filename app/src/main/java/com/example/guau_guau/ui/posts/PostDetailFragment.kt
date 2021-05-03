@@ -22,6 +22,7 @@ import com.example.guau_guau.databinding.FragmentPostDetailBinding
 import com.example.guau_guau.ui.Funs
 import com.example.guau_guau.ui.base.BaseFragment
 import com.example.guau_guau.ui.handleApiError
+import com.google.android.gms.common.util.Strings
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.runBlocking
@@ -48,7 +49,9 @@ class PostDetailFragment :
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.buttonComments.setOnClickListener {
-            view.findNavController().navigate(R.id.action_postDetailFragment_to_commentFragment)
+            val action = PostDetailFragmentDirections
+                .actionPostDetailFragmentToCommentFragment(args.post.id)
+            view.findNavController().navigate(action)
         }
         binding.imageViewSolve.visibility = View.GONE
 
@@ -153,10 +156,14 @@ class PostDetailFragment :
                 .error(R.drawable.ic_baseline_person)
                 .into(imageViewProfilePic)
 
-            Glide.with(this@PostDetailFragment)
-                .load(post.publi_photo.url)
-                .error(R.drawable.ic_baseline_article)
-                .into(imageViewPostPic)
+            if (Strings.isEmptyOrWhitespace(post.publi_photo.url)) {
+                imageViewPostPic.visibility = View.GONE
+            } else {
+                Glide.with(this@PostDetailFragment)
+                    .load(post.publi_photo.url)
+                    .error(R.drawable.ic_baseline_article)
+                    .into(imageViewPostPic)
+            }
 
             textViewUsername.text = "${post.name} ${post.lastname} • ${
                 Funs.getStringDateFormatFrom(

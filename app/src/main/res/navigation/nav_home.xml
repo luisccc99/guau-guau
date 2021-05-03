@@ -126,7 +126,11 @@
     <fragment
         android:id="@+id/commentFragment"
         android:name="com.example.guau_guau.ui.posts.CommentFragment"
-        android:label="fragment_comments_list"
-        tools:layout="@layout/fragment_comments_list" />
+        android:label="@string/comments"
+        tools:layout="@layout/fragment_comments_list">
+        <argument
+            android:name="postId"
+            app:argType="string" />
+    </fragment>
 
 </navigation>

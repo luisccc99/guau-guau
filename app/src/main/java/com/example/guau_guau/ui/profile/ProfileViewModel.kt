@@ -7,10 +7,11 @@ import com.example.guau_guau.data.network.Resource
 import com.example.guau_guau.data.repositories.UserRepository
 import com.example.guau_guau.data.responses.UserResponse
 import com.example.guau_guau.ui.base.BaseViewModel
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-
-class ProfileViewModel(
+class ProfileViewModel (
     private val repository: UserRepository
 ) : BaseViewModel(repository) {
 

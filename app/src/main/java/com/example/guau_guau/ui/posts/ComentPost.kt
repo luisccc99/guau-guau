@@ -8,9 +8,9 @@ import com.example.guau_guau.R
 import com.example.guau_guau.data.repositories.ComentaryRepository
 import com.example.guau_guau.databinding.FragmentComentPostBinding
 import com.example.guau_guau.ui.base.BaseFragment
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.runBlocking
-
 
 class ComentPost : BaseFragment<ComentaryViewModel, FragmentComentPostBinding, ComentaryRepository>() {
 

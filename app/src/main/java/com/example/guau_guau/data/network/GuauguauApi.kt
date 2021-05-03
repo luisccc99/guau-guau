@@ -51,11 +51,13 @@ interface GuauguauApi {
     ): PostResponse
 
     @FormUrlEncoded
-    @POST("comment")
-    suspend fun ComentarySubmit(
-        @Field("user_id") id: String,
-        @Field("body") body: String
-    ): ComentaryResponse
+    @POST("comments")
+    suspend fun createComment(
+        @Field("user_id") userId: String,
+        @Field("post_id") postId: String,
+        @Field("body") body: String,
+        @Header("Authorization") token: String
+    ): CommentResponse
 
     @GET("comment")
     suspend fun searchComments(
