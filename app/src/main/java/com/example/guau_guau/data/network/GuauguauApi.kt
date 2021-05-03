@@ -57,7 +57,6 @@ interface GuauguauApi {
         @Field("body") body: String
     ): ComentaryResponse
 
-
     @GET("comment")
     suspend fun searchComments(
         @Query("post_id") post_id: String, //This is gonna be the query
@@ -68,16 +67,14 @@ interface GuauguauApi {
     @FormUrlEncoded
     @PATCH("post")
     suspend fun patchPost(
-        @Field("post_id") postId: String,
-        @Field("user_id") userId: String,
+        @Field("id") postId: String,
         @Field("resolved") resolved: Boolean,
         @Field("resolved_reason") resolvedReason: String
     ): PostResponse
 
     @DELETE("post")
     suspend fun deletePost(
-        @Query("post_id") postId: String,
-        @Query("user_id") userId: String
+        @Query("id") postId: String
     ): PostResponse
 
     @GET("posts")

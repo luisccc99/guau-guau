@@ -53,19 +53,17 @@ class PostDetailFragment :
         binding.imageViewSolve.visibility = View.GONE
 
         val userId = runBlocking { UserPreferences(requireContext()).userId.first() }
-
         showPostInfo(args.post)
         viewModel.getPost(args.post.id)
         viewModel.post.observe(viewLifecycleOwner, {
 
             when (it) {
                 is Resource.Success -> {
-                    Log.wtf("SUCCESS", "onViewCreated: ${it.value.user_id}")
                     // if user deleted the post, navigate to home
                     if (it.value.message != null) {
                         Toast.makeText(
                             requireContext(),
-                            "Post has been deleted",
+                            "Post deleted",
                             Toast.LENGTH_SHORT
                         ).show()
                         navigateToHome(view)
@@ -75,13 +73,14 @@ class PostDetailFragment :
                     if (it.value.resolved) {
                         Toast.makeText(
                             requireContext(),
-                            "Post solved sucessfully",
+                            "Post solved successfully",
                             Toast.LENGTH_SHORT
                         ).show()
                         navigateToHome(view)
                     }
-                    // if current user created the post, display pop menu
+                    // if current user created the post, display pop menu and setup options
                     if (userId != null && userId == it.value.user_id) {
+                        binding.imageViewSolve.visibility = View.VISIBLE
                         setupSolveAndDeleteOptions()
                     }
                 }
@@ -115,7 +114,6 @@ class PostDetailFragment :
                                 // call to solve post with a solve reason
                                 viewModel.solvePost(
                                     args.post.id,
-                                    postCreatorId,
                                     true,
                                     solveReasons[checkedItem]
                                 )
@@ -133,7 +131,7 @@ class PostDetailFragment :
                             .setNegativeButton(getString(R.string.cancel), null)
                             .setPositiveButton(getString(R.string.accept)) { _, _ ->
                                 // call to delete a post
-                                viewModel.deletePost(args.post.id, postCreatorId)
+                                viewModel.deletePost(args.post.id)
                             }
                             .show()
                         true

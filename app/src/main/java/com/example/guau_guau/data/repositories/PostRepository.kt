@@ -10,17 +10,16 @@ class PostRepository(
         api.createPost(id, title, body)
     }
 
-    suspend fun deletePost(postId: String, userId: String) = safeApiCall {
-        api.deletePost(postId, userId)
+    suspend fun deletePost(postId: String) = safeApiCall {
+        api.deletePost(postId)
     }
 
     suspend fun patchPost(
         postId: String,
-        userId: String,
         resolved: Boolean,
         resolvedReason: String
     ) = safeApiCall {
-        api.patchPost(postId, userId, resolved, resolvedReason)
+        api.patchPost(postId, resolved, resolvedReason)
     }
 
     suspend fun getPost(

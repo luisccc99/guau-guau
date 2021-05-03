@@ -30,15 +30,15 @@ class PostViewModel(
         _post.value = repository.createPost(id, title, body)
     }
 
-    fun deletePost(postId: String, userId: String) = viewModelScope.launch {
+    fun deletePost(postId: String) = viewModelScope.launch {
         _post.value = Resource.Loading
-        _post.value = repository.deletePost(postId, userId)
+        _post.value = repository.deletePost(postId)
     }
 
-    fun solvePost(postId: String, userId: String, resolved: Boolean, resolvedReason: String) =
+    fun solvePost(postId: String, resolved: Boolean, resolvedReason: String) =
         viewModelScope.launch {
             _post.value = Resource.Loading
-            _post.value = repository.patchPost(postId, userId, resolved, resolvedReason)
+            _post.value = repository.patchPost(postId, resolved, resolvedReason)
         }
 
     fun getPost(postId: String) =
