@@ -37,7 +37,7 @@ class AboutBottomSheetFragment : BottomSheetDialogFragment() {
             dismiss()
         }
         binding.buttonEditAbout.setOnClickListener {
-            val about = binding.editTextAbout.text.toString()
+            val about = binding.editTextAbout.text.toString().trim()
             val action = AboutBottomSheetFragmentDirections
                 .actionAboutBottomSheetFragmentToProfileFragment(about = about)
             findNavController().navigate(action)

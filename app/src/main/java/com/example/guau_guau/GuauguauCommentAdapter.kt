@@ -1,5 +1,6 @@
 package com.example.guau_guau
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
@@ -35,16 +36,15 @@ class GuauguauCommentAdapter : PagingDataAdapter<GuauguauComment, GuauguauCommen
     class CommentViewHolder(private val binding: CommentItemBinding) :
         RecyclerView.ViewHolder(binding.root){
 
+            @SuppressLint("SetTextI18n")
             fun bind(comment: GuauguauComment){
 
                 binding.apply {
                     txtBody.text = comment.body
-                    txtDate.text = "${Funs.getStringDateFormatFrom(comment.created_at)}"
-                    txtUserName.text = comment.name
-                    txtUserLastname.text = comment.lastname
-
+                    txtDate.text = Funs.getStringDateFormatFrom(comment.created_at)
+                    txtUserName.text = "${comment.name} ${comment.lastname}"
                     Glide.with(itemView)
-                        .load(comment.user_photo)
+                        .load("https://res-4.cloudinary.com/wofwof/${comment.user_photo}")
                         .centerCrop()
                         .error(R.drawable.ic_baseline_person)
                         .transition(DrawableTransitionOptions.withCrossFade())

@@ -1,6 +1,6 @@
 package com.example.guau_guau.data.responses
 
-data class ComentaryResponse(
+data class CommentResponse(
     val body: String,
     val created_at: String,
     val id: String,

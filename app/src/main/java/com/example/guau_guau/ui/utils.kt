@@ -5,6 +5,7 @@ import android.content.Intent
 import android.util.Log
 import android.view.View
 import androidx.fragment.app.Fragment
+import com.example.guau_guau.R
 import com.example.guau_guau.data.network.Resource
 import com.example.guau_guau.ui.auth.LoginFragment
 import com.example.guau_guau.ui.base.BaseFragment
@@ -31,7 +32,7 @@ fun View.enable(enabled: Boolean) {
 fun View.snackbar(message: String, action: (() -> Unit)? = null) {
     val snackbar = Snackbar.make(this, message, Snackbar.LENGTH_LONG)
     action?.let {
-        snackbar.setAction("Retry") {
+        snackbar.setAction(context.getString(R.string.retry)) {
             it()
         }
     }
@@ -43,23 +44,16 @@ fun Fragment.handleApiError(
     retry: (() -> Unit)? = null
 ) {
     when {
-        failure.errorCode == 409 -> {
+        failure.errorCode == 409 || failure.errorCode == 401 -> {
             if (this is LoginFragment) {
-                requireView().snackbar("Wrong credentials")
-            } else {
-                (this as BaseFragment<*, *, *>).logout()
-            }
-        }
-        failure.errorCode == 401 -> {
-            if (this is LoginFragment) {
-                requireView().snackbar("Incorrect password")
+                requireView().snackbar(getString(R.string.incorrect_email_password))
             } else {
                 (this as BaseFragment<*, *, *>).logout()
             }
         }
         failure.isNetworkError -> {
             requireView().snackbar(
-                "Please check your internet connection",
+                getString(R.string.no_internet_connection),
                 retry
             )
         }
