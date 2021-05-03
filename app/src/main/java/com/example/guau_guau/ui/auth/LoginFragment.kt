@@ -27,18 +27,16 @@ class LoginFragment : BaseFragment<AuthViewModel, FragmentLoginBinding, AuthRepo
             binding.progressbar.visible(false)
             when (it) {
                 is Resource.Success -> {
+                    binding.buttonLogin.enable(true)
                     viewModel.saveAuthToken(it.value.token)
                     viewModel.saveUserId(it.value.user_id)
                     requireActivity().startNewActivity(HomeActivity::class.java)
                 }
                 is Resource.Failure -> handleApiError(it) {
-                    Log.wtf(
-                        TAG,
-                        "onViewCreated: errorCode=${it.errorCode}, errorBody=${it.errorBody}"
-                    )
-                    login()
+                    binding.buttonLogin.enable(true)
                 }
                 else -> {
+                    binding.buttonLogin.enable(false)
                     binding.progressbar.visible(true)
                 }
             }
@@ -54,6 +52,7 @@ class LoginFragment : BaseFragment<AuthViewModel, FragmentLoginBinding, AuthRepo
         }
 
         binding.buttonLogin.setOnClickListener {
+            binding.buttonLogin.enable(false)
             login()
         }
     }

@@ -56,7 +56,7 @@ class GuauguauPostAdapter(private val listener: OnItemClickListener) :
             binding.apply {
                 if (!Strings.isEmptyOrWhitespace(post.user_photo)) {
                     Glide.with(itemView)
-                        .load(post.user_photo)
+                        .load("https://res-4.cloudinary.com/wofwof/${post.user_photo}")
                         .centerCrop()
                         .error(R.drawable.ic_baseline_person)
                         .transition(DrawableTransitionOptions.withCrossFade())

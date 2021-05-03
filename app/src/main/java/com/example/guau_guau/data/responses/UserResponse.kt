@@ -8,7 +8,7 @@ data class UserResponse(
     val name: String,
     val num_posts: Int,
     val password_digest: String,
-    val photo: Photo,
+    val user_photo: Photo,
     val aboutme: String,
     val resolved_posts: Int,
     val updated_at: String,

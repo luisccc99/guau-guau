@@ -2,6 +2,7 @@ package com.example.guau_guau.data
 
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
+import retrofit2.http.GET
 import java.util.*
 
 @Parcelize

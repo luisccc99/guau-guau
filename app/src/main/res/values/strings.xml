@@ -46,6 +46,7 @@
     <string name="user_name">user name</string>
     <string name="new_post">New Post</string>
     <string name="post_options">Post options</string>
+    <string name="ok">OK</string>
     <string name="image_post">Image post</string>
     <string name="comments">Comments</string>
     <string name="location">Location</string>
@@ -54,7 +55,8 @@
         Longitude: 123.123123</string>
     <string name="enable_location_message">Please, enable your location.</string>
     <string name="open_location_settings">Open location settings</string>
-    <string name="solve_post">Solve post</string>
+    <string name="solve_post">Solve Post</string>
     <string name="delete_post">Delete Post</string>
+    <string name="delete_confirmation">Are you sure to delete this post?</string>
 
 </resources>

@@ -76,7 +76,7 @@ class ProfileFragment : BaseFragment<ProfileViewModel, FragmentProfileBinding, U
 
                         //TODO: save fragment state and change image URL
                         Glide.with(this@ProfileFragment)
-                            .load("https://www.arabianbusiness.com/public/images/2019/03/16/pewdiepie-new.jpg")
+                            .load(user.user_photo.url)
                             .dontAnimate()
                             .error(R.drawable.ic_baseline_person)
                             .placeholder(R.drawable.ic_baseline_person)
