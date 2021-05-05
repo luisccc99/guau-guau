@@ -7,8 +7,45 @@
     android:padding="10dp"
     tools:context=".ui.profile.AboutBottomSheetFragment">
 
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/edit_about"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/txt_about"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/about"
+        app:counterEnabled="true"
+        app:counterMaxLength="150"
+        android:layout_marginTop="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/title"
+        app:layout_constraintTop_toBottomOf="@id/title">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edit_text_about"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:autofillHints=""
+            android:lines="3"
+            android:maxLines="5"
+            android:ems="10"
+            android:maxLength="150"
+            android:scrollbars="vertical"
+            android:inputType="textMultiLine" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <!--
     <EditText
-        android:id="@+id/edit_text_about"
+        android:id="@+id/edit_text_abouts"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:gravity="top"
@@ -16,7 +53,7 @@
         android:inputType="text|textMultiLine"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/title" />!-->
 
     <Button
         android:id="@+id/button_cancel_edit_about"
@@ -35,6 +72,6 @@
         android:layout_marginTop="10dp"
         android:text="@string/accept"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/edit_text_about" />
+        app:layout_constraintTop_toBottomOf="@id/txt_about" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

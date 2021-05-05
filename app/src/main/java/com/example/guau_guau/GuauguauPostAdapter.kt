@@ -1,9 +1,11 @@
 package com.example.guau_guau
 
 import android.annotation.SuppressLint
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.view.ViewCompat
+import androidx.core.view.isVisible
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
@@ -65,12 +67,17 @@ class GuauguauPostAdapter(private val listener: OnItemClickListener) :
                     imageViewUserPic.setImageResource(R.drawable.ic_baseline_person)
                 }
 
-                Glide.with(itemView)
-                    .load(post.publi_photo.url)
-                    .centerCrop()
-                    .error(R.drawable.ic_baseline_article)
-                    .transition(DrawableTransitionOptions.withCrossFade())
-                    .into(imageViewPostPic)
+                if (!Strings.isEmptyOrWhitespace(post.publi_photo.url)) {
+                    Glide.with(itemView)
+                        .load(post.publi_photo.url)
+                        .centerCrop()
+                        .error(R.drawable.ic_baseline_article)
+                        .transition(DrawableTransitionOptions.withCrossFade())
+                        .into(imageViewPostPic)
+                } else{
+                    imageViewPostPic.isVisible = false
+                }
+
 
                 textViewPostTitle.text = post.title
                 textViewPostDescription.text = post.body

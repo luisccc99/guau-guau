@@ -31,6 +31,7 @@
             android:gravity="top|start"
             android:paddingStart="8dp"
             android:paddingEnd="30dp"
+
             android:textAppearance="@style/TextAppearance.MaterialComponents.Caption"
             android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -84,6 +85,7 @@
             android:textStyle="bold"
             android:textSize="16sp"
             android:paddingVertical="5dp"
+            android:textColor="?attr/colorPrimary"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@id/text_view_post_description"
             app:layout_constraintTop_toBottomOf="@id/text_view_post_title"

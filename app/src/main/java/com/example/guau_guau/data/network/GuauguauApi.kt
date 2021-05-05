@@ -47,7 +47,9 @@ interface GuauguauApi {
     suspend fun createPost(
         @Field("user_id") id: String,
         @Field("title") title: String,
-        @Field("body") body: String
+        @Field("body") body: String,
+        @Field("longitude") longitude: Double?,
+        @Field("latitude") latitude: Double?
     ): PostResponse
 
     @FormUrlEncoded
@@ -84,7 +86,7 @@ interface GuauguauApi {
         @Query("resolved") page: Boolean,
         @Query("page") per_page: Int?,
         @Header("Authorization") token: String
-    ):List<GuauguauPost>
+    ):List<GuauguauPost>?
 
     @GET("post")
     suspend fun getPost (

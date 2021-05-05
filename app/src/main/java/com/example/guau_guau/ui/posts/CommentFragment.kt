@@ -51,6 +51,7 @@ class CommentFragment : Fragment(R.layout.fragment_comments_list){
     }
 
     private fun getComments() {
+        binding.recyclerViewComments.scrollToPosition(0)
         viewModel.searchComments(args.postId)
     }
 

@@ -13,6 +13,15 @@
         android:paddingHorizontal="10dp"
         android:paddingVertical="10dp">
 
+        <ProgressBar
+            android:id="@+id/progress_bar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/image_view_profile_pic"
             android:layout_width="150dp"
@@ -27,11 +36,12 @@
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/floating_change_pic"
+            style="@style/Widget.Guauguau.FloatingActionButton.Pic"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:contentDescription="@string/change_profile_pic"
             android:src="@drawable/ic_baseline_camera"
-            style="@style/Widget.Guauguau.FloatingActionButton.Pic"
+            android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="@id/image_view_profile_pic"
             app:layout_constraintEnd_toEndOf="@id/image_view_profile_pic" />
 
@@ -52,10 +62,10 @@
             android:layout_height="29dp"
             android:contentDescription="@string/edit_name"
             android:src="@drawable/ic_baseline_edit"
-            app:layout_constraintTop_toTopOf="@id/text_view_name"
             app:layout_constraintBottom_toBottomOf="@id/text_view_name"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/text_view_name"
+            app:layout_constraintTop_toTopOf="@id/text_view_name"
             app:tint="?colorPrimary" />
 
         <TextView
@@ -98,10 +108,10 @@
             android:layout_height="29dp"
             android:contentDescription="@string/edit_about"
             android:src="@drawable/ic_baseline_edit"
-            app:layout_constraintTop_toTopOf="@id/about"
             app:layout_constraintBottom_toBottomOf="@id/about"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/about"
+            app:layout_constraintTop_toTopOf="@id/about"
             app:tint="?colorPrimary" />
 
         <TextView
@@ -123,6 +133,7 @@
             android:layout_marginTop="15dp"
             android:importantForAccessibility="no"
             android:src="@drawable/ic_round_analytics"
+            android:visibility="gone"
             app:layout_constraintEnd_toStartOf="@id/activity"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/text_view_about" />
@@ -133,6 +144,7 @@
             android:layout_height="wrap_content"
             android:text="@string/profile_activity"
             android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle2"
+            android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="@id/ic_activity"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/ic_activity"
@@ -143,6 +155,7 @@
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_marginTop="15dp"
+            android:visibility="gone"
             app:layout_constraintEnd_toEndOf="@id/guideline2"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/activity">
@@ -162,6 +175,7 @@
             android:padding="10dp"
             android:text="@string/posts"
             android:textAppearance="@style/TextAppearance.MaterialComponents.Overline"
+            android:visibility="gone"
             app:layout_constraintEnd_toEndOf="@id/card_view_posts"
             app:layout_constraintStart_toStartOf="@id/card_view_posts"
             app:layout_constraintTop_toBottomOf="@id/card_view_posts" />
@@ -172,6 +186,7 @@
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_marginTop="15dp"
+            android:visibility="gone"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@id/guideline2"
             app:layout_constraintTop_toBottomOf="@id/activity">
@@ -192,6 +207,7 @@
             android:padding="10dp"
             android:text="@string/solved_posts"
             android:textAppearance="@style/TextAppearance.MaterialComponents.Overline"
+            android:visibility="gone"
             app:layout_constraintEnd_toEndOf="@id/card_view_solved_posts"
             app:layout_constraintStart_toStartOf="@id/card_view_solved_posts"
             app:layout_constraintTop_toBottomOf="@id/card_view_solved_posts" />

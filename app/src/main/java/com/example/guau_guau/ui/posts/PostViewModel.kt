@@ -25,10 +25,11 @@ class PostViewModel(
         get() = _user
 
 
-    fun postSubmit(id: String, title: String, body: String) = viewModelScope.launch {
-        _post.value = Resource.Loading
-        _post.value = repository.createPost(id, title, body)
-    }
+    fun postSubmit(id: String, title: String, body: String, latitude: Double?, longitude: Double?) =
+        viewModelScope.launch {
+            _post.value = Resource.Loading
+            _post.value = repository.createPost(id, title, body, latitude, longitude)
+        }
 
     fun deletePost(postId: String) = viewModelScope.launch {
         _post.value = Resource.Loading

@@ -6,8 +6,8 @@ class PostRepository(
     private val api: GuauguauApi
 ) : BaseRepository() {
 
-    suspend fun createPost(id: String, title: String, body: String) = safeApiCall {
-        api.createPost(id, title, body)
+    suspend fun createPost(id: String, title: String, body: String, latitude: Double?, longitude: Double?) = safeApiCall {
+        api.createPost(id, title, body, longitude, latitude)
     }
 
     suspend fun deletePost(postId: String) = safeApiCall {

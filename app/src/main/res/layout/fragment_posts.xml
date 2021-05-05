@@ -23,7 +23,10 @@
         tools:visibility="visible"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         tools:ignore="MissingConstraints" />
 
     <Button
@@ -32,9 +35,11 @@
         tools:visibility="visible"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Reintentar"
+        android:text="@string/retry"
         android:layout_centerInParent="true"
-        tools:ignore="MissingConstraints" />
+        app:layout_constraintTop_toBottomOf="@id/text_view_error"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <TextView
         android:id="@+id/text_view_error"
@@ -42,9 +47,10 @@
         tools:visibility="visible"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="No se pudieron cargar los resultados"
-        android:layout_above="@id/button_retry"
-        android:layout_centerHorizontal="true"
+        android:text="@string/couldn_t_load_posts"
+        app:layout_constraintTop_toBottomOf="@id/progress_bar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         tools:ignore="MissingConstraints" />
 
     <TextView
@@ -53,8 +59,11 @@
         tools:visibility="visible"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="No hay resultados"
-        android:layout_centerInParent="true"
+        android:text="@string/no_results"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         tools:ignore="MissingConstraints" />
 
 

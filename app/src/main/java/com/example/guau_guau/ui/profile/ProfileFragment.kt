@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.view.isVisible
 import com.bumptech.glide.Glide
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.navArgs
@@ -15,6 +16,7 @@ import com.example.guau_guau.data.network.Resource
 import com.example.guau_guau.data.repositories.UserRepository
 import com.example.guau_guau.databinding.FragmentProfileBinding
 import com.example.guau_guau.ui.base.BaseFragment
+import com.example.guau_guau.ui.handleApiError
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.runBlocking
 
@@ -64,8 +66,10 @@ class ProfileFragment : BaseFragment<ProfileViewModel, FragmentProfileBinding, U
     private fun showUserInfo(userId: String) {
         viewModel.getUser(userId)
         viewModel.user.observe(viewLifecycleOwner, {
+            binding.progressBar.isVisible = false
             when (it) {
                 is Resource.Success -> {
+                    binding.progressBar.isVisible = false
                     val user = it.value
                     with(binding) {
                         textViewName.text = "${user.name} ${user.lastname}"
@@ -84,12 +88,11 @@ class ProfileFragment : BaseFragment<ProfileViewModel, FragmentProfileBinding, U
 
                     }
                 }
-                //TODO: change code bellow to show progress bar or error
                 is Resource.Loading -> {
-                    Toast.makeText(requireContext(), "Loading", Toast.LENGTH_SHORT).show()
+                    binding.progressBar.isVisible = true
                 }
-                else -> {
-                    Toast.makeText(requireContext(), "Error", Toast.LENGTH_SHORT).show()
+                else -> handleApiError(it as Resource.Failure) {
+
                 }
             }
         })
