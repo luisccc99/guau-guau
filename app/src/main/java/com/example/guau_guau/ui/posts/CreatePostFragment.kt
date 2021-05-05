@@ -15,12 +15,15 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
+import androidx.core.view.isVisible
 import androidx.navigation.findNavController
 import com.example.guau_guau.R
 import com.example.guau_guau.data.network.GuauguauApi
+import com.example.guau_guau.data.network.Resource
 import com.example.guau_guau.data.repositories.PostRepository
 import com.example.guau_guau.databinding.FragmentCreatePostBinding
 import com.example.guau_guau.ui.base.BaseFragment
+import com.example.guau_guau.ui.handleApiError
 import com.google.android.gms.common.util.Strings
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
@@ -32,6 +35,8 @@ class CreatePostFragment :
     BaseFragment<PostViewModel, FragmentCreatePostBinding, PostRepository>() {
     private lateinit var fusedLocationClient: FusedLocationProviderClient
     private lateinit var locationManager: LocationManager
+    private var latitude: Double? = null
+    private var longitude: Double? = null
     private val REQUEST_LOCATION_CODE = 1000
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -50,14 +55,35 @@ class CreatePostFragment :
         super.onViewCreated(view, savedInstanceState)
         val userId = runBlocking { userPreferences.userId.first() }
 
+        viewModel.post.observe(viewLifecycleOwner, {
+            binding.progressBar.isVisible = false
+            when (it) {
+                is Resource.Success -> {
+                    binding.progressBar.isVisible = false
+                    Toast.makeText(
+                        requireContext(),
+                        "Post created successfully",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                    view.findNavController()
+                        .navigate(R.id.action_createPostFragment_to_postsFragment)
+                }
+                is Resource.Failure -> handleApiError(it) {
+
+                }
+                is Resource.Loading -> {
+                    binding.progressBar.isVisible = true
+                }
+            }
+        })
+
         binding.buttonSubmit.setOnClickListener {
             if (userId != null) {
-                val title = binding.editTextTitle.text.toString()
-                val body = binding.editTextDescription.text.toString()
+                val title = binding.editTextTitle.text.toString().trim()
+                val body = binding.editTextDescription.text.toString().trim()
                 if (!Strings.isEmptyOrWhitespace(title) && !Strings.isEmptyOrWhitespace(body)) {
-                    viewModel.postSubmit(userId, title, body)
+                    viewModel.postSubmit(userId, title, body, latitude, longitude)
                 }
-                Toast.makeText(requireContext(), "Invalid data", Toast.LENGTH_SHORT).show()
             }
         }
 
@@ -110,6 +136,8 @@ class CreatePostFragment :
                 fusedLocationClient.lastLocation.addOnSuccessListener {
                     binding.textViewLocation.text =
                         "Longitude: ${it.longitude}\nLatitude: ${it.latitude}"
+                    this.longitude = it.longitude
+                    this.latitude = it.latitude
                 }
 
             }

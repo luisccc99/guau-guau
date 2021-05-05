@@ -2,7 +2,6 @@ package com.example.guau_guau.data
 
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
-import retrofit2.http.GET
 import java.util.*
 
 @Parcelize
@@ -14,6 +13,8 @@ data class GuauguauPost(
     val user_photo: String,
     val resolved: Boolean,
     val resolved_reason: String,
+    val longitude: Double,
+    val latitude: Double,
     val user_id: String,
     val updated_at: Date,
     val created_at: Date,

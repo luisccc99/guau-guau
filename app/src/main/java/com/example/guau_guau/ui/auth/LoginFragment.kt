@@ -18,8 +18,6 @@ import com.example.guau_guau.ui.*
 
 class LoginFragment : BaseFragment<AuthViewModel, FragmentLoginBinding, AuthRepository>() {
 
-    private val TAG = LoginFragment::class.java.simpleName
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -27,7 +25,7 @@ class LoginFragment : BaseFragment<AuthViewModel, FragmentLoginBinding, AuthRepo
             binding.progressbar.visible(false)
             when (it) {
                 is Resource.Success -> {
-                    binding.buttonLogin.enable(true)
+                    binding.buttonLogin.enable(false)
                     viewModel.saveAuthToken(it.value.token)
                     viewModel.saveUserId(it.value.user_id)
                     requireActivity().startNewActivity(HomeActivity::class.java)

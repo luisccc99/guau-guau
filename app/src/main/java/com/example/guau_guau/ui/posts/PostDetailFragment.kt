@@ -1,8 +1,13 @@
 package com.example.guau_guau.ui.posts
 
 import android.annotation.SuppressLint
+import android.content.Intent
+import android.net.Uri
 import android.os.Build
 import android.os.Bundle
+import android.text.SpannableString
+import android.text.Spanned
+import android.text.style.UnderlineSpan
 import android.transition.TransitionInflater
 import android.util.Log
 import android.view.*
@@ -54,7 +59,13 @@ class PostDetailFragment :
             view.findNavController().navigate(action)
         }
         binding.imageViewSolve.visibility = View.GONE
-
+        binding.textViewPostLocation.setOnClickListener {
+            val postLocation = "${args.post.latitude},${args.post.longitude}"
+            val gmmIntentUri = Uri.parse("geo:$postLocation")
+            val mapIntent = Intent(Intent.ACTION_VIEW, gmmIntentUri)
+            mapIntent.setPackage("com.google.android.apps.maps")
+            startActivity(mapIntent)
+        }
         val userId = runBlocking { UserPreferences(requireContext()).userId.first() }
         showPostInfo(args.post)
         viewModel.getPost(args.post.id)
@@ -172,6 +183,11 @@ class PostDetailFragment :
             }"
             textViewPostTitle.text = post.title
             textViewPostDescription.text = post.body
+            val postLocation = "${args.post.latitude},${args.post.longitude}"
+            val locationString = SpannableString("@ $postLocation")
+            val end: Int = locationString.length
+            locationString.setSpan(UnderlineSpan(), 1, end,  Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
+            textViewPostLocation.text = "$locationString"
         }
     }
 

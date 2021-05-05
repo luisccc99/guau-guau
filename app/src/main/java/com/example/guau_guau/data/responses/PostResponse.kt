@@ -7,6 +7,8 @@ data class PostResponse(
     val photo: Photo,
     val resolved: Boolean,
     val resolved_reason: String,
+    val longitude: Double,
+    val latitude: Double,
     val title: String,
     val updated_at: String,
     val user_id: String,

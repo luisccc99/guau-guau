@@ -13,8 +13,8 @@
     <string name="create_post">create post</string>
 
     <string name="about">About</string>
-    <string name="edit_about">Edit about</string>
-    <string name="edit_name">Edit name</string>
+    <string name="edit_about">Edit About</string>
+    <string name="edit_name">Edit Name</string>
     <string name="profile_activity">Activity</string>
     <string name="log_out">Log out</string>
     <string name="change_profile_pic">change profile pic</string>
@@ -61,5 +61,9 @@
     <string name="incorrect_email_password">Incorrect email or password</string>
     <string name="no_internet_connection">No internet connection</string>
     <string name="retry">Retry</string>
+    <string name="name">Name</string>
+    <string name="posts_could_not_be_loaded">Posts could not be loaded</string>
+    <string name="couldn_t_load_posts">Couldn\'t load posts</string>
+    <string name="no_results">No Results</string>
 
 </resources>
