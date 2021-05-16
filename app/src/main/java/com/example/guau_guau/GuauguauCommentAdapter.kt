@@ -9,10 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.example.guau_guau.data.GuauguauComment
-import com.example.guau_guau.data.GuauguauPost
 import com.example.guau_guau.databinding.CommentItemBinding
-import com.example.guau_guau.ui.Funs
-import org.w3c.dom.Comment
 
 class GuauguauCommentAdapter : PagingDataAdapter<GuauguauComment, GuauguauCommentAdapter.CommentViewHolder>(
     COMMENT_COMPARATOR){
@@ -41,7 +38,6 @@ class GuauguauCommentAdapter : PagingDataAdapter<GuauguauComment, GuauguauCommen
 
                 binding.apply {
                     txtBody.text = comment.body
-                    txtDate.text = Funs.getStringDateFormatFrom(comment.created_at)
                     txtUserName.text = "${comment.name} ${comment.lastname}"
                     Glide.with(itemView)
                         .load("https://res-4.cloudinary.com/wofwof/${comment.user_photo}")

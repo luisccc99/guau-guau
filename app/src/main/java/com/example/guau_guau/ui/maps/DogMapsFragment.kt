@@ -113,7 +113,7 @@ class DogMapsFragment : Fragment(),
     }
 
     private fun showMissingPermissionError() {
-        Toast.makeText(requireContext(), "Error, permissions were not granted", Toast.LENGTH_SHORT)
+        Toast.makeText(requireContext(), getString(R.string.permissions_error_message), Toast.LENGTH_SHORT)
             .show()
     }
 
@@ -175,13 +175,11 @@ class DogMapsFragment : Fragment(),
         return false
     }
 
-    override fun onMyLocationClick(location: Location) {
-        Toast.makeText(
-            requireContext(),
-            "latitude ${location.latitude}\nlongitude: ${location.longitude}",
-            Toast.LENGTH_SHORT
-        ).show()
-    }
+    override fun onMyLocationClick(location: Location) = Toast.makeText(
+        requireContext(),
+        "latitude ${location.latitude}\nlongitude: ${location.longitude}",
+        Toast.LENGTH_SHORT
+    ).show()
 
     private fun showDefaultLocations() {
         val locations: ArrayList<LatLng> = ArrayList()
@@ -193,10 +191,10 @@ class DogMapsFragment : Fragment(),
         val size = locations.size
 
         val locationNames: ArrayList<String> = ArrayList()
-        locationNames.add("Mundo Patitas")
-        locationNames.add("Amigos de los animales")
-        locationNames.add("Centro Antirrábico")
-        locationNames.add("Compañía Canina")
+        locationNames.add(getString(R.string.mundo_patitas))
+        locationNames.add(getString(R.string.amigos_de_los_animales))
+        locationNames.add(getString(R.string.centro_antirrabico))
+        locationNames.add(getString(R.string.compania_canina))
 
         for (i in 0 until size)
             googleMap.addMarker(MarkerOptions().position(locations[i]).title(locationNames[i]))

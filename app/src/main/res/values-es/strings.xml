@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">GuauGuau</string>
-
+    <string name="guauguau">GuauGuau</string>
     <string name="hello_blank_fragment">Hola fragmento en blanco</string>
     <string name="posts_fragment">Fragmento de mensajes</string>
     <string name="profile_fragment">Fragmento de perfil</string>
@@ -10,29 +10,29 @@
     <string name="profile">Perfil</string>
 
     <string name="more">Más</string>
-    <string name="create_post">Crear mensaje</string>
+    <string name="create_post">Crear publicación</string>
 
     <string name="about">Acerca de</string>
-    <string name="edit_about">Editar mensaje</string>
-    <string name="edit_name">Editar nombre</string>
+    <string name="edit_about">Editar Acerca de</string>
+    <string name="edit_name">Editar Nombre</string>
     <string name="profile_activity">Actividad</string>
     <string name="log_out">Cerrar sesión</string>
     <string name="change_profile_pic">Cambiar foto de perfil</string>
     <string name="solved_posts">## Publicaciones resueltas</string>
     <string name="posts">## Publicaciones</string>
     <string name="number_of_posts_made">Número de publicaciones realizadas
+
 </string>
     <string name="login">Iniciar sesion</string>
     <string name="email">Correo</string>
     <string name="password">Contraseña</string>
     <string name="signup_text">¿Aún no tienes una cuenta?</string>
     <string name="forgot_password">¿Se te olvidó tu contraseña?</string>
-    <string name="create_new_post">Crear nueva publicación.</string>
+    <string name="create_new_post">Crear nueva publicación</string>
     <string name="title">Titulo</string>
     <string name="description">Descripción</string>
-    <string name="guauguau">GuauGuau</string>
     <string name="cancel">Cancelar</string>
-    <string name="submit">Entregar</string>
+    <string name="submit">Publicar</string>
     <string name="signup">Registrar</string>
     <string name="create_an_account">¡Crea una cuenta!</string>
     <string name="last_name">Apellidos</string>
@@ -41,12 +41,47 @@
     <string name="take_photo">Tomar foto</string>
     <string name="select_from_gallery">Seleccionar de galería</string>
     <string name="option">Opciones</string>
-    <string name="select_an_option">Seleccione una opción...</string>
+    <string name="select_an_option">Seleccione una opción…</string>
     <string name="profile_pic">Foto de perfil</string>
     <string name="accept">Aceptar</string>
-    <string name="user_name">Nombre de usurario</string>
+    <string name="user_name">Nombre de usuario</string>
     <string name="new_post">Nueva publicación</string>
-    <string name="post_options">Post options</string>
-
+    <string name="post_options">Opciones</string>
+    <string name="ok">OK</string>
+    <string name="image_post">Image post</string>
+    <string name="comments">Comentarios</string>
+    <string name="location">Ubicación</string>
+    <string name="Photo">Foto</string>
+    <string name="my_location">Latitud: 123.123123
+        Longitud: 123.123123</string>
+    <string name="enable_location_message">Por favor, activa tu localización.</string>
+    <string name="open_location_settings">Abrir configuración de localización</string>
+    <string name="solve_post">Resolver Publicación</string>
+    <string name="delete_post">Eliminar Publicación</string>
+    <string name="delete_confirmation">¿Estás seguro de eliminar la publicación?</string>
+    <string name="incorrect_email_password">Correo o contraseña incorrectos</string>
+    <string name="no_internet_connection">Sin conexión a internet</string>
+    <string name="retry">Intentar de nuevo</string>
+    <string name="name">Nombre</string>
+    <string name="posts_could_not_be_loaded">No se pudo cargar las publicaciones</string>
+    <string name="couldn_t_load_posts">No se pudo cargar las publicaciones</string>
+    <string name="no_results">Sin resultados</string>
+    <string name="add_comment">Comentar</string>
+    <string name="mundo_patitas">Mundo Patitas</string>
+    <string name="user_created_message">Usuario creado!</string>
+    <string name="password_error_message">Las contraseñas deben coincidir</string>
+    <string name="email_error_message">Ingrese un correo valido</string>
+    <string name="permissions_error_message">Error, permisos no fueron otorgados</string>
+    <string name="amigos_de_los_animales">Amigos de los animales</string>
+    <string name="centro_antirrabico">Centro Antirrábico</string>
+    <string name="compania_canina">Compañía Canina</string>
+    <string name="post_deleted_message">Publicación eliminada</string>
+    <string name="post_solved_message">Publicación resuelta exitosamente!</string>
+    <string-array name="post_solve_options">
+        <item name="op1">No he visto al perro en días</item>
+        <item name="op2">Adopté al perro :)</item>
+        <item name="op3">Recuperé a mi perro</item>
+        <item name="op4">Other</item>
+    </string-array>
 
 </resources>

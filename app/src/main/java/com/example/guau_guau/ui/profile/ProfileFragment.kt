@@ -5,11 +5,10 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.core.view.isVisible
-import com.bumptech.glide.Glide
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.navArgs
+import com.bumptech.glide.Glide
 import com.example.guau_guau.R
 import com.example.guau_guau.data.network.GuauguauApi
 import com.example.guau_guau.data.network.Resource
@@ -67,9 +66,11 @@ class ProfileFragment : BaseFragment<ProfileViewModel, FragmentProfileBinding, U
         viewModel.getUser(userId)
         viewModel.user.observe(viewLifecycleOwner, {
             binding.progressBar.isVisible = false
+            showUiComponents(false)
             when (it) {
                 is Resource.Success -> {
                     binding.progressBar.isVisible = false
+                    showUiComponents(true)
                     val user = it.value
                     with(binding) {
                         textViewName.text = "${user.name} ${user.lastname}"
@@ -90,12 +91,21 @@ class ProfileFragment : BaseFragment<ProfileViewModel, FragmentProfileBinding, U
                 }
                 is Resource.Loading -> {
                     binding.progressBar.isVisible = true
+                    showUiComponents(false)
                 }
-                else -> handleApiError(it as Resource.Failure) {
-
+                is Resource.Failure ->  {
+                    binding.progressBar.isVisible = false
+                    handleApiError(it)
                 }
             }
         })
+    }
+
+    private fun showUiComponents(visible: Boolean) {
+        binding.about.isVisible = visible
+        binding.icAbout.isVisible = visible
+        binding.editAbout.isVisible = visible
+        binding.editName.isVisible = visible
     }
 
     override fun getViewModel() = ProfileViewModel::class.java
@@ -110,5 +120,4 @@ class ProfileFragment : BaseFragment<ProfileViewModel, FragmentProfileBinding, U
         val api = remoteDataSource.buildApi(GuauguauApi::class.java, token)
         return UserRepository(api)
     }
-
 }

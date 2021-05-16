@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".ui.posts.CommentFragment">
 
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_view_comments"
         android:layout_width="match_parent"
@@ -22,11 +21,11 @@
         android:id="@+id/textComentary"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:hint="Comentary"
+        android:hint="@string/add_comment"
         android:layout_marginStart="5dp"
         android:layout_marginBottom="5dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/button_submit_Comentary"
+        app:layout_constraintEnd_toStartOf="@id/submit_comment"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/recycler_view_comments">
 
@@ -36,20 +35,22 @@
             android:layout_height="wrap_content"
             android:autofillHints=""
             android:ems="10"
-            android:inputType="text" />
+            android:inputType="textMultiLine" />
     </com.google.android.material.textfield.TextInputLayout>
 
 
-    <Button
-        android:id="@+id/button_submit_Comentary"
-        android:layout_width="wrap_content"
+    <ImageView
+        android:id="@+id/submit_comment"
+        android:layout_width="35dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="5dp"
         android:enabled="true"
         android:text="@string/submit"
+        android:layout_marginHorizontal="10dp"
+        android:src="@drawable/ic_send"
+        app:tint="?attr/colorPrimary"
         app:layout_constraintBottom_toBottomOf="@id/textComentary"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/textComentary"
-        app:layout_constraintTop_toTopOf="@id/textComentary" />
+        app:layout_constraintTop_toTopOf="@id/textComentary"
+        android:contentDescription="@string/publish_comment" />
 </androidx.constraintlayout.widget.ConstraintLayout>

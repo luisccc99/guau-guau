@@ -45,6 +45,8 @@
             android:id="@+id/image_view_solve"
             android:layout_width="30dp"
             android:layout_height="35dp"
+            android:visibility="gone"
+            tools:visibility="visible"
             android:src="@drawable/ic_baseline_more_vert"
             app:layout_constraintTop_toTopOf="@id/text_view_username"
             app:layout_constraintEnd_toEndOf="parent"

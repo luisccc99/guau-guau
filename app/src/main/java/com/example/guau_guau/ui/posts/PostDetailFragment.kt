@@ -9,7 +9,6 @@ import android.text.SpannableString
 import android.text.Spanned
 import android.text.style.UnderlineSpan
 import android.transition.TransitionInflater
-import android.util.Log
 import android.view.*
 import android.widget.PopupMenu
 import android.widget.Toast
@@ -23,6 +22,7 @@ import com.example.guau_guau.data.UserPreferences
 import com.example.guau_guau.data.network.GuauguauApi
 import com.example.guau_guau.data.network.Resource
 import com.example.guau_guau.data.repositories.PostRepository
+import com.example.guau_guau.data.responses.PostResponse
 import com.example.guau_guau.databinding.FragmentPostDetailBinding
 import com.example.guau_guau.ui.Funs
 import com.example.guau_guau.ui.base.BaseFragment
@@ -36,14 +36,13 @@ class PostDetailFragment :
     BaseFragment<PostViewModel, FragmentPostDetailBinding, PostRepository>() {
 
     private val args by navArgs<PostDetailFragmentArgs>()
-    private val solveReasons =
-        arrayOf("I haven\'t seen the dog in days", "I adopted the dog", "Other")
+    private var solveReasons = emptyArray<String>()
     private var checkedItem = 0
-    private lateinit var postCreatorId: String
 
     @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        solveReasons = resources.getStringArray(R.array.post_solve_options)
         val animation = TransitionInflater.from(requireContext()).inflateTransition(
             android.R.transition.move
         )
@@ -53,60 +52,79 @@ class PostDetailFragment :
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.buttonComments.setOnClickListener {
-            val action = PostDetailFragmentDirections
-                .actionPostDetailFragmentToCommentFragment(args.post.id)
-            view.findNavController().navigate(action)
-        }
-        binding.imageViewSolve.visibility = View.GONE
-        binding.textViewPostLocation.setOnClickListener {
-            val postLocation = "${args.post.latitude},${args.post.longitude}"
-            val gmmIntentUri = Uri.parse("geo:$postLocation")
-            val mapIntent = Intent(Intent.ACTION_VIEW, gmmIntentUri)
-            mapIntent.setPackage("com.google.android.apps.maps")
-            startActivity(mapIntent)
-        }
-        val userId = runBlocking { UserPreferences(requireContext()).userId.first() }
         showPostInfo(args.post)
+        val userId = runBlocking { UserPreferences(requireContext()).userId.first() }
         viewModel.getPost(args.post.id)
         viewModel.post.observe(viewLifecycleOwner, {
+            handleMenuOptionsIfUserIdIsNotNull(it, userId, view)
+        })
+        binding.buttonComments.setOnClickListener { navigateToComments(view) }
+        binding.textViewPostLocation.setOnClickListener { viewLocationInGoogleMaps() }
+    }
 
-            when (it) {
-                is Resource.Success -> {
-                    // if user deleted the post, navigate to home
-                    if (it.value.message != null) {
-                        Toast.makeText(
-                            requireContext(),
-                            "Post deleted",
-                            Toast.LENGTH_SHORT
-                        ).show()
-                        navigateToHome(view)
-                    }
+    private fun handleMenuOptionsIfUserIdIsNotNull(
+        it: Resource<PostResponse>?,
+        userId: String?,
+        view: View
+    ) {
+        if (userId != null) {
+            handleSelectedOption(it, view, userId)
+        }
+    }
 
-                    // if user solved a post, navigate to home
-                    if (it.value.resolved) {
-                        Toast.makeText(
-                            requireContext(),
-                            "Post solved successfully",
-                            Toast.LENGTH_SHORT
-                        ).show()
-                        navigateToHome(view)
-                    }
-                    // if current user created the post, display pop menu and setup options
-                    if (userId != null && userId == it.value.user_id) {
-                        binding.imageViewSolve.visibility = View.VISIBLE
-                        setupSolveAndDeleteOptions()
-                    }
+    private fun navigateToComments(view: View) {
+        val action = PostDetailFragmentDirections
+            .actionPostDetailFragmentToCommentFragment(args.post.id)
+        view.findNavController().navigate(action)
+    }
+
+    private fun viewLocationInGoogleMaps() {
+        val postLocation = "${args.post.latitude},${args.post.longitude}"
+        val gmmIntentUri = Uri.parse("geo:$postLocation")
+        val mapIntent = Intent(Intent.ACTION_VIEW, gmmIntentUri)
+        mapIntent.setPackage("com.google.android.apps.maps")
+        startActivity(mapIntent)
+    }
+
+
+    private fun handleSelectedOption(
+        it: Resource<PostResponse>?,
+        view: View,
+        userId: String
+    ) {
+        when (it) {
+            is Resource.Success -> {
+                // if user deleted the post, navigate to home
+                if (it.value.message != null) {
+                    Toast.makeText(
+                        requireContext(),
+                        getString(R.string.post_deleted_message),
+                        Toast.LENGTH_SHORT
+                    ).show()
+                    navigateToHome(view)
                 }
-                is Resource.Failure -> handleApiError(it) {
 
+                // if user solved a post, navigate to home
+                if (it.value.resolved) {
+                    Toast.makeText(
+                        requireContext(),
+                        getString(R.string.post_solved_message),
+                        Toast.LENGTH_SHORT
+                    ).show()
+                    navigateToHome(view)
                 }
-                is Resource.Loading -> {
-
+                // if current user created the post, display pop menu and setup options
+                if (userId == it.value.user_id) {
+                    binding.imageViewSolve.visibility = View.VISIBLE
+                    setupSolveAndDeleteOptions()
                 }
+            }
+            is Resource.Failure -> handleApiError(it) {
 
             }
-        })
+            is Resource.Loading -> {
+            }
+        }
     }
 
     private fun navigateToHome(view: View) {
@@ -134,18 +152,6 @@ class PostDetailFragment :
                             }
                             .setSingleChoiceItems(solveReasons, checkedItem) { _, which ->
                                 checkedItem = which
-                            }
-                            .show()
-                        true
-                    }
-                    R.id.delete_post -> {
-                        MaterialAlertDialogBuilder(requireContext())
-                            .setTitle(getString(R.string.delete_post))
-                            .setMessage(getString(R.string.delete_confirmation))
-                            .setNegativeButton(getString(R.string.cancel), null)
-                            .setPositiveButton(getString(R.string.accept)) { _, _ ->
-                                // call to delete a post
-                                viewModel.deletePost(args.post.id)
                             }
                             .show()
                         true
@@ -186,7 +192,7 @@ class PostDetailFragment :
             val postLocation = "${args.post.latitude},${args.post.longitude}"
             val locationString = SpannableString("@ $postLocation")
             val end: Int = locationString.length
-            locationString.setSpan(UnderlineSpan(), 1, end,  Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
+            locationString.setSpan(UnderlineSpan(), 1, end, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
             textViewPostLocation.text = "$locationString"
         }
     }

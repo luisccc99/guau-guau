@@ -24,11 +24,11 @@
         android:gravity="center_vertical"
         android:textAppearance="@style/TextAppearance.MaterialComponents.Caption"
         android:textSize="13sp"
-        tools:text="name lastname"
         app:layout_constraintBottom_toBottomOf="@id/image_view_profile_pic"
         app:layout_constraintStart_toEndOf="@id/image_view_profile_pic"
         app:layout_constraintTop_toTopOf="@id/image_view_profile_pic"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.0"
+        tools:text="name lastname" />
 
     <TextView
         android:id="@+id/txt_body"
@@ -36,22 +36,19 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="4dp"
+        android:layout_marginBottom="4dp"
         android:layout_marginEnd="16dp"
-        tools:text="@tools:sample/lorem"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/image_view_profile_pic"
-        app:layout_constraintTop_toBottomOf="@+id/txt_date" />
+        app:layout_constraintTop_toBottomOf="@+id/txt_user_name"
+        tools:text="@tools:sample/lorem" />
 
-    <TextView
-        android:id="@+id/txt_date"
-        android:layout_width="wrap_content"
+    <View
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="4dp"
-        tools:text="@tools:sample/date/ddmmyy"
-        app:layout_constraintStart_toEndOf="@+id/txt_user_name"
-        app:layout_constraintBottom_toBottomOf="@id/txt_user_name"
-        app:layout_constraintTop_toTopOf="parent" />
-
-
+        android:background="?android:attr/listDivider"
+        android:layout_marginTop="12dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/txt_body" />
 </androidx.constraintlayout.widget.ConstraintLayout>

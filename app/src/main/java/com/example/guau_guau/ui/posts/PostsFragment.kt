@@ -92,7 +92,6 @@ class PostsFragment : Fragment(), GuauguauPostAdapter.OnItemClickListener {
 
     override fun onItemClick(post: GuauguauPost) {
         val action = PostsFragmentDirections.actionPostsFragmentToPostDetailFragment(post)
-        val extras = FragmentNavigatorExtras()
         findNavController().navigate(action)
     }
 

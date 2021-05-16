@@ -38,7 +38,7 @@ class CommentFragment : Fragment(R.layout.fragment_comments_list){
             adapter.submitData(viewLifecycleOwner.lifecycle, it)
         }
 
-        binding.buttonSubmitComentary.setOnClickListener {
+        binding.submitComment.setOnClickListener {
             val body = binding.editTextDescription.text.toString().trim()
             if (body.isNotEmpty()) {
                 if (userId != null && token != null) {

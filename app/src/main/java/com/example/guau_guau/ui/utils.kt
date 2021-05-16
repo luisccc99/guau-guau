@@ -2,7 +2,6 @@ package com.example.guau_guau.ui
 
 import android.app.Activity
 import android.content.Intent
-import android.util.Log
 import android.view.View
 import androidx.fragment.app.Fragment
 import com.example.guau_guau.R
@@ -10,7 +9,6 @@ import com.example.guau_guau.data.network.Resource
 import com.example.guau_guau.ui.auth.LoginFragment
 import com.example.guau_guau.ui.base.BaseFragment
 import com.google.android.material.snackbar.Snackbar
-import com.google.android.material.textfield.TextInputEditText
 import java.util.*
 
 fun <A : Activity> Activity.startNewActivity(activity: Class<A>) {
@@ -71,6 +69,6 @@ object Funs {
         val month = cal.getDisplayName(Calendar.MONTH, Calendar.LONG, Locale.getDefault())
         val day = cal.get(Calendar.DAY_OF_MONTH)
         val year = cal.get(Calendar.YEAR)
-        return "$day/${month.capitalize(Locale.ROOT)}/$year"
+        return "$day/${month?.capitalize(Locale.ROOT)}/$year"
     }
 }
