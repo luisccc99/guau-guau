@@ -58,8 +58,16 @@ class PostDetailFragment :
         viewModel.post.observe(viewLifecycleOwner, {
             handleMenuOptionsIfUserIdIsNotNull(it, userId, view)
         })
-        binding.buttonComments.setOnClickListener { navigateToComments(view) }
-        binding.textViewPostLocation.setOnClickListener { viewLocationInGoogleMaps() }
+        binding.buttonComments.setOnClickListener {
+            navigateToComments(view) }
+        val postLocation = "${args.post.latitude},${args.post.longitude}"
+        if ("0.0,0.0" == postLocation) {
+            binding.textViewPostLocation.text = getString(R.string.location_not_provided);
+        } else {
+            binding.textViewPostLocation.setOnClickListener {
+                viewLocationInGoogleMaps(postLocation)
+            }
+        }
     }
 
     private fun handleMenuOptionsIfUserIdIsNotNull(
@@ -78,9 +86,8 @@ class PostDetailFragment :
         view.findNavController().navigate(action)
     }
 
-    private fun viewLocationInGoogleMaps() {
-        val postLocation = "${args.post.latitude},${args.post.longitude}"
-        val gmmIntentUri = Uri.parse("geo:$postLocation")
+    private fun viewLocationInGoogleMaps(postLocation: String) {
+        val gmmIntentUri = Uri.parse("google.navigation:q=$postLocation&avoid=tf")
         val mapIntent = Intent(Intent.ACTION_VIEW, gmmIntentUri)
         mapIntent.setPackage("com.google.android.apps.maps")
         startActivity(mapIntent)

@@ -76,6 +76,7 @@
     <string name="centro_antirrabico">Centro Antirrábico</string>
     <string name="compania_canina">Compañía Canina</string>
     <string name="post_deleted_message">Publicación eliminada</string>
+    <string name="location_not_provided">Ubicación no proporcionada</string>
     <string name="post_solved_message">Publicación resuelta exitosamente!</string>
     <string-array name="post_solve_options">
         <item name="op1">No he visto al perro en días</item>

@@ -76,6 +76,7 @@
     <string name="post_deleted_message">Post deleted</string>
     <string name="post_solved_message">Post solved successfully</string>
     <string name="publish_comment">Publish comment</string>
+    <string name="location_not_provided">Location not provided</string>
     <string-array name="post_solve_options">
         <item name="op1">I haven\'t seen the dog in days</item>
         <item name="op2">I adopted the dog :)</item>
