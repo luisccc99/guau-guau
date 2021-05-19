@@ -138,20 +138,6 @@ class DogMapsFragment : Fragment(),
 
     override fun onMapReady(googleMap: GoogleMap?) {
         this.googleMap = googleMap ?: return
-
-        try {
-            // Customise the styling of the base map using a JSON object defined
-            // in a raw resource file.
-            val success = googleMap.setMapStyle(
-                MapStyleOptions.loadRawResourceStyle(requireContext(), R.raw.style_json)
-            )
-            if (!success) {
-                Log.e("TAG", "Style parsing failed.")
-            }
-        } catch (e: Resources.NotFoundException) {
-            Log.e("TAG", "Can't find style. Error: ", e)
-        }
-
         googleMap.setOnMyLocationButtonClickListener(this)
         googleMap.setOnMyLocationClickListener(this)
         showDefaultLocations()

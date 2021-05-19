@@ -20,7 +20,10 @@
         </item>
 
         <item name="bottomNavigationStyle">@style/Widget.GuauGuau.BottomNavigationView.Colored</item>
-        <item name="toolbarStyle">@style/Widget.GuauGuau.Toolbar.Primary</item>
+        <item name="toolbarStyle">@style/Widget.MaterialComponents.Toolbar.Primary</item>
         <item name="bottomSheetStyle">@style/Widget.GuauGuau.BottomSheet</item>
+    </style>
+    <style name="SplashTheme" parent="Theme.Guauguau">
+        <item name="android:windowBackground">@drawable/splash_screen</item>
     </style>
 </resources>

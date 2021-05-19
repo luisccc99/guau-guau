@@ -16,6 +16,8 @@ import dagger.hilt.android.AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        Thread.sleep(1500)
+        setTheme(R.style.Theme_Guauguau)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         val userPreferences = UserPreferences(this)

@@ -24,15 +24,14 @@
     </style>
 
     <!-- Toolbar light style -->
-    <style name="Widget.GuauGuau.Toolbar.Primary" parent="Widget.MaterialComponents.Toolbar.Primary">
-        <item name="materialThemeOverlay">@style/ThemeOverlay.GuauGuau.Toolbar.Primary</item>
+    <style name="Widget.GuauGuau.ToolbarDay" parent="Widget.MaterialComponents.Toolbar.Primary">
+        <item name="materialThemeOverlay">@style/ThemeOverlay.GuauGuau.Toolbar.PrimarySurface.Day</item>
     </style>
     
-    <style name="ThemeOverlay.GuauGuau.Toolbar.Primary" parent="">
+    <style name="ThemeOverlay.GuauGuau.Toolbar.PrimarySurface.Day" parent="">
         <item name="colorPrimary">@color/blue_700</item>
-        <item name="colorPrimaryVariant">@color/blue_200</item>
+        <item name="colorPrimaryVariant">@color/blue_900</item>
         <item name="colorOnPrimary">@color/white</item>
-        <item name="colorOnPrimarySurface">@color/white</item>
     </style>
 
     <!-- Toolbar night style -->
