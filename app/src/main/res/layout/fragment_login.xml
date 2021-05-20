@@ -136,7 +136,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
             android:padding="10dp"
-            android:text="@string/signup"
+            android:text="@string/create_an_account"
             android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
             android:textColor="?colorPrimary"
             android:textStyle="bold"

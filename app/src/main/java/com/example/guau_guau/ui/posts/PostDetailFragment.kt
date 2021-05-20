@@ -41,7 +41,6 @@ class PostDetailFragment :
     private var checkedItem = 0
     private var authorId = ""
 
-    @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         solveReasons = resources.getStringArray(R.array.post_solve_options)

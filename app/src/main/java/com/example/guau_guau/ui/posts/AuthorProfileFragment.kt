@@ -1,10 +1,13 @@
 package com.example.guau_guau.ui.posts
 
 import android.annotation.SuppressLint
+import android.os.Build
 import android.os.Bundle
+import android.transition.TransitionInflater
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.annotation.RequiresApi
 import androidx.core.view.isVisible
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
@@ -23,12 +26,24 @@ class AuthorProfileFragment : BaseFragment<ProfileViewModel, FragmentAuthorProfi
 
     private val args: AuthorProfileFragmentArgs by navArgs()
 
+    @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        val animation = TransitionInflater.from(requireContext()).inflateTransition(
+            android.R.transition.move
+        )
+        sharedElementEnterTransition = animation
+        sharedElementReturnTransition = animation
+    }
+
     @SuppressLint("SetTextI18n")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel.getUser(args.authorId)
         viewModel.user.observe(viewLifecycleOwner, {
             binding.progressBar.isVisible = false
+            binding.icAbout.isVisible = false
+            binding.about.isVisible = false
             when(it) {
                 is Resource.Failure ->{
                     binding.progressBar.isVisible = false
@@ -36,9 +51,13 @@ class AuthorProfileFragment : BaseFragment<ProfileViewModel, FragmentAuthorProfi
                 }
                 is Resource.Loading -> {
                     binding.progressBar.isVisible = true
+                    binding.icAbout.isVisible = false
+                    binding.about.isVisible = false
                 }
                 is Resource.Success -> {
                     with(binding) {
+                        binding.icAbout.isVisible = true
+                        binding.about.isVisible = true
                         progressBar.isVisible = false
                         textViewName.text = "${it.value.name} ${it.value.lastname}"
                         textViewAbout.text = it.value.aboutme

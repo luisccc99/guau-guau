@@ -33,7 +33,8 @@ class HomeActivity : AppCompatActivity() {
 
         navController.addOnDestinationChangedListener { _, destination, _ ->
             when (destination.id) {
-                R.id.createPostFragment, R.id.postDetailFragment, R.id.commentFragment -> {
+                R.id.createPostFragment, R.id.postDetailFragment,
+                R.id.commentFragment, R.id.authorProfileFragment -> {
                     bottomNavigationView.visibility = View.GONE
                     toolbar.visibility = View.VISIBLE
                 }

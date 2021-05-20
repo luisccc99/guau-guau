@@ -11,8 +11,9 @@
 
     <string name="more">Más</string>
     <string name="create_post">Crear publicación</string>
-
+    <string name="post">Publicación</string>
     <string name="about">Acerca de</string>
+    <string name="post_author">Autor</string>
     <string name="edit_about">Editar Acerca de</string>
     <string name="edit_name">Editar Nombre</string>
     <string name="profile_activity">Actividad</string>
@@ -34,7 +35,7 @@
     <string name="cancel">Cancelar</string>
     <string name="submit">Publicar</string>
     <string name="signup">Registrar</string>
-    <string name="create_an_account">¡Crea una cuenta!</string>
+    <string name="create_an_account">¡Crea una!</string>
     <string name="last_name">Apellidos</string>
     <string name="first_name">Nombres</string>
     <string name="confirm_password">Confirmar contraseña</string>

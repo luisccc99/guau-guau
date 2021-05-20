@@ -1,12 +1,10 @@
 package com.example.guau_guau
 
 import android.annotation.SuppressLint
-import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
-import androidx.annotation.RequiresApi
 import androidx.lifecycle.asLiveData
 import com.example.guau_guau.ui.auth.AuthActivity
 import com.example.guau_guau.data.UserPreferences
@@ -15,9 +13,6 @@ import com.example.guau_guau.ui.startNewActivity
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.runBlocking
 import java.text.SimpleDateFormat
-import java.time.Duration
-import java.time.LocalDateTime
-import java.time.format.DateTimeFormatter
 import java.util.*
 
 @AndroidEntryPoint
@@ -32,7 +27,11 @@ class MainActivity : AppCompatActivity() {
         val userPreferences = UserPreferences(this)
         userPreferences.expTime.asLiveData().observe(this, {
             if (it != null) {
-                val expTime = SimpleDateFormat("dd-MM-yyyy HH:mm:ss").parse(it)
+                val dateFormat = SimpleDateFormat(
+                    "dd-MM-yyyy HH:mm:ss",
+                Locale.getDefault())
+                dateFormat.timeZone = TimeZone.getTimeZone("MDT")
+                val expTime = dateFormat.parse(it)
                 if (expTime != null) {
                     if (hasTokenExpired(expTime)) {
                         runBlocking { userPreferences.clear() }
@@ -53,7 +52,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun hasTokenExpired(expTime: Date) : Boolean{
-        val currentDate = Calendar.getInstance().time
+        val currentDate = Calendar.getInstance(TimeZone.getTimeZone("MDT")).time
         Log.d("MainActivity", "hasTokenExpired: $currentDate > $expTime")
         return currentDate > expTime
     }

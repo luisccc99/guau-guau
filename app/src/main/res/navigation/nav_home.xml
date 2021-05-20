@@ -56,7 +56,7 @@
     <fragment
         android:id="@+id/createPostFragment"
         android:name="com.example.guau_guau.ui.posts.CreatePostFragment"
-        android:label="Create New Post"
+        android:label="@string/create_new_post"
         tools:layout="@layout/fragment_create_post">
         <action
             android:id="@+id/action_createPostFragment_to_postsFragment"
@@ -67,7 +67,7 @@
     <fragment
         android:id="@+id/postDetailFragment"
         android:name="com.example.guau_guau.ui.posts.PostDetailFragment"
-        android:label="Post"
+        android:label="@string/post"
         tools:layout="@layout/fragment_post_detail">
         <action
             android:id="@+id/action_postDetailFragment_to_postsFragment"
@@ -121,7 +121,7 @@
     <fragment
         android:id="@+id/authorProfileFragment"
         android:name="com.example.guau_guau.ui.posts.AuthorProfileFragment"
-        android:label="fragment_author_profile"
+        android:label="@string/post_author"
         tools:layout="@layout/fragment_author_profile" >
         <argument
             android:name="authorId"
