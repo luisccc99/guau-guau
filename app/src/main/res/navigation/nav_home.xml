@@ -57,7 +57,13 @@
         android:id="@+id/createPostFragment"
         android:name="com.example.guau_guau.ui.posts.CreatePostFragment"
         android:label="Create New Post"
-        tools:layout="@layout/fragment_create_post"/>
+        tools:layout="@layout/fragment_create_post">
+        <action
+            android:id="@+id/action_createPostFragment_to_postsFragment"
+            app:destination="@id/postsFragment"
+            app:popUpTo="@id/postsFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
     <fragment
         android:id="@+id/postDetailFragment"
         android:name="com.example.guau_guau.ui.posts.PostDetailFragment"
@@ -68,7 +74,7 @@
             app:destination="@id/postsFragment" />
         <argument
             android:name="post"
-            app:argType="com.example.guau_guau.data.GuauguauPost" />
+            app:argType="com.example.guau_guau.data.responses.GuauguauPost" />
         <action
             android:id="@+id/action_postDetailFragment_to_commentFragment"
             app:destination="@id/commentFragment" />

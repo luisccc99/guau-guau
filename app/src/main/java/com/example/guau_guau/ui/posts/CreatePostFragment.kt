@@ -91,10 +91,6 @@ class CreatePostFragment :
             view.findNavController().navigate(R.id.action_createPostFragment_to_postsFragment)
         }
 
-        binding.goToPhoto.setOnClickListener {
-            view.findNavController().navigate(R.id.action_createPostFragment_to_photoSelecTaker)
-        }
-
         binding.buttonLocation.setOnClickListener {
             getCurrentLocation()
         }

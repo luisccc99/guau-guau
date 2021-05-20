@@ -21,13 +21,14 @@ class LoginFragment : BaseFragment<AuthViewModel, FragmentLoginBinding, AuthRepo
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewModel.loginResponse.observe(viewLifecycleOwner, Observer {
+        viewModel.loginResponse.observe(viewLifecycleOwner, {
             binding.progressbar.visible(false)
             when (it) {
                 is Resource.Success -> {
                     binding.buttonLogin.enable(false)
                     viewModel.saveAuthToken(it.value.token)
                     viewModel.saveUserId(it.value.user_id)
+                    viewModel.saveExpTime(it.value.exp)
                     requireActivity().startNewActivity(HomeActivity::class.java)
                 }
                 is Resource.Failure -> handleApiError(it) {

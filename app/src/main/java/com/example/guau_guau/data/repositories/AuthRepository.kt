@@ -2,6 +2,7 @@ package com.example.guau_guau.data.repositories
 
 import com.example.guau_guau.data.UserPreferences
 import com.example.guau_guau.data.network.GuauguauApi
+import java.util.*
 
 class AuthRepository(
     private val api: GuauguauApi,
@@ -21,5 +22,9 @@ class AuthRepository(
 
     suspend fun saveUserId(userId: String) {
         preferences.saveUserId(userId)
+    }
+
+    suspend fun saveExpTime(expTime: String) {
+        preferences.saveExpTime(expTime)
     }
 }

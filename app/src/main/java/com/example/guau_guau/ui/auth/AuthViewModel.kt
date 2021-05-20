@@ -8,6 +8,7 @@ import com.example.guau_guau.data.repositories.AuthRepository
 import com.example.guau_guau.data.responses.LoginResponse
 import com.example.guau_guau.ui.base.BaseViewModel
 import kotlinx.coroutines.launch
+import java.util.*
 
 class AuthViewModel(
     private val repository: AuthRepository
@@ -31,5 +32,8 @@ class AuthViewModel(
 
     fun saveUserId(userId: String) = viewModelScope.launch {
         repository.saveUserId(userId)
+    }
+    fun saveExpTime(expTime: String) = viewModelScope.launch {
+        repository.saveExpTime(expTime)
     }
 }
