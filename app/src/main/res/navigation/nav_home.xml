@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/postsFragment"
-        android:name="com.example.guau_guau.ui.posts.PostsFragment"
+        android:name="com.guau_guau.guau_guau.ui.posts.PostsFragment"
         android:label="Home"
         tools:layout="@layout/fragment_posts">
         <action
@@ -22,12 +22,12 @@
     </fragment>
     <fragment
         android:id="@+id/dogMapsFragment"
-        android:name="com.example.guau_guau.ui.maps.DogMapsFragment"
+        android:name="com.guau_guau.guau_guau.ui.maps.DogMapsFragment"
         android:label="Dogs Map"
         tools:layout="@layout/fragment_dog_maps" />
     <fragment
         android:id="@+id/profileFragment"
-        android:name="com.example.guau_guau.ui.profile.ProfileFragment"
+        android:name="com.guau_guau.guau_guau.ui.profile.ProfileFragment"
         android:label="Profile"
         tools:layout="@layout/fragment_profile">
         <action
@@ -55,7 +55,7 @@
     </fragment>
     <fragment
         android:id="@+id/createPostFragment"
-        android:name="com.example.guau_guau.ui.posts.CreatePostFragment"
+        android:name="com.guau_guau.guau_guau.ui.posts.CreatePostFragment"
         android:label="@string/create_new_post"
         tools:layout="@layout/fragment_create_post">
         <action
@@ -66,7 +66,7 @@
     </fragment>
     <fragment
         android:id="@+id/postDetailFragment"
-        android:name="com.example.guau_guau.ui.posts.PostDetailFragment"
+        android:name="com.guau_guau.guau_guau.ui.posts.PostDetailFragment"
         android:label="@string/post"
         tools:layout="@layout/fragment_post_detail">
         <action
@@ -74,7 +74,7 @@
             app:destination="@id/postsFragment" />
         <argument
             android:name="post"
-            app:argType="com.example.guau_guau.data.responses.GuauguauPost" />
+            app:argType="com.guau_guau.guau_guau.data.responses.GuauguauPost" />
         <action
             android:id="@+id/action_postDetailFragment_to_commentFragment"
             app:destination="@id/commentFragment" />
@@ -84,7 +84,7 @@
     </fragment>
     <dialog
         android:id="@+id/photoBottomSheetFragment"
-        android:name="com.example.guau_guau.ui.profile.PhotoBottomSheetFragment"
+        android:name="com.guau_guau.guau_guau.ui.profile.PhotoBottomSheetFragment"
         android:label="fragment_photo_bottom_sheet"
         tools:layout="@layout/fragment_photo_bottom_sheet">
         <action
@@ -93,7 +93,7 @@
     </dialog>
     <dialog
         android:id="@+id/nameBottomSheetFragment"
-        android:name="com.example.guau_guau.ui.profile.NameBottomSheetFragment"
+        android:name="com.guau_guau.guau_guau.ui.profile.NameBottomSheetFragment"
         android:label="fragment_name_bottom_sheet"
         tools:layout="@layout/fragment_name_bottom_sheet" >
         <action
@@ -102,7 +102,7 @@
     </dialog>
     <dialog
         android:id="@+id/aboutBottomSheetFragment"
-        android:name="com.example.guau_guau.ui.profile.AboutBottomSheetFragment"
+        android:name="com.guau_guau.guau_guau.ui.profile.AboutBottomSheetFragment"
         android:label="fragment_about_bottom_sheet"
         tools:layout="@layout/fragment_about_bottom_sheet" >
         <action
@@ -111,7 +111,7 @@
     </dialog>
     <fragment
         android:id="@+id/commentFragment"
-        android:name="com.example.guau_guau.ui.posts.CommentFragment"
+        android:name="com.guau_guau.guau_guau.ui.posts.CommentFragment"
         android:label="@string/comments"
         tools:layout="@layout/fragment_comments_list">
         <argument
@@ -120,7 +120,7 @@
     </fragment>
     <fragment
         android:id="@+id/authorProfileFragment"
-        android:name="com.example.guau_guau.ui.posts.AuthorProfileFragment"
+        android:name="com.guau_guau.guau_guau.ui.posts.AuthorProfileFragment"
         android:label="@string/post_author"
         tools:layout="@layout/fragment_author_profile" >
         <argument
