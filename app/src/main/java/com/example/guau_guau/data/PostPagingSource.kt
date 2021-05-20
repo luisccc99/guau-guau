@@ -16,7 +16,7 @@ class PostPagingSource(
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, GuauguauPost> {
         val position = params.key ?: STARTING_PAGE_INDEX
         return try {
-            var posts = guauguauApi.searchPosts(resolved, position, "eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2VtYWlsIjoibHVpc2NjYzk5QGdtYWlsLmNvbSIsImV4cCI6MTYxNzk0ODUwNH0.G-EFnRUJn2aH6IIlyaSiaeUw4hHQy2KuHlNJ8uNYldU")
+            var posts = guauguauApi.searchPosts(resolved, position)
             if (posts == null) {
                 posts = emptyList()
             }

@@ -63,9 +63,8 @@ interface GuauguauApi {
 
     @GET("comment")
     suspend fun searchComments(
-        @Query("post_id") post_id: String, //This is gonna be the query
+        @Query("post_id") post_id: String,
         @Query("page") page: Int?,
-        @Header("Authorization") token: String
     ): List<GuauguauComment>
 
     @FormUrlEncoded
@@ -85,7 +84,6 @@ interface GuauguauApi {
     suspend fun searchPosts(
         @Query("resolved") page: Boolean,
         @Query("page") per_page: Int?,
-        @Header("Authorization") token: String
     ):List<GuauguauPost>?
 
     @GET("post")

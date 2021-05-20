@@ -17,7 +17,7 @@ class CommentPagingSource(
         val position = params.key ?: STARTING_PAGE_INDEX
 
        return try {
-            val comments = guauguauApi.searchComments(post_id, position, "eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2VtYWlsIjoibHVpc2NjYzk5QGdtYWlsLmNvbSIsImV4cCI6MTYxNzk0ODUwNH0.G-EFnRUJn2aH6IIlyaSiaeUw4hHQy2KuHlNJ8uNYldU")
+            val comments = guauguauApi.searchComments(post_id, position)
 
             LoadResult.Page(
                 data = comments,

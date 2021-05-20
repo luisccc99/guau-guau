@@ -9,6 +9,7 @@ import android.text.SpannableString
 import android.text.Spanned
 import android.text.style.UnderlineSpan
 import android.transition.TransitionInflater
+import android.util.Log
 import android.view.*
 import android.widget.PopupMenu
 import android.widget.Toast
@@ -38,6 +39,7 @@ class PostDetailFragment :
     private val args by navArgs<PostDetailFragmentArgs>()
     private var solveReasons = emptyArray<String>()
     private var checkedItem = 0
+    private var authorId = ""
 
     @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -57,11 +59,23 @@ class PostDetailFragment :
         viewModel.getPost(args.post.id)
         viewModel.post.observe(viewLifecycleOwner, {
             handleMenuOptionsIfUserIdIsNotNull(it, userId, view)
+            if (authorId != "") {
+                val action = PostDetailFragmentDirections
+                    .actionPostDetailFragmentToAuthorProfileFragment(authorId)
+                binding.imageViewProfilePic.setOnClickListener {
+                    view.findNavController().navigate(action)
+                }
+                binding.textViewUsername.setOnClickListener {
+                    view.findNavController().navigate(action)
+                }
+            }
         })
+
         binding.buttonComments.setOnClickListener {
             navigateToComments(view) }
         val postLocation = "${args.post.latitude},${args.post.longitude}"
-        if ("0.0,0.0" == postLocation) {
+        val locationWasNotProvided = "0.0,0.0" == postLocation
+        if (locationWasNotProvided) {
             binding.textViewPostLocation.text = getString(R.string.location_not_provided);
         } else {
             binding.textViewPostLocation.setOnClickListener {
@@ -101,6 +115,7 @@ class PostDetailFragment :
     ) {
         when (it) {
             is Resource.Success -> {
+                authorId = it.value.user_id
                 // if user deleted the post, navigate to home
                 if (it.value.message != null) {
                     Toast.makeText(
@@ -121,7 +136,7 @@ class PostDetailFragment :
                     navigateToHome(view)
                 }
                 // if current user created the post, display pop menu and setup options
-                if (userId == it.value.user_id) {
+                if (userId == authorId) {
                     binding.imageViewSolve.visibility = View.VISIBLE
                     setupSolveAndDeleteOptions()
                 }
@@ -175,6 +190,7 @@ class PostDetailFragment :
     @SuppressLint("SetTextI18n")
     private fun showPostInfo(post: GuauguauPost) {
         binding.apply {
+            Log.wtf("TAG", "showPostInfo: ${post.user_photo}", )
             Glide.with(this@PostDetailFragment)
                 .load("https://res-4.cloudinary.com/wofwof/${post.user_photo}")
                 .error(R.drawable.ic_baseline_person)

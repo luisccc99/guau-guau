@@ -81,6 +81,9 @@
         <action
             android:id="@+id/action_postDetailFragment_to_commentFragment"
             app:destination="@id/commentFragment" />
+        <action
+            android:id="@+id/action_postDetailFragment_to_authorProfileFragment"
+            app:destination="@id/authorProfileFragment" />
     </fragment>
     <dialog
         android:id="@+id/photoBottomSheetFragment"
@@ -109,15 +112,6 @@
             android:id="@+id/action_aboutBottomSheetFragment_to_profileFragment"
             app:destination="@id/profileFragment" />
     </dialog>
-    <fragment
-        android:id="@+id/comentPost"
-        android:name="com.example.guau_guau.ui.posts.ComentPost"
-        android:label="fragment_coment_post"
-        tools:layout="@layout/fragment_coment_post" >
-        <argument
-            android:name="post_id"
-            app:argType="string" />
-    </fragment>
     <activity
         android:id="@+id/photoSelecTaker"
         android:name="com.example.guau_guau.ui.posts.photo.PhotoSelecTaker"
@@ -130,6 +124,16 @@
         tools:layout="@layout/fragment_comments_list">
         <argument
             android:name="postId"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/authorProfileFragment"
+        android:name="com.example.guau_guau.ui.posts.AuthorProfileFragment"
+        android:label="fragment_author_profile"
+        tools:layout="@layout/fragment_author_profile" >
+        <argument
+            android:name="authorId"
+            android:defaultValue=""
             app:argType="string" />
     </fragment>
 

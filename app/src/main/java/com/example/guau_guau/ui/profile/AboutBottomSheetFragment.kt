@@ -38,9 +38,13 @@ class AboutBottomSheetFragment : BottomSheetDialogFragment() {
         }
         binding.buttonEditAbout.setOnClickListener {
             val about = binding.editTextAbout.text.toString().trim()
-            val action = AboutBottomSheetFragmentDirections
-                .actionAboutBottomSheetFragmentToProfileFragment(about = about)
-            findNavController().navigate(action)
+            if (about.isBlank()) {
+                dismiss()
+            } else {
+                val action = AboutBottomSheetFragmentDirections
+                    .actionAboutBottomSheetFragmentToProfileFragment(about = about)
+                findNavController().navigate(action)
+            }
         }
     }
 

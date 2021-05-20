@@ -27,7 +27,6 @@ class ProfileFragment : BaseFragment<ProfileViewModel, FragmentProfileBinding, U
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val userId = runBlocking { userPreferences.userId.first() }
-
         if (userId != null) {
             val name = args.name
             val lastname = args.lastname
@@ -37,7 +36,7 @@ class ProfileFragment : BaseFragment<ProfileViewModel, FragmentProfileBinding, U
             } else if (name.isNotEmpty() || lastname.isNotEmpty()) {
                 viewModel.editUserData(userId, name, lastname, null)
             }
-            showUserInfo(userId)
+            showUserInfo(userId, true)
         }
 
         binding.floatingChangePic.setOnClickListener {
@@ -62,7 +61,7 @@ class ProfileFragment : BaseFragment<ProfileViewModel, FragmentProfileBinding, U
     }
 
     @SuppressLint("SetTextI18n")
-    private fun showUserInfo(userId: String) {
+    private fun showUserInfo(userId: String, currentUser: Boolean) {
         viewModel.getUser(userId)
         viewModel.user.observe(viewLifecycleOwner, {
             binding.progressBar.isVisible = false
@@ -93,7 +92,7 @@ class ProfileFragment : BaseFragment<ProfileViewModel, FragmentProfileBinding, U
                     binding.progressBar.isVisible = true
                     showUiComponents(false)
                 }
-                is Resource.Failure ->  {
+                is Resource.Failure -> {
                     binding.progressBar.isVisible = false
                     handleApiError(it)
                 }
