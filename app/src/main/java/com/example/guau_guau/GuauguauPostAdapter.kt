@@ -1,7 +1,6 @@
 package com.example.guau_guau
 
 import android.annotation.SuppressLint
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.view.ViewCompat
@@ -11,7 +10,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
-import com.example.guau_guau.data.GuauguauPost
+import com.example.guau_guau.data.responses.GuauguauPost
 import com.example.guau_guau.databinding.PostItemBinding
 import com.example.guau_guau.ui.Funs
 import com.google.android.gms.common.util.Strings

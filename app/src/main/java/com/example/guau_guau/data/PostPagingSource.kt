@@ -3,6 +3,7 @@ package com.example.guau_guau.data
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import com.example.guau_guau.data.network.GuauguauApi
+import com.example.guau_guau.data.responses.GuauguauPost
 import retrofit2.HttpException
 import java.io.IOException
 

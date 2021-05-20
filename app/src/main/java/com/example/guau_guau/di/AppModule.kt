@@ -22,14 +22,15 @@ object AppModule {
         Retrofit.Builder()
             .baseUrl(GuauguauApi.BASE_URL)
             .client(
-                OkHttpClient.Builder()
-                    .also { client ->
-                        val logging = HttpLoggingInterceptor();
-                        logging.setLevel(HttpLoggingInterceptor.Level.BODY)
-                        client.addInterceptor(logging)
-                    }.build()
+                OkHttpClient.Builder().build()
             )
-            .addConverterFactory(GsonConverterFactory.create(GsonBuilder().setDateFormat("yyyy-MM-dd'T'HH:mm:ss").create()))
+            .addConverterFactory(
+                GsonConverterFactory
+                    .create(
+                        GsonBuilder()
+                            .setDateFormat("yyyy-MM-dd'T'HH:mm:ss").create()
+                    )
+            )
             .build()
 
     @Provides

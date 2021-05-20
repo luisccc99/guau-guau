@@ -1,8 +1,8 @@
 package com.example.guau_guau.data.network
 
 
-import com.example.guau_guau.data.GuauguauComment
-import com.example.guau_guau.data.GuauguauPost
+import com.example.guau_guau.data.responses.GuauguauComment
+import com.example.guau_guau.data.responses.GuauguauPost
 import com.example.guau_guau.data.responses.*
 import retrofit2.http.*
 

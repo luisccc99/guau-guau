@@ -57,16 +57,7 @@
         android:id="@+id/createPostFragment"
         android:name="com.example.guau_guau.ui.posts.CreatePostFragment"
         android:label="Create New Post"
-        tools:layout="@layout/fragment_create_post">
-        <action
-            android:id="@+id/action_createPostFragment_to_postsFragment"
-            app:destination="@id/postsFragment"
-            app:popUpTo="@id/postsFragment"
-            app:popUpToInclusive="true" />
-        <action
-            android:id="@+id/action_createPostFragment_to_photoSelecTaker"
-            app:destination="@id/photoSelecTaker" />
-    </fragment>
+        tools:layout="@layout/fragment_create_post"/>
     <fragment
         android:id="@+id/postDetailFragment"
         android:name="com.example.guau_guau.ui.posts.PostDetailFragment"
@@ -112,11 +103,6 @@
             android:id="@+id/action_aboutBottomSheetFragment_to_profileFragment"
             app:destination="@id/profileFragment" />
     </dialog>
-    <activity
-        android:id="@+id/photoSelecTaker"
-        android:name="com.example.guau_guau.ui.posts.photo.PhotoSelecTaker"
-        android:label="fragment_take_photo"
-        tools:layout="@layout/fragment_take_photo" />
     <fragment
         android:id="@+id/commentFragment"
         android:name="com.example.guau_guau.ui.posts.CommentFragment"

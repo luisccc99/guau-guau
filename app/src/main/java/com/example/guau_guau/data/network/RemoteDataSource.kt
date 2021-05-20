@@ -24,13 +24,6 @@ class RemoteDataSource {
                                 it.addHeader("Authorization", "Bearer $authToken")
                             }.build()
                         )
-                    }
-                    .also { client ->
-
-                        val logging = HttpLoggingInterceptor();
-                        logging.setLevel(HttpLoggingInterceptor.Level.BODY)
-                        client.addInterceptor(logging)
-
                     }.build()
             )
             .addConverterFactory(GsonConverterFactory.create())

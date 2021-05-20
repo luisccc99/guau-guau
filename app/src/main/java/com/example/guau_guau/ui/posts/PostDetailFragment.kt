@@ -18,7 +18,7 @@ import androidx.navigation.findNavController
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
 import com.example.guau_guau.R
-import com.example.guau_guau.data.GuauguauPost
+import com.example.guau_guau.data.responses.GuauguauPost
 import com.example.guau_guau.data.UserPreferences
 import com.example.guau_guau.data.network.GuauguauApi
 import com.example.guau_guau.data.network.Resource

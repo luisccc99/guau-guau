@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
-import com.example.guau_guau.data.GuauguauComment
+import com.example.guau_guau.data.responses.GuauguauComment
 import com.example.guau_guau.databinding.CommentItemBinding
 
 class GuauguauCommentAdapter : PagingDataAdapter<GuauguauComment, GuauguauCommentAdapter.CommentViewHolder>(

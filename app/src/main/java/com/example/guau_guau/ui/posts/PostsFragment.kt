@@ -1,7 +1,6 @@
 package com.example.guau_guau.ui.posts
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -11,18 +10,14 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.observe
 import androidx.navigation.findNavController
-import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.navigation.fragment.findNavController
 import androidx.paging.LoadState
 import com.example.guau_guau.GuauguauPostAdapter
 import com.example.guau_guau.R
-import com.example.guau_guau.data.GuauguauPost
-import com.example.guau_guau.data.UserPreferences
+import com.example.guau_guau.data.responses.GuauguauPost
 import com.example.guau_guau.databinding.FragmentPostsBinding
-import com.example.guau_guau.databinding.PostItemBinding
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.runBlocking
 
 @AndroidEntryPoint
 class PostsFragment : Fragment(), GuauguauPostAdapter.OnItemClickListener {

@@ -7,16 +7,8 @@
          location permissions for the "MyLocation" functionality.
     -->
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-
-    <uses-permission android:name="android.permission.CAMERA" />
-    <uses-permission
-        android:name="android.hardware.Camera"
-        android:required="true" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:name=".PostGETApplication"
@@ -39,7 +31,6 @@
             android:value="@string/google_maps_key" />
 
         <activity android:name=".ui.HomeActivity" />
-        <activity android:name=".ui.posts.photo.PhotoSelecTaker" />
         <activity android:name=".ui.auth.AuthActivity" />
         <activity android:name=".MainActivity"
             android:theme="@style/SplashTheme">
@@ -50,18 +41,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <provider
-            android:name="androidx.core.content.FileProvider"
-            android:authorities="${applicationId}.provider"
-            android:exported="false"
-            android:grantUriPermissions="true">
-            <meta-data
-                android:name="android.support.FILE_PROVIDER_PATHS"
-                android:resource="@xml/provider_paths"></meta-data>
-        </provider>
-
-
     </application>
 
 </manifest>

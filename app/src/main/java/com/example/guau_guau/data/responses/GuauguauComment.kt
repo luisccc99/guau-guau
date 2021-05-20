@@ -1,4 +1,4 @@
-package com.example.guau_guau.data
+package com.example.guau_guau.data.responses
 
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
